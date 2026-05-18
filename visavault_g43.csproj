@@ -69,6 +69,124 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+
+    <Compile Include="UI\Appoinment\Appoinment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Appoinment\Appoinment.Designer.cs">
+      <DependentUpon>Appoinment.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Appoinment\Appoinment.resx">
+      <DependentUpon>Appoinment.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Client_Management\Client_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Client_Management\Client_Management.Designer.cs">
+      <DependentUpon>Client_Management.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Client_Management\Client_Management.resx">
+      <DependentUpon>Client_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Client_Registry\Client_Registry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Client_Registry\Client_Registry.Designer.cs">
+      <DependentUpon>Client_Registry.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Client_Registry\Client_Registry.resx">
+      <DependentUpon>Client_Registry.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Deadline_Calculator\Deadline_Calculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Deadline_Calculator\Deadline_Calculator.Designer.cs">
+      <DependentUpon>Deadline_Calculator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Deadline_Calculator\Deadline_Calculator.resx">
+      <DependentUpon>Deadline_Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Dependency_Validator\Dependency_Validator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dependency_Validator\Dependency_Validator.Designer.cs">
+      <DependentUpon>Dependency_Validator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Dependency_Validator\Dependency_Validator.resx">
+      <DependentUpon>Dependency_Validator.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Document_Manag\Document_Manag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Document_Manag\Document_Manag.Designer.cs">
+      <DependentUpon>Document_Manag.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Document_Manag\Document_Manag.resx">
+      <DependentUpon>Document_Manag.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Document_Portfolio\Document_Portfolio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Document_Portfolio\Document_Portfolio.Designer.cs">
+      <DependentUpon>Document_Portfolio.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Document_Portfolio\Document_Portfolio.resx">
+      <DependentUpon>Document_Portfolio.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Expiry_Alert\Expiry_Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Expiry_Alert\Expiry_Alert.Designer.cs">
+      <DependentUpon>Expiry_Alert.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Expiry_Alert\Expiry_Alert.resx">
+      <DependentUpon>Expiry_Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Fee_Calculator\Fee_Calculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fee_Calculator\Fee_Calculator.Designer.cs">
+      <DependentUpon>Fee_Calculator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Fee_Calculator\Fee_Calculator.resx">
+      <DependentUpon>Fee_Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Form1\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form1\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Form1\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Home\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Home\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Home\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Invoice\Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Invoice\Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Invoice\Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.Designer.cs">
+      <DependentUpon>Renewal_WorkFlow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.resx">
+      <DependentUpon>Renewal_WorkFlow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
