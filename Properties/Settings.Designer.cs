@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VisaVault.Properties
+namespace visavault_g43.Properties
 {
 
 
