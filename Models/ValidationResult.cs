@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace visavault_g43.Models
+{
+    public class ValidationResult
+    {
+        public bool IsValid { get; set; }
+        public string Message { get; set; }
+
+        public ValidationResult(bool IsValid, string Message)
+        {
+            this.IsValid = IsValid;
+            this.Message = Message;
+        }
+    } 
+}

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,204 +47,183 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>$(UserProfile)\.nuget\packages\system.resources.extensions\10.0.0\lib\net462\System.Resources.Extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="System.Resources.Extensions" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\DeadlineRow.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentDependency.cs" />
+    <Compile Include="Models\DocumenttType.cs" />
+    <Compile Include="Models\FeeRule.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\InvoiceLineItem.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\RenewalCase.cs" />
+    <Compile Include="Models\RenewalStage.cs" />
+    <Compile Include="Models\RenewalStageLog.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ValidationResult.cs" />
+    <Compile Include="BLL\AlertService.cs" />
+    <Compile Include="BLL\AppointmentService.cs" />
+    <Compile Include="BLL\AuditService.cs" />
+    <Compile Include="BLL\AuthService.cs" />
+    <Compile Include="BLL\ClientService.cs" />
+    <Compile Include="BLL\DeadlineService.cs" />
+    <Compile Include="BLL\DependencyService.cs" />
+    <Compile Include="BLL\DocumentService.cs" />
+    <Compile Include="BLL\FeeService.cs" />
+    <Compile Include="BLL\InvoiceService.cs" />
+    <Compile Include="BLL\RenewalService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-
     <Compile Include="UI\Appoinment\Appoinment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Appoinment\Appoinment.Designer.cs">
       <DependentUpon>Appoinment.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Appoinment\Appoinment.resx">
-      <DependentUpon>Appoinment.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Client_Management\Client_Management.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Client_Management\Client_Management.Designer.cs">
       <DependentUpon>Client_Management.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Client_Management\Client_Management.resx">
-      <DependentUpon>Client_Management.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Client_Registry\Client_Registry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Client_Registry\Client_Registry.Designer.cs">
       <DependentUpon>Client_Registry.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Client_Registry\Client_Registry.resx">
-      <DependentUpon>Client_Registry.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Deadline_Calculator\Deadline_Calculator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Deadline_Calculator\Deadline_Calculator.Designer.cs">
       <DependentUpon>Deadline_Calculator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Deadline_Calculator\Deadline_Calculator.resx">
-      <DependentUpon>Deadline_Calculator.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Dependency_Validator\Dependency_Validator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Dependency_Validator\Dependency_Validator.Designer.cs">
       <DependentUpon>Dependency_Validator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Dependency_Validator\Dependency_Validator.resx">
-      <DependentUpon>Dependency_Validator.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Document_Manag\Document_Manag.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Document_Manag\Document_Manag.Designer.cs">
       <DependentUpon>Document_Manag.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Document_Manag\Document_Manag.resx">
-      <DependentUpon>Document_Manag.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Document_Portfolio\Document_Portfolio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Document_Portfolio\Document_Portfolio.Designer.cs">
       <DependentUpon>Document_Portfolio.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Document_Portfolio\Document_Portfolio.resx">
-      <DependentUpon>Document_Portfolio.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Expiry_Alert\Expiry_Alert.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Expiry_Alert\Expiry_Alert.Designer.cs">
       <DependentUpon>Expiry_Alert.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Expiry_Alert\Expiry_Alert.resx">
-      <DependentUpon>Expiry_Alert.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Fee_Calculator\Fee_Calculator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Fee_Calculator\Fee_Calculator.Designer.cs">
       <DependentUpon>Fee_Calculator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Fee_Calculator\Fee_Calculator.resx">
-      <DependentUpon>Fee_Calculator.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Form1\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Form1\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Form1\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Home\Home.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Home\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Home\Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Invoice\Invoice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Invoice\Invoice.Designer.cs">
       <DependentUpon>Invoice.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Invoice\Invoice.resx">
-      <DependentUpon>Invoice.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.Designer.cs">
       <DependentUpon>Renewal_WorkFlow.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="UI\Appoinment\Appoinment.resx">
+      <DependentUpon>Appoinment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Client_Management\Client_Management.resx">
+      <DependentUpon>Client_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Client_Registry\Client_Registry.resx">
+      <DependentUpon>Client_Registry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Deadline_Calculator\Deadline_Calculator.resx">
+      <DependentUpon>Deadline_Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dependency_Validator\Dependency_Validator.resx">
+      <DependentUpon>Dependency_Validator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Document_Manag\Document_Manag.resx">
+      <DependentUpon>Document_Manag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Document_Portfolio\Document_Portfolio.resx">
+      <DependentUpon>Document_Portfolio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Expiry_Alert\Expiry_Alert.resx">
+      <DependentUpon>Expiry_Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fee_Calculator\Fee_Calculator.resx">
+      <DependentUpon>Fee_Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form1\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Home\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Invoice\Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.resx">
       <DependentUpon>Renewal_WorkFlow.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\home %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\home %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user-avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\contract.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\contract1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\renewal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\renewable.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\profit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\profit %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\time.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrows.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\form.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\form %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM2.png" />
+    <None Include="Resources\*.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
