@@ -16,5 +16,15 @@ namespace visavault_g43.Models
             this.IsValid = IsValid;
             this.Message = Message;
         }
+        // Static factory methods for success and failure results
+        public static ValidationResult Success(string message = "") 
+        {
+            return new ValidationResult(true, message);
+        }
+
+        public static ValidationResult Failure(string message)
+        {
+            return new ValidationResult(false, message);
+        }
     } 
 }
