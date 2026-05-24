@@ -7,16 +7,17 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using visavault_g43.DLL;
 using visavault_g43.Models;
 
 namespace visavault_g43.BLL
 {
     public static class ClientService
     {
-
+        
         public static List<Client> GetClients()
         {
-            DataTable dt = ClientDAL.GetClients(); // Assuming ClientDAL is a data access layer class that retrieves clients from the database
+            DataTable dt = ClientDAL.GetAllClients(); // Assuming ClientDAL is a data access layer class that retrieves clients from the database
             return new List<Client>();
         }
 
@@ -85,7 +86,7 @@ namespace visavault_g43.BLL
                 return ValidationResult.Failure("Invalid client ID.");
             if (string.IsNullOrWhiteSpace(NewStatus))
                 return ValidationResult.Failure("Invalid status.");
-            bool success = ClientDAL.ChangeClientStatus(ClientID, NewStatus); // Assuming ClientDAL has a method to change the status of a client
+            bool success = ClientDAL.UpdateClientStatus(ClientID, NewStatus); // Assuming ClientDAL has a method to change the status of a client
             if (success)
                 return ValidationResult.Success();
             return ValidationResult.Failure("Failed to change client status.");
@@ -93,7 +94,7 @@ namespace visavault_g43.BLL
 
         public static int GetTotalClients()
         {
-            return ClientDAL.GetTotalClients(); // Assuming ClientDAL has a method to get the total number of clients
+            return ClientDAL.GetTotalClientCount(); // Assuming ClientDAL has a method to get the total number of clients
         }
 
         private static bool ValidateCNIC(string cnic)
@@ -117,7 +118,7 @@ namespace visavault_g43.BLL
 
         private static bool IsCNICUnique(string cnic, int? clientId = null)
         {
-            return ClientDAL.IsCNICUnique(cnic, clientId); // Assuming ClientDAL has a method to check if CNIC is unique, excluding the current client ID if provided
+            return ClientDAL.CNICExists(cnic, clientId); // Assuming ClientDAL has a method to check if CNIC is unique, excluding the current client ID if provided
         }
 
         private static List<Client> MapDataTableToClients(DataTable dt) // Assuming a method to map a DataTable to a list of Client objects
