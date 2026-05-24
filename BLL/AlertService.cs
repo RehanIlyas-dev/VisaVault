@@ -5,11 +5,12 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using visavault_g43.DLL;
 using visavault_g43.Models;
 
 namespace visavault_g43.BLL
 {
-    public static class AlertService
+    public  class AlertService
     {
         public static List<Document> GetDocumentsbyAlertLevel(string filter)
         {
@@ -110,28 +111,29 @@ namespace visavault_g43.BLL
 
         public static int GetOverdueInvoiceCount()
         {
-            return InvoiceDAL.GetOverdueInvoiceCount(); // Assuming InvoiceDAL has a method to get the count of overdue invoices
+            return InvoiceService.GetInvoiceCount(0, "Overdue");
         }
 
         public static int GetActiveCaseCount()
         {
-            return RenewalDAL.GetActiveCaseCount(); // Assuming RenewalDAL has a method to get the count of active renewal cases
+            // Use the RenewalService which encapsulates DAL access and business rules
+            return RenewalService.GetActiveCaseCount();
         }
 
         public static List<Document> MapDataTabletoDocumentsList(DataTable dt)
         {
-          List<Document> documents = new List<Document>();
+            var documents = new List<Document>();
+            if (dt == null) return documents;
             foreach (DataRow dr in dt.Rows)
-            { 
-                documents.Add(new Document
-                {
-                    DocumentId = Convert.ToInt32(dr["DocumentId"]),
-                    DocumentNo = dr["DocumentNo"].ToString(),
-                    IssueDate = Convert.ToDateTime(dr["IssueDate"]),
-                    ExpiryDate = Convert.ToDateTime(dr["ExpiryDate"]),
-                    TypeID = Convert.ToInt32(dr["TypeID"]),
-                    ClientId = Convert.ToInt32(dr["ClientId"])
-                });
+            {
+                documents.Add(new Document(
+                    Convert.ToInt32(dr["document_id"]),
+                    dr["document_no"]?.ToString() ?? string.Empty,
+                    dr["issue_date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["issue_date"]),
+                    dr["expiry_date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["expiry_date"]),
+                    Convert.ToInt32(dr["type_id"]),
+                    Convert.ToInt32(dr["client_id"])
+                ));
             }
             return documents;
         }

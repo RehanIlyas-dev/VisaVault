@@ -92,7 +92,6 @@ namespace visavault_g43.BLL
             if(newPaymnentId > 0)
             {
                 UpdateInvoiceStatus(payment.InvoiceId);
-                AuditService.Log("payment", newPaymentId, "amount_paid", "", payment.AmountPaid.ToString(), "INSERT", payment.UserId);
                 return ValidationResult.Success("Payment recorded successfully.");
             }
             return ValidationResult.Failure("Failed to record payment.");

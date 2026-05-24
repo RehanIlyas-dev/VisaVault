@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
-using visavault_g43.database;
+using visavault_g43;
 using System.Threading.Tasks;
 using visavault_g43.Models;
 
@@ -50,7 +50,7 @@ namespace visavault_g43.DLL
             };
             return new Database().ExecuteNonQuery(query, parameters);
         }
-        public static int UpdateAppoin]tmentStatus(int appointmentId, string status)
+        public static int UpdateAppointmentStatus(int appointmentId, string status)
         {
             string query = "UPDATE appointment SET status = @Status WHERE appointment_id = @AppointmentId";
             MySqlParameter[] parameters = new MySqlParameter[]

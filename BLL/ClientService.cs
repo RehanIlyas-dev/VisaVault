@@ -6,30 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using visavault_g43.DLL;
 using visavault_g43.Models;
-using visavault_g43.DLL;
 
 namespace visavault_g43.BLL
 {
     public static class ClientService
     {
         
-        public static List<Client> GetClients()
+        public static List<visavault_g43.Models.Client> GetClients()
         {
-            DataTable dt = ClientDAL.GetAllClients(); // Assuming ClientDAL is a data access layer class that retrieves clients from the database
-            return new List<Client>();
+            DataTable dt = ClientDAL.GetAllClients(); // DAL returns rows using DB column names
+            return MapDataTableToClients(dt);
         }
 
-        public static List<Client> SearchClient(string Keyword, string StatusFilter)
+        public static List<visavault_g43.Models.Client> SearchClient(string Keyword, string StatusFilter)
         {
             if (string.IsNullOrWhiteSpace(Keyword)) Keyword = " ";
-            DataTable dt = ClientDAL.SearchClient(Keyword, StatusFilter); // Assuming ClientDAL has a method to search clients based on keyword and status filter
-            return new List<Client>();
+            DataTable dt = ClientDAL.SearchClient(Keyword, StatusFilter); // DAL.SearchClient expects (keyword, filterColumn)
+            return MapDataTableToClients(dt);
         }
 
-        public static Client GetClientbyID(int clientID)
+        public static visavault_g43.Models.Client GetClientbyID(int clientID)
         {
             if (clientID <= 0) return null;
             DataTable dt = ClientDAL.GetClientById(clientID); // Assuming ClientDAL has a method to get a client by ID
@@ -39,7 +37,7 @@ namespace visavault_g43.BLL
             return MapDataRowToClient(row); // Assuming a method to map DataRow to Client object
         }
 
-        public static ValidationResult SaveClient(Client client)
+        public static ValidationResult SaveClient(visavault_g43.Models.Client client)
         {
             if (string.IsNullOrWhiteSpace(client.ClientName))
                 return ValidationResult.Failure("Client name is required.");
@@ -54,16 +52,16 @@ namespace visavault_g43.BLL
 
             client.Status = "Active"; // Set default status to Active
 
-            int newID = ClientDAL.InsertClient(client); // Assuming ClientDAL has a method to save a client and returns the new client ID
+            int newID = ClientDAL.InsertClient(client); // DAL.InsertClient returns inserted id per DAL implementation
             if (newID > 0)
             {
-                client.ClientID = newID;
+                client.ClientId = newID;
                 return ValidationResult.Success();
             }
             return ValidationResult.Failure("Failed to save client.");
         }
 
-        public static ValidationResult UpdateClient(Client client)
+        public static ValidationResult UpdateClient(visavault_g43.Models.Client client)
         {
             if (client.ClientId <= 0)
                 return ValidationResult.Failure("Invalid client ID.");
@@ -119,12 +117,13 @@ namespace visavault_g43.BLL
 
         private static bool IsCNICUnique(string cnic, int? clientId = null)
         {
-            return ClientDAL.CNICExists(cnic, clientId); // Assuming ClientDAL has a method to check if CNIC is unique, excluding the current client ID if provided
+            // DAL.CNICExists returns true if CNIC exists; invert to indicate uniqueness
+            return !ClientDAL.CNICExists(cnic, clientId ?? 0);
         }
 
-        private static List<Client> MapDataTableToClients(DataTable dt) // Assuming a method to map a DataTable to a list of Client objects
+        private static List<visavault_g43.Models.Client> MapDataTableToClients(DataTable dt) // Assuming a method to map a DataTable to a list of Client objects
         {
-            List<Client> clients = new List<Client>();
+            List<visavault_g43.Models.Client> clients = new List<visavault_g43.Models.Client>();
             foreach (DataRow row in dt.Rows)
             {
                 clients.Add(MapDataRowToClient(row));
@@ -132,20 +131,23 @@ namespace visavault_g43.BLL
             return clients;
         }
 
-        private static Client MapDataRowToClient(DataRow row) // Assuming a method to map a DataRow to a Client object
+        private static visavault_g43.Models.Client MapDataRowToClient(DataRow row) // Map DB columns (snake_case) to Client model
         {
-            return new Client
-            (
-                ClientId: Convert.ToInt32(row["ClientID"]),
-                ClientName: row["ClientName"].ToString(),
-                CnicNo: row["CnicNo"].ToString(),
-                Email: row["Email"].ToString(),
-                ContactNo: row["ContactNo"].ToString(),
-                Address: row["Address"].ToString(),
-                CountryId: Convert.ToInt32(row["CountryId"]),
-                CreatedAt: Convert.ToDateTime(row["CreatedAt"]),
-                UpdatedAt: Convert.ToDateTime(row["UpdatedAt"]),
-                Status: row["Status"].ToString()
-            );
+            // Simplified mapping using DataRow.Field<T>() with null/default fallbacks
+                return new Client(
+                    Convert.ToInt32(row["client_id"]),
+                    row["client_name"]?.ToString() ?? string.Empty,
+                    row["cnic_no"]?.ToString() ?? string.Empty,
+                    row["email"]?.ToString() ?? string.Empty,
+                    row["contact_no"]?.ToString() ?? string.Empty,
+                    row["address"]?.ToString() ?? string.Empty,
+                    row["country_id"] == DBNull.Value ? 0 : Convert.ToInt32(row["country_id"]),
+                    row["created_at"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["created_at"]),
+                    row["updated_at"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["updated_at"]),
+                    row["status"]?.ToString() ?? string.Empty
+                );
         }
+
+
     }
+}

@@ -1,10 +1,7 @@
-﻿using Org.BouncyCastle.Crypto.Prng.Drbg;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using visavault_g43.DLL;
 using visavault_g43.Models;
 
@@ -12,148 +9,136 @@ namespace visavault_g43.BLL
 {
     public class RenewalService
     {
-        // Method to map DataRow to RenewalCase object
-        public static List<RenewalRule> GetAllCases(string StatusFilter = "All", int clientId = 0)
+        // Returns all renewal cases using the DAL and maps rows to model objects
+        public static List<RenewalCase> GetAllCases(string statusFilter = "All", int clientId = 0)
         {
-            DataTable dt = RenewalDAL.GetAllRenewalCases(StatusFilter, clientId); // Assuming RenewalDAL has a method to get all renewal cases based on status filter and client ID
-            List<RenewalCase> list = new List<RenewalCase>();
-            foreach (DataRow row in dt.Rows)
-            {
-                list.Add(MapDataRowtoCase(row));
-            }
-            return list;
+            DataTable dt = RenewalDAL.GetAllCases(statusFilter, clientId);
+            if (dt == null) return new List<RenewalCase>();
+            return dt.AsEnumerable().Select(r => MapDataRowToCase(r)).ToList();
         }
 
         // Returns a single case by ID
-        public static RenewalCase GetCaseById(int CaseId)
+        public static RenewalCase GetCaseById(int caseId)
         {
-            DataTable dt = RenewalDAL.GetRenewalCaseById(CaseId);
-            if (dt.Rows.Count == 0) return null;
-            return MapDataRowtoCase(dt.Rows[0]);
+            if (caseId <= 0) return null;
+            DataTable dt = RenewalDAL.GetRenewalCaseById(caseId);
+            if (dt == null || dt.Rows.Count == 0) return null;
+            return MapDataRowToCase(dt.Rows[0]);
         }
 
-        // This method opens a new renewal case for a given client and document type, returning a ValidationResult indicating success or failure along with an appropriate message.
-        public static ValidationResult OpenCase(int ClientId, int DocumentTypeId, int OpenByUserId)
+        // Opens a new renewal case if none already exists for the document
+        public static ValidationResult OpenCase(int clientId, int documentId, int openedByUserId)
         {
-            if (ClientId == 0 || DocumentTypeId == 0 || OpenByUserId == 0)
-                return ValidationResult.Failure("Client ID, Document Type ID, and Open By User ID must be provided.");
+            if (clientId <= 0 || documentId <= 0 || openedByUserId <= 0)
+                return ValidationResult.Failure("Client ID, Document ID and OpenedByUserId are required.");
+
             if (RenewalDAL.HasOpenCaseForDocument(documentId))
                 return ValidationResult.Failure("An open case already exists for this document.");
 
-            DataTable stageDt = RenewalDAL.GetAllStages();
-            if (stageDt.Rows.Count == 0)
+            DataTable stages = RenewalDAL.GetAllStages();
+            if (stages == null || stages.Rows.Count == 0)
                 return ValidationResult.Failure("No stages defined in the system.");
-            int intialStageId = Convert.ToInt32(stageDt.Rows[0]["Renewal_Stage_Id"]);
-            int newCaseId = RenewalDAL.InsertCase(ClientId, DocumentTypeId, OpenByUserId, intialStageId);
+
+            int initialStageId = Convert.ToInt32(stages.Rows[0]["stage_id"]);
+            int newCaseId = RenewalDAL.InsertCase(clientId, documentId, openedByUserId, initialStageId);
             if (newCaseId > 0)
             {
-                RenewalDAL.InsertStageLog(newCaseId, intialStageId, OpenByUserId);
-                AuditService.Log("renewalcase", newCaseId, "currentstage_id", " " initialStageId.ToString(), "INSERT", openedByUserId);
+                RenewalDAL.InsertStageLog(newCaseId, initialStageId, openedByUserId, "Case opened");
                 return ValidationResult.Success("Case opened successfully.");
             }
             return ValidationResult.Failure("Failed to open case.");
         }
 
-        // This method advances the stage of an existing renewal case, ensuring that the user has permission to perform the action, the case is currently open, and the stage transition is valid. It returns a ValidationResult indicating success or failure along with an appropriate message.
-        public static ValidationResult AdvanceStage(int CaseId, int NewStageId, int changedByUserId, string remarks)
+        // Advances the stage of a case
+        public static ValidationResult AdvanceStage(int caseId, int newStageId, int changedByUserId, string remarks)
         {
-            RenewalCase currentcase = GetCaseById(CaseId);
-            if (currentcase == null)
-                return ValidationResult.Failure("Case not found.");
-            if (!CanUserAdvance(changedByUserId, CaseId))
-                return ValidationResult.Failure("User does not have permission to advance this case.");
-            if (!IsOpen(currentcase))
-                return ValidationResult.Failure("Case is not open.");
-            if (!isValidTransition(CaseId, newStageId))
-                return ValidationResult.Failure("Invalid stage transition.");
+            var current = GetCaseById(caseId);
+            if (current == null) return ValidationResult.Failure("Case not found.");
+            if (!CanUserAdvance(changedByUserId, caseId)) return ValidationResult.Failure("User not permitted to advance case.");
+            if (!IsOpen(current)) return ValidationResult.Failure("Case is not open.");
+            if (!IsValidStage(newStageId)) return ValidationResult.Failure("Invalid target stage.");
 
-            string oldStageStr = currentcase.CurrentStageId.ToString();
-            int rowsAffected = RenewalDAL.UpdateCaseStage(CaseId, NewStageId, changedByUserId);
-            if (rowsAffected > 0)
+            int rows = RenewalDAL.UpdateCaseStage(caseId, newStageId, changedByUserId);
+            if (rows > 0)
             {
-                RenewalDAL.InsertStageLog(CaseId, NewStageId, changedByUserId, remarks);
-                AuditService.Log("renewalcase", CaseId, "currentstage_id", oldStageStr, NewStageId.ToString(), "UPDATE", changedByUserId);
+                RenewalDAL.InsertStageLog(caseId, newStageId, changedByUserId, remarks ?? string.Empty);
                 return ValidationResult.Success("Case advanced successfully.");
             }
             return ValidationResult.Failure("Failed to advance case.");
         }
 
-        // Helper method to map DataRow to RenewalCase object
-        public static List<RenewalCase> GetAllCases()
+        // Returns list of stages
+        public static List<RenewalStage> GetAllStages()
         {
-            DataTable dt = RenewalDAL.GetAllRenewalCases();
-            List<RenewalCase> list = new List<RenewalCase>();
-            foreach (DataRow row in dt.Rows)
-            {
-                list.Add(new RenewalStage
-                {
-                    StageId = Convert.ToInt32(row["StageId"]),
-                    StageName = row["StageName"].ToString(),
-                    StageNo = Convert.ToInt32(row["StageNo"])
-                    IsTerminal = Convert.ToBoolean(row["IsTerminal"])
-                });
-            }
-            return list;
+            var dt = RenewalDAL.GetAllStages();
+            var list = new List<RenewalStage>();
+            if (dt == null) return list;
+            return dt.AsEnumerable().Select(row => new RenewalStage(
+                row.Field<int?>("stage_id") ?? 0,
+                row.Field<string>("stage_name") ?? string.Empty,
+                row.Field<int?>("stage_no") ?? 0
+            )).ToList();
+            
         }
 
-        // Helper method to map DataRow to RenewalCase object
-        public static List<RenewalStageLog> GetStageLog(int CaseId)
+        // Returns stage logs for a case
+        public static List<RenewalStageLog> GetStageLog(int caseId)
         {
-            DataTable dt = RenewalDAL.GetStageLog(CaseId);
-            List<RenewalStageLog> list = new List<RenewalStageLog>();
-            foreach (DataRow row in dt.Rows)
-            {
-                list.Add(new RenewalStageLog
-                {
-                    LogId = Convert.ToInt32(row["LogId"]),
-                    CaseId = Convert.ToInt32(row["CaseId"]),
-                    StageId = Convert.ToInt32(row["StageId"]),
-                    ChangedByUserId = Convert.ToInt32(row["ChangedByUserId"]),
-                    Remarks = row["Remarks"].ToString(),
-                    LogDate = Convert.ToDateTime(row["LogDate"])
-                });
-            }
-            return list;
+            var dt = RenewalDAL.GetStageLog(caseId);
+            var list = new List<RenewalStageLog>();
+            if (dt == null) return list;
+            return dt.AsEnumerable().Select(row => new RenewalStageLog(
+                row.Field<int?>("log_id") ?? 0,
+                row.Field<int?>("changed_by_user_id") ?? 0,
+                row.Field<int?>("renewalcase_id") ?? 0,
+                row.Field<int?>("stage_id") ?? 0,
+                row.Field<DateTime?>("log_date") ?? DateTime.MinValue,
+                row.Field<string>("remarks") ?? string.Empty
+            )).ToList();
         }
 
-        // Helper method to map DataRow to RenewalCase object
+        // Returns documents for a case
         public static List<Document> GetCaseDocuments(int caseId)
         {
-            DataTable dt = RenewalDAL.GetCaseDocuments(caseId);
-            List<Document> list = new List<Document>();
-            foreach (DataRow row in dt.Rows)
-            {
-                list.Add(new Document
-                {
-                    DocumentId = Convert.ToInt32(row["DocumentId"]),
-                    DocumentNo = row["DocumentNo"].ToString(),
-                    TypeID = Convert.ToInt32(row["TypeID"]),
-                    IssueDate = Convert.ToDateTime(row["IssueDate"]),
-                    ExpiryDate = Convert.ToDateTime(row["ExpiryDate"]),
-                    ClientId = Convert.ToInt32(row["ClientId"])
-                });
-            }
-            return list;
+            var dt = RenewalDAL.GetCaseDocuments(caseId);
+            var list = new List<Document>();
+            if (dt == null) return list;
+            return dt.AsEnumerable().Select(row => new Document(
+                row.Field<int?>("document_id") ?? 0,
+                row.Field<string>("document_no") ?? string.Empty,
+                row.Field<DateTime?>("issue_date") ?? DateTime.MinValue,
+                row.Field<DateTime?>("expiry_date") ?? DateTime.MinValue,
+                row.Field<int?>("type_id") ?? 0,
+                row.Field<int?>("client_id") ?? 0
+            )).ToList();
         }
-        // check if the case is overdue
+
+        // check if the case is overdue (simple heuristic: days since created greater than 30)
         public static bool IsOverdue(RenewalCase rc)
         {
-            return GetDaysInCurrentStage(rc) > 30;
+            if (rc == null) return false;
+            return (DateTime.Now - rc.CreatedAt).TotalDays > 30;
         }
+
         // check if the case is open (not in a terminal stage)
-        public bool isOpen(RenewalCase rc)
+        public static bool IsOpen(RenewalCase rc)
         {
-            DataTable stagesDt = RenewalDAL.GetAllStages();
-            foreach (DataRow row in stagesDt.Rows)
+            if (rc == null) return false;
+            var stages = RenewalDAL.GetAllStages();
+            if (stages == null) return true;
+            foreach (DataRow row in stages.Rows)
             {
-                if (Convert.ToInt32(row["renewal_stage_id"]) == rc.CurrentStageId) {
-                    return !Convert.ToBoolean(row["is_terminal"]);
+                if (row.Table.Columns.Contains("stage_id") && row["stage_id"] != DBNull.Value && Convert.ToInt32(row["stage_id"]) == rc.CurrentStageId)
+                {
+                    if (row.Table.Columns.Contains("is_terminal") && row["is_terminal"] != DBNull.Value)
+                        return !Convert.ToBoolean(row["is_terminal"]);
+                    return true;
                 }
             }
             return true;
         }
 
-        // --> Helper Functions
+        // Returns the number of active cases using DAL
         public static int GetActiveCaseCount()
         {
             return RenewalDAL.GetActiveCaseCount();
@@ -161,30 +146,32 @@ namespace visavault_g43.BLL
 
         public static bool CanUserAdvance(int userId, int caseId)
         {
+            // placeholder for permission check - expand as needed
             return userId > 0;
         }
 
-        public static bool isValidTransition(int caseId, int newStageId)
+        public static bool IsValidStage(int stageId)
         {
-            DataTable dt = RenewalDAL.GetAllStages();
-            foreach (DataRow row in dt.Rows)
+            var stages = RenewalDAL.GetAllStages();
+            if (stages == null) return false;
+            foreach (DataRow row in stages.Rows)
             {
-                if (Convert.ToInt32(row["RenewalStageId"]) == newStageId)
+                if (row.Table.Columns.Contains("stage_id") && row["stage_id"] != DBNull.Value && Convert.ToInt32(row["stage_id"]) == stageId)
                     return true;
             }
             return false;
         }
-        private static RenewalCase MapDataRowtoCase(DataRow row)
+
+        private static RenewalCase MapDataRowToCase(DataRow row)
         {
-            return new RenewalCase
-            {
-                CaseId = Convert.ToInt32(row["CaseId"]),
-                ClientId = Convert.ToInt32(row["ClientId"]),
-                DocumentTypeId = Convert.ToInt32(row["DocumentTypeId"]),
-                OpenedByUserId = Convert.ToInt32(row["OpenedByUserId"]),
-                CurrentStageId = Convert.ToInt32(row["CurrentStageId"]),
-                OpenDate = Convert.ToDateTime(row["OpenDate"])
-            };
+            return new RenewalCase(
+                row.Field<int?>("renewalcase_id") ?? 0,
+                row.Field<int?>("currentstage_id") ?? 0,
+                row.Field<int?>("user_id") ?? 0,
+                row.Field<int?>("document_id") ?? 0,
+                row.Field<DateTime?>("created_at") ?? DateTime.MinValue,
+                row.Field<DateTime?>("updated_at") ?? DateTime.MinValue
+            );
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using visavault_g43.database;
+using visavault_g43;
+using visavault_g43.Models;
 
 namespace visavault_g43.DLL
 {
-    internal class ClientDAL
+    public static class ClientDAL
     {
         static Database db = new Database();
 
