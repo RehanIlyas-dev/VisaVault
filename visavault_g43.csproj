@@ -58,6 +58,7 @@
     <PackageReference Include="System.Resources.Extensions" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\DocumentService.cs" />
     <Compile Include="DLL\AppointmentDAL.cs" />
     <Compile Include="DLL\AuthDAL.cs" />
     <Compile Include="DLL\ClientDAL.cs" />
@@ -73,7 +74,7 @@
     <Compile Include="Models\DeadlineRow.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\DocumentDependency.cs" />
-    <Compile Include="Models\DocumenttType.cs" />
+    <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\FeeRule.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceLineItem.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="BLL\ClientService.cs" />
     <Compile Include="BLL\DeadlineService.cs" />
     <Compile Include="BLL\DependencyService.cs" />
-    <Compile Include="BLL\DocumentService.cs" />
     <Compile Include="BLL\FeeService.cs" />
     <Compile Include="BLL\InvoiceService.cs" />
     <Compile Include="BLL\RenewalService.cs" />
