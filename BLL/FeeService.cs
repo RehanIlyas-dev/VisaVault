@@ -56,6 +56,11 @@ namespace visavault_g43.BLL
             return countries;
         }
 
+        public static List<Country> GetAllCountries()
+        {
+            return GetCountries();
+        }
+
         // This methods return all Document Types for ComboBox 
         public static List<DocumentType> GetAllDocumentTypes()
         {

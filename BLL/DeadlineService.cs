@@ -17,63 +17,21 @@ namespace visavault_g43.BLL
         public static List<DeadlineRow> GetDeadLines(int FilterClientId = 0) // FilterClient is 0 to get all clients
         {
             List<DeadlineRow> GridData = new List<DeadlineRow>();
-            DataTable DocumentTable;
-
-            if(FilterClientId > 0) // If a specific client ID is provided, fetch documents for that client only
-            {
-                DocumentTable = DocumentDAL.GetDocumentsbyClient(FilterClientId);
-            }
-            else
-            {
-                DocumentTable = DocumentDAL.GetCriticalDocuments();
-            }
+            DataTable DocumentTable = FilterClientId > 0
+                ? DocumentDAL.GetDocumentsByClient(FilterClientId)
+                : DocumentDAL.GetCriticalDocuments();
 
             foreach(DataRow row in DocumentTable.Rows)
             {
-                int clientId = Convert.ToInt32(row["ClientId"]);
-                int typeId = Convert.ToInt32(row["TypeId"]);
-
-                Document doc = new Document
-                {
-                    DocumentId =  Convert.ToInt32(row["DocumentId"]),
-                    DocumentNo = row["DocumentNo"].ToString(),
-                    IssueDate = Convert.ToDateTime(row["IssueDate"]),
-                    ExpiryDate = Convert.ToDateTime(row["ExpiryDate"]),
-                    TypeID = typeId,
-                    ClientId = clientId
-                };
-
-                // Fetch context names safely via DatabaseRecords
-                string ClientName = "Unknown Client";
-                DataTable clientDt = ClientDAL.GetClientById(clientId);
-                if(clientDt.Rows.Count > 0)
-                {
-                    ClientName = clientDt.Rows[0]["ClientName"].ToString();
-                }
-
-                string typeName = "Unknown Type";
-                DataTable typeDt = DocumentDAL.GetTypeById(typeId);
-                if(typeDt.Rows.Count > 0)
-                {
-                    typeName = typeDt.Rows[0]["TypeName"].ToString();
-                    break;
-                }
-
-                // Compute Calculated Metric sets
+                Document doc = MapDocument(row, FilterClientId);
+                string clientName = GetString(row, "client_name", "Unknown Client");
+                string typeName = GetString(row, "documenttype_name", "Unknown Type");
                 DateTime actionDate = CalculateActionDate(doc);
                 int daysLeft = DaysToAction(doc);
                 string alertLevel = GetAlertLevel(daysLeft);
                 int processingDays = GetEffectiveProcDays(doc);
 
-                GridData.Add(new DeadlineRow
-                {
-                    Document = doc,
-                    ClientName = ClientName,
-                    ActionDate = actionDate,
-                    DaysLeft = daysLeft,
-                    AlertLevel = alertLevel,
-                    ProcessingDays = processingDays
-                });
+                GridData.Add(new DeadlineRow(clientName, typeName, doc.ExpiryDate, actionDate, daysLeft, alertLevel, processingDays));
             }
             return GridData;
         }
@@ -95,7 +53,7 @@ namespace visavault_g43.BLL
         {
             if(daystoAction < 0) return "Expired";
             if(daystoAction <= 14) return "Critical";
-            if (daystoAction <= 30) return "Warning";
+            if (daystoAction <= DefaultBufferDays) return "Warning";
             return "Safe";
         }
 
@@ -103,47 +61,59 @@ namespace visavault_g43.BLL
         {
             if(clientId <= 0) return 0;
 
-            DataTable dt = DocumentDAL.GetDocumentsbyClient(clientId);
+            DataTable dt = DocumentDAL.GetDocumentsByClient(clientId);
             if (dt.Rows.Count == 0) return int.MaxValue;
             int minDays = int.MaxValue;
 
             foreach(DataRow row in dt.Rows)
             {
-                Document doc = new Document
-                {
-                    ExpiryDate = Convert.ToDateTime(row["ExpiryDate"]),
-                    TypeID = Convert.ToInt32(row["TypeId"]),
-                    ClientId = clientId
-                };
-
-                int daysToAction = DaysToAction(doc);
-                if(daysToAction < minDays)
-                {
-                    minDays = daysToAction;
-                }
+                int daysToAction = DaysToAction(MapDocument(row, clientId));
+                if(daysToAction < minDays) minDays = daysToAction;
             }
             return minDays;
         }
-        // Helper Functions
+
+        private static Document MapDocument(DataRow row, int clientIdOverride = 0)
+        {
+            return new Document(
+                GetInt(row, "document_id"),
+                GetString(row, "document_no"),
+                GetDate(row, "issue_date"),
+                GetDate(row, "expiry_date"),
+                GetInt(row, "type_id"),
+                clientIdOverride > 0 ? clientIdOverride : GetInt(row, "client_id")
+            );
+        }
+
+        private static int GetInt(DataRow row, string columnName, int defaultValue = 0)
+        {
+            return row.Table.Columns.Contains(columnName) && row[columnName] != DBNull.Value ? Convert.ToInt32(row[columnName]) : defaultValue;
+        }
+
+        private static string GetString(DataRow row, string columnName, string defaultValue = "")
+        {
+            return row.Table.Columns.Contains(columnName) && row[columnName] != DBNull.Value ? row[columnName].ToString() : defaultValue;
+        }
+
+        private static DateTime GetDate(DataRow row, string columnName)
+        {
+            return row.Table.Columns.Contains(columnName) && row[columnName] != DBNull.Value ? Convert.ToDateTime(row[columnName]) : DateTime.MinValue;
+        }
 
         private static int GetEffectiveProcDays(Document document)
         {
             DataTable ClientDt = ClientDAL.GetClientById(document.ClientId);
             if(ClientDt.Rows.Count > 0)
             {
-                int CountryId = Convert.ToInt32(ClientDt.Rows[0]["CountryId"]);
+                int CountryId = Convert.ToInt32(ClientDt.Rows[0]["country_id"]);
                 DataTable feeRuleDt = FeeDAL.GetActiveRule(CountryId, document.TypeID);
-                if(feeRuleDt.Rows.Count > 0 && feeRuleDt.Rows[0]["ProcessingFee"] != DBNull.Value)
+                if(feeRuleDt.Rows.Count > 0 && feeRuleDt.Rows[0]["processing_fee"] != DBNull.Value)
                 {
-                    return Convert.ToInt32(feeRuleDt.Rows[0]["ProcessingFee"]);
+                    return Convert.ToInt32(feeRuleDt.Rows[0]["processing_fee"]);
                 }
             }
             return DefaultProceedingDays;
         }
 
-        private static int DifferenceInDays(DateTime date1, DateTime date2)
-        {
-            return (date1 - date2).Days;
-        }
     }
 }

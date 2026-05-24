@@ -13,6 +13,7 @@ namespace visavault_g43.Models
         public DateTime IssueDate { get; set; }
         public DateTime ExpiryDate { get; set; }
         public int TypeID { get; set; }
+        public int TypeId { get => TypeID; set => TypeID = value; }
         public int ClientId { get; set; }
 
         public Document(int DocumentId, string DocumentNo, DateTime IssueDate, DateTime ExpiryDate, int TypeID, int ClientId)

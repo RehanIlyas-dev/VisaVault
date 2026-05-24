@@ -14,6 +14,9 @@ namespace visavault_g43.Models
         public string PaymentMethod { get; set; }
         public int InvoiceId { get; set; }
         public int UserId { get; set; }
+        public Payment()
+        {
+        }
 
         public Payment(int PaymentId, int InvoiceId, decimal? AmountPaid, string TransactionReference, DateTime PaymentDate, string PaymentMethod, int ReceivedBy)
         {
@@ -22,7 +25,7 @@ namespace visavault_g43.Models
             this.AmountPaid = AmountPaid;
             this.PaymentDate = PaymentDate;
             this.PaymentMethod = PaymentMethod;
-            this.UserId = UserId;
+            this.UserId = ReceivedBy;
         }
     }
 

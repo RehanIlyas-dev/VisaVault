@@ -21,7 +21,7 @@ namespace visavault_g43.BLL
         public static RenewalCase GetCaseById(int caseId)
         {
             if (caseId <= 0) return null;
-            DataTable dt = RenewalDAL.GetRenewalCaseById(caseId);
+            DataTable dt = RenewalDAL.GetCaseById(caseId);
             if (dt == null || dt.Rows.Count == 0) return null;
             return MapDataRowToCase(dt.Rows[0]);
         }
@@ -40,7 +40,7 @@ namespace visavault_g43.BLL
                 return ValidationResult.Failure("No stages defined in the system.");
 
             int initialStageId = Convert.ToInt32(stages.Rows[0]["stage_id"]);
-            int newCaseId = RenewalDAL.InsertCase(clientId, documentId, openedByUserId, initialStageId);
+            int newCaseId = RenewalDAL.InsertCase(clientId, documentId, initialStageId, openedByUserId);
             if (newCaseId > 0)
             {
                 RenewalDAL.InsertStageLog(newCaseId, initialStageId, openedByUserId, "Case opened");

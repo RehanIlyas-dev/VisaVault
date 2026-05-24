@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using visavault_g43.database; 
+using visavault_g43; 
 using visavault_g43.Models;   
 using MySql.Data.MySqlClient;
 
@@ -15,7 +15,7 @@ namespace visavault_g43.DLL
         private static  Database db = new Database();
         public static DataTable GetDocumentsByClient(int clientId)
         {
-            string query = "SELECT d.document_id, c.client_id, c.client_name, d.document_no, dt.documenttype_name, d.expiry_date " +
+            string query = "SELECT d.document_id, d.client_id, c.client_name, d.document_no, d.type_id, dt.documenttype_name, d.issue_date, d.expiry_date " +
                 "FROM document d " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id " + 
                 "JOIN client c ON c.client_id = d.client_id " +

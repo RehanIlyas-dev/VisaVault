@@ -10,11 +10,17 @@ namespace visavault_g43.Models
     public class User
     {
         public int UserID { get; set; }
+        public int UserId { get => UserID; set => UserID = value; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Status { get; set; }
+        public string FullName { get; set; }
         public DateTime? LastLogin { get; set; }
+
+        public User()
+        {
+        }
 
         public User(int userid,string Username, string password,string Email, string status, DateTime lastlogin)
         {

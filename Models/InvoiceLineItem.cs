@@ -12,13 +12,22 @@ namespace visavault_g43.Models
         public int InvoiceID { get; set; }
         public decimal Amount { get; set; }
         public int FeeId { get; set; }
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal TotalPrice { get; set; }
+        public InvoiceLineItem()
+        {
+        }
 
-        public InvoiceLineItem(int ItemID, int InvoiceID, string Description, int Quantity, decimal UnitPric, decimal totalPrice)
+        public InvoiceLineItem(int ItemID, int InvoiceID, int FeeId, int Quantity, decimal UnitPrice, decimal TotalPrice)
         {
             this.ItemID = ItemID;
             this.InvoiceID = InvoiceID;
-            this.Amount = Amount;
             this.FeeId = FeeId;
+            this.Quantity = Quantity;
+            this.UnitPrice = UnitPrice;
+            this.TotalPrice = TotalPrice;
+            this.Amount = TotalPrice;
         }
     }
   
