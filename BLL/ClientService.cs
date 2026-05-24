@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using visavault_g43.Models;
+using visavault_g43.DLL;
 
 namespace visavault_g43.BLL
 {
@@ -16,7 +17,7 @@ namespace visavault_g43.BLL
 
         public static List<Client> GetClients()
         {
-            DataTable dt = ClientDAL.GetClients(); // Assuming ClientDAL is a data access layer class that retrieves clients from the database
+            DataTable dt = ClientDAL.GetAllClients(); // Assuming ClientDAL is a data access layer class that retrieves clients from the database
             return new List<Client>();
         }
 
@@ -30,7 +31,7 @@ namespace visavault_g43.BLL
         public static Client GetClientbyID(int clientID)
         {
             if (clientID <= 0) return null;
-            DataTable dt = ClientDAL.GetClientbyID(clientID); // Assuming ClientDAL has a method to get a client by ID
+            DataTable dt = ClientDAL.GetClientById(clientID); // Assuming ClientDAL has a method to get a client by ID
             if (dt.Rows.Count == 0) return null;
 
             DataRow row = dt.Rows[0];
@@ -43,7 +44,7 @@ namespace visavault_g43.BLL
                 return ValidationResult.Failure("Client name is required.");
             if (!ValidateCNIC(client.CnicNo))
                 return ValidationResult.Failure("Invalid CNIC number.");
-            if (!ValidatePhone(client.Phone))
+            if (!ValidatePhone(client.ContactNo))
                 return ValidationResult.Failure("Invalid phone number.");
             if (!string.IsNullOrWhiteSpace(client.Email) && !ValidateEmail(client.Email))
                 return ValidationResult.Failure("Invalid email address.");
@@ -52,7 +53,7 @@ namespace visavault_g43.BLL
 
             client.Status = "Active"; // Set default status to Active
 
-            int newID = ClientDAL.SaveClient(client); // Assuming ClientDAL has a method to save a client and returns the new client ID
+            int newID = ClientDAL.InsertClient(client); // Assuming ClientDAL has a method to save a client and returns the new client ID
             if (newID > 0)
             {
                 client.ClientID = newID;
@@ -85,7 +86,7 @@ namespace visavault_g43.BLL
                 return ValidationResult.Failure("Invalid client ID.");
             if (string.IsNullOrWhiteSpace(NewStatus))
                 return ValidationResult.Failure("Invalid status.");
-            bool success = ClientDAL.ChangeClientStatus(ClientID, NewStatus); // Assuming ClientDAL has a method to change the status of a client
+            bool success = ClientDAL.UpdateClientStatus(ClientID, NewStatus); // Assuming ClientDAL has a method to change the status of a client
             if (success)
                 return ValidationResult.Success();
             return ValidationResult.Failure("Failed to change client status.");

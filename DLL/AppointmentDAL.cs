@@ -8,5 +8,6 @@ namespace visavault_g43.DLL
 {
     internal class AppointmentDAL
     {
+
     }
 }
