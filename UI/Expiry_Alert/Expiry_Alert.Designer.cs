@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelCritical = new System.Windows.Forms.Panel();
+            this.panelWarning = new System.Windows.Forms.Panel();
+            this.panelSafe = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,53 +38,53 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvAlerts = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelExpired = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.colClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActionDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDaysToAct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlertLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlerts)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // panelCritical
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel2.Location = new System.Drawing.Point(17, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 1;
+            this.panelCritical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelCritical.Location = new System.Drawing.Point(17, 12);
+            this.panelCritical.Name = "panelCritical";
+            this.panelCritical.Size = new System.Drawing.Size(200, 100);
+            this.panelCritical.TabIndex = 1;
             // 
-            // panel3
+            // panelWarning
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel3.Location = new System.Drawing.Point(18, 17);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 100);
-            this.panel3.TabIndex = 2;
+            this.panelWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelWarning.Location = new System.Drawing.Point(18, 17);
+            this.panelWarning.Name = "panelWarning";
+            this.panelWarning.Size = new System.Drawing.Size(200, 100);
+            this.panelWarning.TabIndex = 2;
             // 
-            // panel4
+            // panelSafe
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel4.Location = new System.Drawing.Point(16, 17);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 100);
-            this.panel4.TabIndex = 2;
+            this.panelSafe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelSafe.Location = new System.Drawing.Point(16, 17);
+            this.panelSafe.Name = "panelSafe";
+            this.panelSafe.Size = new System.Drawing.Size(200, 100);
+            this.panelSafe.TabIndex = 2;
             // 
             // label2
             // 
@@ -154,97 +154,48 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Controls.Add(this.dgvAlerts);
             this.panel6.Location = new System.Drawing.Point(52, 371);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1237, 279);
             this.panel6.TabIndex = 37;
             // 
-            // dataGridView1
+            // dgvAlerts
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column4,
-            this.Column3,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridView1.Location = new System.Drawing.Point(55, 56);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1139, 164);
-            this.dataGridView1.TabIndex = 9;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Cient";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Document Type";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 135;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Expiry Date";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Country";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Actions Days";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Days to Act";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Alert Level";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
+            this.dgvAlerts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlerts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colClient,
+            this.colDocType,
+            this.colExpiryDate,
+            this.colCountry,
+            this.colActionDays,
+            this.colDaysToAct,
+            this.colAlertLevel});
+            this.dgvAlerts.Location = new System.Drawing.Point(55, 56);
+            this.dgvAlerts.Name = "dgvAlerts";
+            this.dgvAlerts.RowHeadersWidth = 51;
+            this.dgvAlerts.RowTemplate.Height = 24;
+            this.dgvAlerts.Size = new System.Drawing.Size(1139, 164);
+            this.dgvAlerts.TabIndex = 9;
             // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panelCritical);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(126, 106);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(235, 174);
             this.panel1.TabIndex = 38;
             // 
-            // panel7
+            // panelExpired
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel7.Location = new System.Drawing.Point(15, 12);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 100);
-            this.panel7.TabIndex = 4;
+            this.panelExpired.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelExpired.Location = new System.Drawing.Point(15, 12);
+            this.panelExpired.Name = "panelExpired";
+            this.panelExpired.Size = new System.Drawing.Size(200, 100);
+            this.panelExpired.TabIndex = 4;
             // 
             // label1
             // 
@@ -260,7 +211,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel8.Controls.Add(this.panel4);
+            this.panel8.Controls.Add(this.panelSafe);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Location = new System.Drawing.Point(992, 106);
             this.panel8.Name = "panel8";
@@ -270,7 +221,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel9.Controls.Add(this.panel3);
+            this.panel9.Controls.Add(this.panelWarning);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(706, 106);
             this.panel9.Name = "panel9";
@@ -280,12 +231,61 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel10.Controls.Add(this.panel7);
+            this.panel10.Controls.Add(this.panelExpired);
             this.panel10.Controls.Add(this.label1);
             this.panel10.Location = new System.Drawing.Point(420, 106);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(235, 174);
             this.panel10.TabIndex = 39;
+            // 
+            // colClient
+            // 
+            this.colClient.HeaderText = "Cient";
+            this.colClient.MinimumWidth = 6;
+            this.colClient.Name = "colClient";
+            this.colClient.Width = 125;
+            // 
+            // colDocType
+            // 
+            this.colDocType.HeaderText = "Document Type";
+            this.colDocType.MinimumWidth = 6;
+            this.colDocType.Name = "colDocType";
+            this.colDocType.Width = 135;
+            // 
+            // colExpiryDate
+            // 
+            this.colExpiryDate.HeaderText = "Expiry Date";
+            this.colExpiryDate.MinimumWidth = 6;
+            this.colExpiryDate.Name = "colExpiryDate";
+            this.colExpiryDate.Width = 125;
+            // 
+            // colCountry
+            // 
+            this.colCountry.HeaderText = "Country";
+            this.colCountry.MinimumWidth = 6;
+            this.colCountry.Name = "colCountry";
+            this.colCountry.Width = 125;
+            // 
+            // colActionDays
+            // 
+            this.colActionDays.HeaderText = "Actions Days";
+            this.colActionDays.MinimumWidth = 6;
+            this.colActionDays.Name = "colActionDays";
+            this.colActionDays.Width = 125;
+            // 
+            // colDaysToAct
+            // 
+            this.colDaysToAct.HeaderText = "Days to Act";
+            this.colDaysToAct.MinimumWidth = 6;
+            this.colDaysToAct.Name = "colDaysToAct";
+            this.colDaysToAct.Width = 125;
+            // 
+            // colAlertLevel
+            // 
+            this.colAlertLevel.HeaderText = "Alert Level";
+            this.colAlertLevel.MinimumWidth = 6;
+            this.colAlertLevel.Name = "colAlertLevel";
+            this.colAlertLevel.Width = 125;
             // 
             // Expiry_Alert
             // 
@@ -306,7 +306,7 @@
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlerts)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -320,9 +320,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelCritical;
+        private System.Windows.Forms.Panel panelWarning;
+        private System.Windows.Forms.Panel panelSafe;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -332,17 +332,17 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridView dgvAlerts;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelExpired;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCountry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colActionDays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDaysToAct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlertLevel;
     }
 }

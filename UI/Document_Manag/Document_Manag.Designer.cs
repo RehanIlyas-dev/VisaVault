@@ -32,12 +32,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbCountry = new System.Windows.Forms.ComboBox();
+            this.txtIssueDate = new System.Windows.Forms.TextBox();
+            this.txtDocumentNumber = new System.Windows.Forms.TextBox();
+            this.txtExpiryDate = new System.Windows.Forms.TextBox();
+            this.cmbDocumentType = new System.Windows.Forms.ComboBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,8 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -87,12 +87,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.cmbCountry);
+            this.panel1.Controls.Add(this.txtIssueDate);
+            this.panel1.Controls.Add(this.txtDocumentNumber);
+            this.panel1.Controls.Add(this.txtExpiryDate);
+            this.panel1.Controls.Add(this.cmbDocumentType);
+            this.panel1.Controls.Add(this.txtNotes);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -105,67 +105,67 @@
             this.panel1.Size = new System.Drawing.Size(1134, 410);
             this.panel1.TabIndex = 35;
             // 
-            // comboBox2
+            // cmbCountry
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox2.ForeColor = System.Drawing.Color.White;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(648, 180);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(230, 32);
-            this.comboBox2.TabIndex = 63;
+            this.cmbCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbCountry.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbCountry.ForeColor = System.Drawing.Color.White;
+            this.cmbCountry.FormattingEnabled = true;
+            this.cmbCountry.Location = new System.Drawing.Point(648, 180);
+            this.cmbCountry.Name = "cmbCountry";
+            this.cmbCountry.Size = new System.Drawing.Size(230, 32);
+            this.cmbCountry.TabIndex = 63;
             // 
-            // textBox4
+            // txtIssueDate
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox4.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(648, 231);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(201, 28);
-            this.textBox4.TabIndex = 62;
+            this.txtIssueDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtIssueDate.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtIssueDate.ForeColor = System.Drawing.Color.White;
+            this.txtIssueDate.Location = new System.Drawing.Point(648, 231);
+            this.txtIssueDate.Name = "txtIssueDate";
+            this.txtIssueDate.Size = new System.Drawing.Size(201, 28);
+            this.txtIssueDate.TabIndex = 62;
             // 
-            // textBox3
+            // txtDocumentNumber
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(648, 132);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(267, 32);
-            this.textBox3.TabIndex = 61;
+            this.txtDocumentNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtDocumentNumber.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.txtDocumentNumber.ForeColor = System.Drawing.Color.White;
+            this.txtDocumentNumber.Location = new System.Drawing.Point(648, 132);
+            this.txtDocumentNumber.Name = "txtDocumentNumber";
+            this.txtDocumentNumber.Size = new System.Drawing.Size(267, 32);
+            this.txtDocumentNumber.TabIndex = 61;
             // 
-            // textBox2
+            // txtExpiryDate
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(648, 280);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 32);
-            this.textBox2.TabIndex = 60;
+            this.txtExpiryDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtExpiryDate.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.txtExpiryDate.ForeColor = System.Drawing.Color.White;
+            this.txtExpiryDate.Location = new System.Drawing.Point(648, 280);
+            this.txtExpiryDate.Name = "txtExpiryDate";
+            this.txtExpiryDate.Size = new System.Drawing.Size(202, 32);
+            this.txtExpiryDate.TabIndex = 60;
             // 
-            // comboBox1
+            // cmbDocumentType
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(648, 81);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 32);
-            this.comboBox1.TabIndex = 59;
+            this.cmbDocumentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbDocumentType.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbDocumentType.ForeColor = System.Drawing.Color.White;
+            this.cmbDocumentType.FormattingEnabled = true;
+            this.cmbDocumentType.Location = new System.Drawing.Point(648, 81);
+            this.cmbDocumentType.Name = "cmbDocumentType";
+            this.cmbDocumentType.Size = new System.Drawing.Size(230, 32);
+            this.cmbDocumentType.TabIndex = 59;
             // 
-            // textBox1
+            // txtNotes
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox1.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(648, 336);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 28);
-            this.textBox1.TabIndex = 58;
+            this.txtNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtNotes.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtNotes.ForeColor = System.Drawing.Color.White;
+            this.txtNotes.Location = new System.Drawing.Point(648, 336);
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(315, 28);
+            this.txtNotes.TabIndex = 58;
             // 
             // label12
             // 
@@ -244,35 +244,35 @@
             this.label2.TabIndex = 35;
             this.label2.Text = "Expiry Date";
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(701, 570);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 40);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(701, 570);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(120, 40);
+            this.btnClear.TabIndex = 37;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(539, 570);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 40);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(539, 570);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.TabIndex = 36;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // Document_Manag
             // 
@@ -280,8 +280,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
             this.ClientSize = new System.Drawing.Size(1414, 1008);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -308,13 +308,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtIssueDate;
+        private System.Windows.Forms.TextBox txtDocumentNumber;
+        private System.Windows.Forms.TextBox txtExpiryDate;
+        private System.Windows.Forms.ComboBox cmbDocumentType;
+        private System.Windows.Forms.TextBox txtNotes;
+        private System.Windows.Forms.ComboBox cmbCountry;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSave;
     }
 }

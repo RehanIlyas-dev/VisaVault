@@ -32,22 +32,22 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbClient = new System.Windows.Forms.ComboBox();
+            this.dgvDeadlines = new System.Windows.Forms.DataGridView();
+            this.colClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProcDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBufferDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDaysToAct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeadlines)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -85,130 +85,130 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.cmbClient);
+            this.panel1.Controls.Add(this.dgvDeadlines);
             this.panel1.Location = new System.Drawing.Point(26, 142);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1273, 453);
             this.panel1.TabIndex = 28;
             // 
-            // button3
+            // btnClear
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(800, 56);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 40);
-            this.button3.TabIndex = 62;
-            this.button3.Text = "Clear";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(800, 56);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(120, 40);
+            this.btnClear.TabIndex = 62;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnSearch
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(657, 56);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 40);
-            this.button7.TabIndex = 61;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(657, 56);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 40);
+            this.btnSearch.TabIndex = 61;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // comboBox2
+            // cmbClient
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox2.ForeColor = System.Drawing.Color.White;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(347, 60);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(247, 32);
-            this.comboBox2.TabIndex = 60;
+            this.cmbClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbClient.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbClient.ForeColor = System.Drawing.Color.White;
+            this.cmbClient.FormattingEnabled = true;
+            this.cmbClient.Location = new System.Drawing.Point(347, 60);
+            this.cmbClient.Name = "cmbClient";
+            this.cmbClient.Size = new System.Drawing.Size(247, 32);
+            this.cmbClient.TabIndex = 60;
             // 
-            // dataGridView1
+            // dgvDeadlines
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 173);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1236, 168);
-            this.dataGridView1.TabIndex = 27;
+            this.dgvDeadlines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeadlines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colClient,
+            this.colDocType,
+            this.colExpiryDate,
+            this.colProcDays,
+            this.colBufferDays,
+            this.colActionDate,
+            this.colDaysToAct,
+            this.colAlert});
+            this.dgvDeadlines.Location = new System.Drawing.Point(18, 173);
+            this.dgvDeadlines.Name = "dgvDeadlines";
+            this.dgvDeadlines.RowHeadersWidth = 51;
+            this.dgvDeadlines.RowTemplate.Height = 24;
+            this.dgvDeadlines.Size = new System.Drawing.Size(1236, 168);
+            this.dgvDeadlines.TabIndex = 27;
             // 
-            // Column1
+            // colClient
             // 
-            this.Column1.HeaderText = "Client";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
+            this.colClient.HeaderText = "Client";
+            this.colClient.MinimumWidth = 6;
+            this.colClient.Name = "colClient";
+            this.colClient.Width = 50;
             // 
-            // Column2
+            // colDocType
             // 
-            this.Column2.HeaderText = "Doc Type";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.colDocType.HeaderText = "Doc Type";
+            this.colDocType.MinimumWidth = 6;
+            this.colDocType.Name = "colDocType";
+            this.colDocType.Width = 125;
             // 
-            // Column3
+            // colExpiryDate
             // 
-            this.Column3.HeaderText = "Expiry Date";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.colExpiryDate.HeaderText = "Expiry Date";
+            this.colExpiryDate.MinimumWidth = 6;
+            this.colExpiryDate.Name = "colExpiryDate";
+            this.colExpiryDate.Width = 125;
             // 
-            // Column4
+            // colProcDays
             // 
-            this.Column4.HeaderText = "Proc. Days";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
+            this.colProcDays.HeaderText = "Proc. Days";
+            this.colProcDays.MinimumWidth = 6;
+            this.colProcDays.Name = "colProcDays";
+            this.colProcDays.Width = 125;
             // 
-            // Column5
+            // colBufferDays
             // 
-            this.Column5.HeaderText = "Buffer Days";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
+            this.colBufferDays.HeaderText = "Buffer Days";
+            this.colBufferDays.MinimumWidth = 6;
+            this.colBufferDays.Name = "colBufferDays";
+            this.colBufferDays.Width = 125;
             // 
-            // Column6
+            // colActionDate
             // 
-            this.Column6.HeaderText = "Action Date";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
+            this.colActionDate.HeaderText = "Action Date";
+            this.colActionDate.MinimumWidth = 6;
+            this.colActionDate.Name = "colActionDate";
+            this.colActionDate.Width = 125;
             // 
-            // Column7
+            // colDaysToAct
             // 
-            this.Column7.HeaderText = "Days to Act";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
+            this.colDaysToAct.HeaderText = "Days to Act";
+            this.colDaysToAct.MinimumWidth = 6;
+            this.colDaysToAct.Name = "colDaysToAct";
+            this.colDaysToAct.Width = 125;
             // 
-            // Column8
+            // colAlert
             // 
-            this.Column8.HeaderText = "Alert";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
+            this.colAlert.HeaderText = "Alert";
+            this.colAlert.MinimumWidth = 6;
+            this.colAlert.Name = "colAlert";
+            this.colAlert.Width = 125;
             // 
             // Deadline_Calculator
             // 
@@ -225,7 +225,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeadlines)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,17 +235,17 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridView dgvDeadlines;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cmbClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProcDays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBufferDays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colActionDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDaysToAct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlert;
     }
 }

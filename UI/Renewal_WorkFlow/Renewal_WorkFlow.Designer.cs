@@ -32,35 +32,35 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.dgvCases = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelApprovedRejected = new System.Windows.Forms.Panel();
+            this.panelUnderReview = new System.Windows.Forms.Panel();
+            this.panelSubmitted = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelPending = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.colCaseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIssueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOpened = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDaysinStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCases)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -102,115 +102,59 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel6.Controls.Add(this.button7);
-            this.panel6.Controls.Add(this.comboBox4);
-            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Controls.Add(this.btnSearch);
+            this.panel6.Controls.Add(this.cmbStatusFilter);
+            this.panel6.Controls.Add(this.dgvCases);
             this.panel6.Controls.Add(this.button2);
             this.panel6.Location = new System.Drawing.Point(50, 115);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1237, 329);
             this.panel6.TabIndex = 40;
             // 
-            // button7
+            // btnSearch
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(712, 39);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 40);
-            this.button7.TabIndex = 61;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(712, 39);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 40);
+            this.btnSearch.TabIndex = 61;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // comboBox4
+            // cmbStatusFilter
             // 
-            this.comboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox4.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox4.ForeColor = System.Drawing.Color.White;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(396, 44);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(244, 32);
-            this.comboBox4.TabIndex = 60;
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.FormattingEnabled = true;
+            this.cmbStatusFilter.Location = new System.Drawing.Point(396, 44);
+            this.cmbStatusFilter.Name = "cmbStatusFilter";
+            this.cmbStatusFilter.Size = new System.Drawing.Size(244, 32);
+            this.cmbStatusFilter.TabIndex = 60;
             // 
-            // dataGridView1
+            // dgvCases
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.dataGridView1.Location = new System.Drawing.Point(22, 117);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1194, 168);
-            this.dataGridView1.TabIndex = 27;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Case ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Client";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Document";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Stage";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Issue Date";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Openend";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Last Update";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Dyas in Stage";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
+            this.dgvCases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCaseID,
+            this.colClient,
+            this.colDocument,
+            this.colStage,
+            this.colIssueDate,
+            this.colOpened,
+            this.colLastUpdate,
+            this.colDaysinStage});
+            this.dgvCases.Location = new System.Drawing.Point(22, 117);
+            this.dgvCases.Name = "dgvCases";
+            this.dgvCases.RowHeadersWidth = 51;
+            this.dgvCases.RowTemplate.Height = 24;
+            this.dgvCases.Size = new System.Drawing.Size(1194, 168);
+            this.dgvCases.TabIndex = 27;
             // 
             // button2
             // 
@@ -227,14 +171,14 @@
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panelApprovedRejected);
+            this.panel1.Controls.Add(this.panelUnderReview);
+            this.panel1.Controls.Add(this.panelSubmitted);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.panelPending);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(50, 496);
             this.panel1.Name = "panel1";
@@ -272,29 +216,29 @@
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
-            // panel2
+            // panelApprovedRejected
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel2.Location = new System.Drawing.Point(911, 107);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(163, 107);
-            this.panel2.TabIndex = 37;
+            this.panelApprovedRejected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelApprovedRejected.Location = new System.Drawing.Point(911, 107);
+            this.panelApprovedRejected.Name = "panelApprovedRejected";
+            this.panelApprovedRejected.Size = new System.Drawing.Size(163, 107);
+            this.panelApprovedRejected.TabIndex = 37;
             // 
-            // panel3
+            // panelUnderReview
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel3.Location = new System.Drawing.Point(669, 107);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(163, 107);
-            this.panel3.TabIndex = 37;
+            this.panelUnderReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelUnderReview.Location = new System.Drawing.Point(669, 107);
+            this.panelUnderReview.Name = "panelUnderReview";
+            this.panelUnderReview.Size = new System.Drawing.Size(163, 107);
+            this.panelUnderReview.TabIndex = 37;
             // 
-            // panel4
+            // panelSubmitted
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel4.Location = new System.Drawing.Point(426, 107);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(163, 107);
-            this.panel4.TabIndex = 37;
+            this.panelSubmitted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelSubmitted.Location = new System.Drawing.Point(426, 107);
+            this.panelSubmitted.Name = "panelSubmitted";
+            this.panelSubmitted.Size = new System.Drawing.Size(163, 107);
+            this.panelSubmitted.TabIndex = 37;
             // 
             // label8
             // 
@@ -340,13 +284,13 @@
             this.label5.TabIndex = 43;
             this.label5.Text = "Approved / Rejected";
             // 
-            // panel7
+            // panelPending
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel7.Location = new System.Drawing.Point(183, 107);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(163, 107);
-            this.panel7.TabIndex = 36;
+            this.panelPending.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelPending.Location = new System.Drawing.Point(183, 107);
+            this.panelPending.Name = "panelPending";
+            this.panelPending.Size = new System.Drawing.Size(163, 107);
+            this.panelPending.TabIndex = 36;
             // 
             // label1
             // 
@@ -358,6 +302,62 @@
             this.label1.Size = new System.Drawing.Size(176, 32);
             this.label1.TabIndex = 35;
             this.label1.Text = "Stage Flow : ";
+            // 
+            // colCaseID
+            // 
+            this.colCaseID.HeaderText = "Case ID";
+            this.colCaseID.MinimumWidth = 6;
+            this.colCaseID.Name = "colCaseID";
+            this.colCaseID.Width = 125;
+            // 
+            // colClient
+            // 
+            this.colClient.HeaderText = "Client";
+            this.colClient.MinimumWidth = 6;
+            this.colClient.Name = "colClient";
+            this.colClient.Width = 125;
+            // 
+            // colDocument
+            // 
+            this.colDocument.HeaderText = "Document";
+            this.colDocument.MinimumWidth = 6;
+            this.colDocument.Name = "colDocument";
+            this.colDocument.Width = 125;
+            // 
+            // colStage
+            // 
+            this.colStage.HeaderText = "Stage";
+            this.colStage.MinimumWidth = 6;
+            this.colStage.Name = "colStage";
+            this.colStage.Width = 125;
+            // 
+            // colIssueDate
+            // 
+            this.colIssueDate.HeaderText = "Issue Date";
+            this.colIssueDate.MinimumWidth = 6;
+            this.colIssueDate.Name = "colIssueDate";
+            this.colIssueDate.Width = 125;
+            // 
+            // colOpened
+            // 
+            this.colOpened.HeaderText = "Openend";
+            this.colOpened.MinimumWidth = 6;
+            this.colOpened.Name = "colOpened";
+            this.colOpened.Width = 125;
+            // 
+            // colLastUpdate
+            // 
+            this.colLastUpdate.HeaderText = "Last Update";
+            this.colLastUpdate.MinimumWidth = 6;
+            this.colLastUpdate.Name = "colLastUpdate";
+            this.colLastUpdate.Width = 125;
+            // 
+            // colDaysinStage
+            // 
+            this.colDaysinStage.HeaderText = "Dyas in Stage";
+            this.colDaysinStage.MinimumWidth = 6;
+            this.colDaysinStage.Name = "colDaysinStage";
+            this.colDaysinStage.Width = 125;
             // 
             // Renewal_WorkFlow
             // 
@@ -375,7 +375,7 @@
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCases)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -390,30 +390,30 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridView dgvCases;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelPending;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Panel panelApprovedRejected;
+        private System.Windows.Forms.Panel panelUnderReview;
+        private System.Windows.Forms.Panel panelSubmitted;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cmbStatusFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCaseID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocument;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIssueDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOpened;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLastUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDaysinStage;
     }
 }

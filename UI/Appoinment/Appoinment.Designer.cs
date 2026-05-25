@@ -32,18 +32,18 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurpose = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -81,39 +81,39 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.btnFilter);
+            this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvAppointments);
             this.panel1.Location = new System.Drawing.Point(92, 139);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1128, 519);
             this.panel1.TabIndex = 26;
             // 
-            // button2
+            // btnFilter
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(775, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 40);
-            this.button2.TabIndex = 55;
-            this.button2.Text = "Filter";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnFilter.ForeColor = System.Drawing.Color.White;
+            this.btnFilter.Location = new System.Drawing.Point(775, 86);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(120, 40);
+            this.btnFilter.TabIndex = 55;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtDate
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(495, 91);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 32);
-            this.textBox2.TabIndex = 54;
+            this.txtDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtDate.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.txtDate.ForeColor = System.Drawing.Color.White;
+            this.txtDate.Location = new System.Drawing.Point(495, 91);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(181, 32);
+            this.txtDate.TabIndex = 54;
             // 
             // label2
             // 
@@ -126,48 +126,48 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Date (dd-mm-yyyy) :";
             // 
-            // dataGridView1
+            // dgvAppointments
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(172, 196);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(793, 164);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTime,
+            this.colClient,
+            this.colPurpose,
+            this.colStatus});
+            this.dgvAppointments.Location = new System.Drawing.Point(172, 196);
+            this.dgvAppointments.Name = "dgvAppointments";
+            this.dgvAppointments.RowHeadersWidth = 51;
+            this.dgvAppointments.RowTemplate.Height = 24;
+            this.dgvAppointments.Size = new System.Drawing.Size(793, 164);
+            this.dgvAppointments.TabIndex = 20;
             // 
-            // Column1
+            // colTime
             // 
-            this.Column1.HeaderText = "Time";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 250;
+            this.colTime.HeaderText = "Time";
+            this.colTime.MinimumWidth = 6;
+            this.colTime.Name = "colTime";
+            this.colTime.Width = 250;
             // 
-            // Column2
+            // colClient
             // 
-            this.Column2.HeaderText = "Client";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.colClient.HeaderText = "Client";
+            this.colClient.MinimumWidth = 6;
+            this.colClient.Name = "colClient";
+            this.colClient.Width = 125;
             // 
-            // Column3
+            // colPurpose
             // 
-            this.Column3.HeaderText = "Purpose";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.colPurpose.HeaderText = "Purpose";
+            this.colPurpose.MinimumWidth = 6;
+            this.colPurpose.Name = "colPurpose";
+            this.colPurpose.Width = 125;
             // 
-            // Column4
+            // colStatus
             // 
-            this.Column4.HeaderText = "Status";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Width = 125;
             // 
             // Appoinment
             // 
@@ -185,7 +185,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,12 +196,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dgvAppointments;
+        private System.Windows.Forms.TextBox txtDate;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPurpose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
     }
 }

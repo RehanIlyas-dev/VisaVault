@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblTodayAppts = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblCriticalDocs = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblOverdueInvoices = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotalClients = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.lblActiveCases = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
+            this.listCriticalDocs = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
+            this.listTodayAppts = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
+            this.listOverdueInvoices = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -70,20 +70,20 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel8.Controls.Add(this.panel4);
+            this.panel8.Controls.Add(this.lblTodayAppts);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Location = new System.Drawing.Point(810, 110);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(235, 174);
             this.panel8.TabIndex = 41;
             // 
-            // panel4
+            // lblTodayAppts
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel4.Location = new System.Drawing.Point(16, 17);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 100);
-            this.panel4.TabIndex = 2;
+            this.lblTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblTodayAppts.Location = new System.Drawing.Point(16, 17);
+            this.lblTodayAppts.Name = "lblTodayAppts";
+            this.lblTodayAppts.Size = new System.Drawing.Size(200, 100);
+            this.lblTodayAppts.TabIndex = 2;
             // 
             // label4
             // 
@@ -99,20 +99,20 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel10.Controls.Add(this.panel7);
+            this.panel10.Controls.Add(this.lblCriticalDocs);
             this.panel10.Controls.Add(this.label1);
             this.panel10.Location = new System.Drawing.Point(285, 110);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(235, 174);
             this.panel10.TabIndex = 42;
             // 
-            // panel7
+            // lblCriticalDocs
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel7.Location = new System.Drawing.Point(15, 12);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 100);
-            this.panel7.TabIndex = 4;
+            this.lblCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblCriticalDocs.Location = new System.Drawing.Point(15, 12);
+            this.lblCriticalDocs.Name = "lblCriticalDocs";
+            this.lblCriticalDocs.Size = new System.Drawing.Size(200, 100);
+            this.lblCriticalDocs.TabIndex = 4;
             // 
             // label1
             // 
@@ -128,20 +128,20 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel9.Controls.Add(this.panel3);
+            this.panel9.Controls.Add(this.lblOverdueInvoices);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(548, 110);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(235, 174);
             this.panel9.TabIndex = 43;
             // 
-            // panel3
+            // lblOverdueInvoices
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel3.Location = new System.Drawing.Point(18, 17);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 100);
-            this.panel3.TabIndex = 2;
+            this.lblOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblOverdueInvoices.Location = new System.Drawing.Point(18, 17);
+            this.lblOverdueInvoices.Name = "lblOverdueInvoices";
+            this.lblOverdueInvoices.Size = new System.Drawing.Size(200, 100);
+            this.lblOverdueInvoices.TabIndex = 2;
             // 
             // label3
             // 
@@ -158,20 +158,20 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.lblTotalClients);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(23, 110);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(235, 174);
             this.panel1.TabIndex = 40;
             // 
-            // panel2
+            // lblTotalClients
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel2.Location = new System.Drawing.Point(17, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 1;
+            this.lblTotalClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblTotalClients.Location = new System.Drawing.Point(17, 12);
+            this.lblTotalClients.Name = "lblTotalClients";
+            this.lblTotalClients.Size = new System.Drawing.Size(200, 100);
+            this.lblTotalClients.TabIndex = 1;
             // 
             // label2
             // 
@@ -219,21 +219,21 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel6.Controls.Add(this.panel11);
+            this.panel6.Controls.Add(this.lblActiveCases);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Location = new System.Drawing.Point(1071, 110);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(235, 174);
             this.panel6.TabIndex = 42;
             // 
-            // panel11
+            // lblActiveCases
             // 
-            this.panel11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel11.Location = new System.Drawing.Point(16, 17);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(200, 100);
-            this.panel11.TabIndex = 2;
+            this.lblActiveCases.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.lblActiveCases.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblActiveCases.Location = new System.Drawing.Point(16, 17);
+            this.lblActiveCases.Name = "lblActiveCases";
+            this.lblActiveCases.Size = new System.Drawing.Size(200, 100);
+            this.lblActiveCases.TabIndex = 2;
             // 
             // label5
             // 
@@ -249,20 +249,20 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel12.Controls.Add(this.panel15);
+            this.panel12.Controls.Add(this.listCriticalDocs);
             this.panel12.Controls.Add(this.label6);
             this.panel12.Location = new System.Drawing.Point(23, 331);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(520, 463);
             this.panel12.TabIndex = 45;
             // 
-            // panel15
+            // listCriticalDocs
             // 
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel15.Location = new System.Drawing.Point(30, 62);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(467, 377);
-            this.panel15.TabIndex = 60;
+            this.listCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listCriticalDocs.Location = new System.Drawing.Point(30, 62);
+            this.listCriticalDocs.Name = "listCriticalDocs";
+            this.listCriticalDocs.Size = new System.Drawing.Size(467, 377);
+            this.listCriticalDocs.TabIndex = 60;
             // 
             // label6
             // 
@@ -278,20 +278,20 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel13.Controls.Add(this.panel16);
+            this.panel13.Controls.Add(this.listTodayAppts);
             this.panel13.Controls.Add(this.label7);
             this.panel13.Location = new System.Drawing.Point(566, 331);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(740, 222);
             this.panel13.TabIndex = 46;
             // 
-            // panel16
+            // listTodayAppts
             // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel16.Location = new System.Drawing.Point(22, 62);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(699, 137);
-            this.panel16.TabIndex = 61;
+            this.listTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listTodayAppts.Location = new System.Drawing.Point(22, 62);
+            this.listTodayAppts.Name = "listTodayAppts";
+            this.listTodayAppts.Size = new System.Drawing.Size(699, 137);
+            this.listTodayAppts.TabIndex = 61;
             // 
             // label7
             // 
@@ -307,20 +307,20 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel14.Controls.Add(this.panel17);
+            this.panel14.Controls.Add(this.listOverdueInvoices);
             this.panel14.Controls.Add(this.label8);
             this.panel14.Location = new System.Drawing.Point(566, 579);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(740, 215);
             this.panel14.TabIndex = 47;
             // 
-            // panel17
+            // listOverdueInvoices
             // 
-            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel17.Location = new System.Drawing.Point(22, 54);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(699, 137);
-            this.panel17.TabIndex = 62;
+            this.listOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listOverdueInvoices.Location = new System.Drawing.Point(22, 54);
+            this.listOverdueInvoices.Name = "listOverdueInvoices";
+            this.listOverdueInvoices.Size = new System.Drawing.Size(699, 137);
+            this.listOverdueInvoices.TabIndex = 62;
             // 
             // label8
             // 
@@ -377,22 +377,22 @@
         #endregion
 
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel lblTodayAppts;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel lblCriticalDocs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel lblOverdueInvoices;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel lblTotalClients;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel lblActiveCases;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
@@ -400,8 +400,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel listCriticalDocs;
+        private System.Windows.Forms.Panel listTodayAppts;
+        private System.Windows.Forms.Panel listOverdueInvoices;
     }
 }

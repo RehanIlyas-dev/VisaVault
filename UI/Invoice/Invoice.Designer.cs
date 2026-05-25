@@ -32,31 +32,31 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.cmbClientFilter = new System.Windows.Forms.ComboBox();
+            this.dgvInvoices = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvLineItems = new System.Windows.Forms.DataGridView();
+            this.colInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFeeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLineItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -94,132 +94,76 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.comboBox4);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.cmbStatusFilter);
+            this.panel1.Controls.Add(this.cmbClientFilter);
+            this.panel1.Controls.Add(this.dgvInvoices);
             this.panel1.Location = new System.Drawing.Point(93, 133);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1130, 378);
             this.panel1.TabIndex = 39;
             // 
-            // button7
+            // btnSearch
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(746, 37);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 40);
-            this.button7.TabIndex = 59;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(746, 37);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 40);
+            this.btnSearch.TabIndex = 59;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // comboBox4
+            // cmbStatusFilter
             // 
-            this.comboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox4.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox4.ForeColor = System.Drawing.Color.White;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(474, 42);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 32);
-            this.comboBox4.TabIndex = 54;
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.FormattingEnabled = true;
+            this.cmbStatusFilter.Location = new System.Drawing.Point(474, 42);
+            this.cmbStatusFilter.Name = "cmbStatusFilter";
+            this.cmbStatusFilter.Size = new System.Drawing.Size(200, 32);
+            this.cmbStatusFilter.TabIndex = 54;
             // 
-            // comboBox3
+            // cmbClientFilter
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox3.ForeColor = System.Drawing.Color.White;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(234, 42);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(201, 32);
-            this.comboBox3.TabIndex = 53;
+            this.cmbClientFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbClientFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbClientFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbClientFilter.FormattingEnabled = true;
+            this.cmbClientFilter.Location = new System.Drawing.Point(234, 42);
+            this.cmbClientFilter.Name = "cmbClientFilter";
+            this.cmbClientFilter.Size = new System.Drawing.Size(201, 32);
+            this.cmbClientFilter.TabIndex = 53;
             // 
-            // dataGridView1
+            // dgvInvoices
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.dataGridView1.Location = new System.Drawing.Point(69, 170);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(993, 164);
-            this.dataGridView1.TabIndex = 7;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Invoice ID ";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Client";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Case";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Total";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Paid";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Balance";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Status";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Created";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
+            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colInvoiceID,
+            this.colClient,
+            this.colCase,
+            this.colTotal,
+            this.colPaid,
+            this.colBalance,
+            this.colStatus,
+            this.colCreated});
+            this.dgvInvoices.Location = new System.Drawing.Point(69, 170);
+            this.dgvInvoices.Name = "dgvInvoices";
+            this.dgvInvoices.RowHeadersWidth = 51;
+            this.dgvInvoices.RowTemplate.Height = 24;
+            this.dgvInvoices.Size = new System.Drawing.Size(993, 164);
+            this.dgvInvoices.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.dgvLineItems);
             this.panel2.Location = new System.Drawing.Point(93, 558);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1130, 286);
@@ -236,48 +180,104 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Invoice Line Item Objects :";
             // 
-            // dataGridView2
+            // dgvLineItems
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12});
-            this.dataGridView2.Location = new System.Drawing.Point(213, 87);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(721, 164);
-            this.dataGridView2.TabIndex = 6;
+            this.dgvLineItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLineItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colLine,
+            this.colDescription,
+            this.colFeeType,
+            this.colAmount});
+            this.dgvLineItems.Location = new System.Drawing.Point(213, 87);
+            this.dgvLineItems.Name = "dgvLineItems";
+            this.dgvLineItems.RowHeadersWidth = 51;
+            this.dgvLineItems.RowTemplate.Height = 24;
+            this.dgvLineItems.Size = new System.Drawing.Size(721, 164);
+            this.dgvLineItems.TabIndex = 6;
             // 
-            // Column9
+            // colInvoiceID
             // 
-            this.Column9.HeaderText = "Line";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 125;
+            this.colInvoiceID.HeaderText = "Invoice ID ";
+            this.colInvoiceID.MinimumWidth = 6;
+            this.colInvoiceID.Name = "colInvoiceID";
+            this.colInvoiceID.Width = 125;
             // 
-            // Column10
+            // colClient
             // 
-            this.Column10.HeaderText = "Description";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 125;
+            this.colClient.HeaderText = "Client";
+            this.colClient.MinimumWidth = 6;
+            this.colClient.Name = "colClient";
+            this.colClient.Width = 125;
             // 
-            // Column11
+            // colCase
             // 
-            this.Column11.HeaderText = "Fee Type";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 125;
+            this.colCase.HeaderText = "Case";
+            this.colCase.MinimumWidth = 6;
+            this.colCase.Name = "colCase";
+            this.colCase.Width = 125;
             // 
-            // Column12
+            // colTotal
             // 
-            this.Column12.HeaderText = "Amount";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 125;
+            this.colTotal.HeaderText = "Total";
+            this.colTotal.MinimumWidth = 6;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.Width = 125;
+            // 
+            // colPaid
+            // 
+            this.colPaid.HeaderText = "Paid";
+            this.colPaid.MinimumWidth = 6;
+            this.colPaid.Name = "colPaid";
+            this.colPaid.Width = 125;
+            // 
+            // colBalance
+            // 
+            this.colBalance.HeaderText = "Balance";
+            this.colBalance.MinimumWidth = 6;
+            this.colBalance.Name = "colBalance";
+            this.colBalance.Width = 125;
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Width = 125;
+            // 
+            // colCreated
+            // 
+            this.colCreated.HeaderText = "Created";
+            this.colCreated.MinimumWidth = 6;
+            this.colCreated.Name = "colCreated";
+            this.colCreated.Width = 125;
+            // 
+            // colLine
+            // 
+            this.colLine.HeaderText = "Line";
+            this.colLine.MinimumWidth = 6;
+            this.colLine.Name = "colLine";
+            this.colLine.Width = 125;
+            // 
+            // colDescription
+            // 
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.MinimumWidth = 6;
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Width = 125;
+            // 
+            // colFeeType
+            // 
+            this.colFeeType.HeaderText = "Fee Type";
+            this.colFeeType.MinimumWidth = 6;
+            this.colFeeType.Name = "colFeeType";
+            this.colFeeType.Width = 125;
+            // 
+            // colAmount
+            // 
+            this.colAmount.HeaderText = "Amount";
+            this.colAmount.MinimumWidth = 6;
+            this.colAmount.Name = "colAmount";
+            this.colAmount.Width = 125;
             // 
             // Invoice
             // 
@@ -295,10 +295,10 @@
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLineItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -309,24 +309,24 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridView dgvInvoices;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dgvLineItems;
+        private System.Windows.Forms.ComboBox cmbStatusFilter;
+        private System.Windows.Forms.ComboBox cmbClientFilter;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBalance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFeeType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
     }
 }

@@ -32,26 +32,26 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dgvClients = new System.Windows.Forms.DataGridView();
+            this.cmbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnViewEdit = new System.Windows.Forms.Button();
+            this.btnChangeStatus = new System.Windows.Forms.Button();
+            this.btnViewDocuments = new System.Windows.Forms.Button();
+            this.btnOpenRenewalCase = new System.Windows.Forms.Button();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCNIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -89,215 +89,215 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.dgvClients);
+            this.panel1.Controls.Add(this.cmbStatusFilter);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Location = new System.Drawing.Point(57, 145);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1194, 408);
             this.panel1.TabIndex = 27;
             // 
-            // button1
+            // btnClear
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(911, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 40);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(911, 48);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(120, 40);
+            this.btnClear.TabIndex = 59;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnSearch
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(768, 48);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 40);
-            this.button7.TabIndex = 58;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(768, 48);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 40);
+            this.btnSearch.TabIndex = 58;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvClients
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridView1.Location = new System.Drawing.Point(54, 128);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1093, 168);
-            this.dataGridView1.TabIndex = 13;
+            this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colID,
+            this.colName,
+            this.colCNIC,
+            this.colPhone,
+            this.colStatus,
+            this.colDocs,
+            this.colCreated});
+            this.dgvClients.Location = new System.Drawing.Point(54, 128);
+            this.dgvClients.Name = "dgvClients";
+            this.dgvClients.RowHeadersWidth = 51;
+            this.dgvClients.RowTemplate.Height = 24;
+            this.dgvClients.Size = new System.Drawing.Size(1093, 168);
+            this.dgvClients.TabIndex = 13;
             // 
-            // Column1
+            // cmbStatusFilter
             // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.FormattingEnabled = true;
+            this.cmbStatusFilter.Location = new System.Drawing.Point(555, 52);
+            this.cmbStatusFilter.Name = "cmbStatusFilter";
+            this.cmbStatusFilter.Size = new System.Drawing.Size(135, 32);
+            this.cmbStatusFilter.TabIndex = 57;
             // 
-            // Column2
+            // txtSearch
             // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtSearch.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.txtSearch.ForeColor = System.Drawing.Color.White;
+            this.txtSearch.Location = new System.Drawing.Point(223, 54);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(275, 28);
+            this.txtSearch.TabIndex = 56;
             // 
-            // Column3
+            // btnViewEdit
             // 
-            this.Column3.HeaderText = "CNIC";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.btnViewEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnViewEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnViewEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnViewEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewEdit.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnViewEdit.ForeColor = System.Drawing.Color.White;
+            this.btnViewEdit.Location = new System.Drawing.Point(238, 606);
+            this.btnViewEdit.Name = "btnViewEdit";
+            this.btnViewEdit.Size = new System.Drawing.Size(192, 40);
+            this.btnViewEdit.TabIndex = 60;
+            this.btnViewEdit.Text = "View / Edit";
+            this.btnViewEdit.UseVisualStyleBackColor = false;
             // 
-            // Column4
+            // btnChangeStatus
             // 
-            this.Column4.HeaderText = "Phone";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 125;
+            this.btnChangeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnChangeStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnChangeStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnChangeStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeStatus.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnChangeStatus.ForeColor = System.Drawing.Color.White;
+            this.btnChangeStatus.Location = new System.Drawing.Point(968, 606);
+            this.btnChangeStatus.Name = "btnChangeStatus";
+            this.btnChangeStatus.Size = new System.Drawing.Size(184, 40);
+            this.btnChangeStatus.TabIndex = 61;
+            this.btnChangeStatus.Text = "Change Status ";
+            this.btnChangeStatus.UseVisualStyleBackColor = false;
             // 
-            // Column5
+            // btnViewDocuments
             // 
-            this.Column5.HeaderText = "Status";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
+            this.btnViewDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnViewDocuments.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnViewDocuments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnViewDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewDocuments.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnViewDocuments.ForeColor = System.Drawing.Color.White;
+            this.btnViewDocuments.Location = new System.Drawing.Point(479, 606);
+            this.btnViewDocuments.Name = "btnViewDocuments";
+            this.btnViewDocuments.Size = new System.Drawing.Size(186, 40);
+            this.btnViewDocuments.TabIndex = 63;
+            this.btnViewDocuments.Text = "View Documents";
+            this.btnViewDocuments.UseVisualStyleBackColor = false;
             // 
-            // Column6
+            // btnOpenRenewalCase
             // 
-            this.Column6.HeaderText = "Documents";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
+            this.btnOpenRenewalCase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnOpenRenewalCase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnOpenRenewalCase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnOpenRenewalCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenRenewalCase.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnOpenRenewalCase.ForeColor = System.Drawing.Color.White;
+            this.btnOpenRenewalCase.Location = new System.Drawing.Point(711, 606);
+            this.btnOpenRenewalCase.Name = "btnOpenRenewalCase";
+            this.btnOpenRenewalCase.Size = new System.Drawing.Size(215, 40);
+            this.btnOpenRenewalCase.TabIndex = 64;
+            this.btnOpenRenewalCase.Text = "Open Reneweal Case";
+            this.btnOpenRenewalCase.UseVisualStyleBackColor = false;
             // 
-            // Column7
+            // colID
             // 
-            this.Column7.HeaderText = "Created";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
+            this.colID.HeaderText = "ID";
+            this.colID.MinimumWidth = 6;
+            this.colID.Name = "colID";
+            this.colID.Width = 50;
             // 
-            // comboBox2
+            // colName
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.comboBox2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.comboBox2.ForeColor = System.Drawing.Color.White;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(555, 52);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(135, 32);
-            this.comboBox2.TabIndex = 57;
+            this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.Width = 125;
             // 
-            // textBox4
+            // colCNIC
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.textBox4.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(223, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(275, 28);
-            this.textBox4.TabIndex = 56;
+            this.colCNIC.HeaderText = "CNIC";
+            this.colCNIC.MinimumWidth = 6;
+            this.colCNIC.Name = "colCNIC";
+            this.colCNIC.Width = 125;
             // 
-            // button2
+            // colPhone
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(238, 606);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 40);
-            this.button2.TabIndex = 60;
-            this.button2.Text = "View / Edit";
-            this.button2.UseVisualStyleBackColor = false;
+            this.colPhone.HeaderText = "Phone";
+            this.colPhone.MinimumWidth = 6;
+            this.colPhone.Name = "colPhone";
+            this.colPhone.Width = 125;
             // 
-            // button8
+            // colStatus
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(968, 606);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(184, 40);
-            this.button8.TabIndex = 61;
-            this.button8.Text = "Change Status ";
-            this.button8.UseVisualStyleBackColor = false;
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Width = 125;
             // 
-            // button10
+            // colDocs
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(479, 606);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(186, 40);
-            this.button10.TabIndex = 63;
-            this.button10.Text = "View Documents";
-            this.button10.UseVisualStyleBackColor = false;
+            this.colDocs.HeaderText = "Documents";
+            this.colDocs.MinimumWidth = 6;
+            this.colDocs.Name = "colDocs";
+            this.colDocs.Width = 125;
             // 
-            // button11
+            // colCreated
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(711, 606);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(215, 40);
-            this.button11.TabIndex = 64;
-            this.button11.Text = "Open Reneweal Case";
-            this.button11.UseVisualStyleBackColor = false;
+            this.colCreated.HeaderText = "Created";
+            this.colCreated.MinimumWidth = 6;
+            this.colCreated.Name = "colCreated";
+            this.colCreated.Width = 125;
             // 
-            // Clinet_Registry
+            // Client_Registry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
             this.ClientSize = new System.Drawing.Size(1432, 1055);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnOpenRenewalCase);
+            this.Controls.Add(this.btnViewDocuments);
+            this.Controls.Add(this.btnChangeStatus);
+            this.Controls.Add(this.btnViewEdit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Clinet_Registry";
+            this.Name = "Client_Registry";
             this.Text = "Clinet";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,21 +308,21 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.DataGridView dgvClients;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cmbStatusFilter;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnViewEdit;
+        private System.Windows.Forms.Button btnChangeStatus;
+        private System.Windows.Forms.Button btnViewDocuments;
+        private System.Windows.Forms.Button btnOpenRenewalCase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCNIC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCreated;
     }
 }
