@@ -18,12 +18,33 @@ namespace visavault_g43
         private int selectedClientId = 0;
         private int selectedDocumentTypeId = 0;
         private bool allPrerequisitesMet = false;
+
+        // Label placed inside the lblResults Panel to display text results
+        private Label lblResultsText;
+
         public Dependency_Validator()
         {
             InitializeComponent();
+            this.Load += Dependency_Validator_Load;
         }
+
         private void Dependency_Validator_Load(object sender, EventArgs e)
         {
+            // Create a multiline Label inside the lblResults Panel
+            lblResultsText = new Label();
+            lblResultsText.AutoSize = false;
+            lblResultsText.Dock = DockStyle.Fill;
+            lblResultsText.ForeColor = Color.White;
+            lblResultsText.BackColor = Color.Transparent;
+            lblResultsText.Font = new Font("Segoe UI", 10f);
+            lblResultsText.TextAlign = ContentAlignment.TopLeft;
+            lblResultsText.Text = "";
+            lblResults.Controls.Add(lblResultsText);
+
+            // Wire button click events
+            btnSearchClient.Click += btnSearchClient_Click;
+            btnSearchDocument.Click += btnSearchDocument_Click;
+
             // Fill cmbSelectClient
             cmbSelectClient.Items.Clear();
             List<Client> clients = ClientService.GetClients();
@@ -48,8 +69,6 @@ namespace visavault_g43
                     }
                 }
             }
-
-            lblResults.Text = "";
         }
 
         // btnSearchClient — confirms client selection
@@ -63,10 +82,10 @@ namespace visavault_g43
             }
             selectedClientId = GetClientIdFromCombo();
             AuthService.SetClientContext(selectedClientId);
-            lblResults.Text = "Client confirmed. Now select a document type and click Search.";
+            lblResultsText.Text = "Client confirmed. Now select a document type and click Search.";
         }
 
-        // btnSearchDocument — runs the dependency check and shows results in lblResults
+        // btnSearchDocument — runs the dependency check and shows results in lblResultsText
         private void btnSearchDocument_Click(object sender, EventArgs e)
         {
             if (selectedClientId <= 0)
@@ -90,7 +109,7 @@ namespace visavault_g43
 
             if (results.Count == 0)
             {
-                lblResults.Text = "No prerequisites required for this document type.\r\n\r\nResult: Renewal case can be opened.";
+                lblResultsText.Text = "No prerequisites required for this document type.\r\n\r\nResult: Renewal case can be opened.";
                 allPrerequisitesMet = true;
             }
             else
@@ -109,7 +128,7 @@ namespace visavault_g43
                     ? "\r\nResult: Prerequisites met. Case can be opened."
                     : "\r\nResult: Prerequisites NOT met. Fix issues first.";
 
-                lblResults.Text = output;
+                lblResultsText.Text = output;
             }
 
             // If all prerequisites met, ask user to open case
@@ -165,6 +184,6 @@ namespace visavault_g43
             return 0;
         }
 
-       
+
     }
 }

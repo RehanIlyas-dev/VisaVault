@@ -14,36 +14,65 @@ namespace visavault_g43
 {
     public partial class Home : Form
     {
+        // Runtime labels placed inside each stat Panel
+        private Label lblTotalClientsCount;
+        private Label lblCriticalDocsCount;
+        private Label lblOverdueInvoicesCount;
+        private Label lblTodayApptsCount;
+        private Label lblActiveCasesCount;
+
         public Home()
         {
             InitializeComponent();
+            this.Load += Home_Load;
         }
-
 
         private void Home_Load(object sender, EventArgs e)
         {
+            // Create a count Label inside each stat Panel
+            lblTotalClientsCount = CreateCountLabel(lblTotalClients);
+            lblCriticalDocsCount = CreateCountLabel(lblCriticalDocs);
+            lblOverdueInvoicesCount = CreateCountLabel(lblOverdueInvoices);
+            lblTodayApptsCount = CreateCountLabel(lblTodayAppts);
+            lblActiveCasesCount = CreateCountLabel(lblActiveCases);
+
             LoadStats();
             LoadCriticalDocuments();
             LoadTodayAppointments();
             LoadOverdueInvoices();
         }
 
-        // Fills the 5 labels inside the 5 stat panels at the top
+        // Creates a large centered Label inside a Panel to display a number
+        private Label CreateCountLabel(Panel parent)
+        {
+            Label lbl = new Label();
+            lbl.AutoSize = false;
+            lbl.Dock = DockStyle.Fill;
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.Font = new Font("Book Antiqua", 26f, FontStyle.Bold);
+            lbl.ForeColor = Color.White;
+            lbl.BackColor = Color.Transparent;
+            lbl.Text = "0";
+            parent.Controls.Add(lbl);
+            return lbl;
+        }
+
+        // Fills the 5 count labels inside the 5 stat panels at the top
         private void LoadStats()
         {
-            lblTotalClients.Text = ClientService.GetTotalClients().ToString();
+            lblTotalClientsCount.Text = ClientService.GetTotalClients().ToString();
 
             var summary = AlertService.GetAlertSummary();
             int critical = summary.ContainsKey("Critical") ? summary["Critical"] : 0;
             int expired = summary.ContainsKey("Expired") ? summary["Expired"] : 0;
-            lblCriticalDocs.Text = (critical + expired).ToString();
+            lblCriticalDocsCount.Text = (critical + expired).ToString();
 
-            lblOverdueInvoices.Text = AlertService.GetOverdueInvoiceCount().ToString();
-            lblTodayAppts.Text = AppointmentService.GetTodayAppointmentCount().ToString();
-            lblActiveCases.Text = AlertService.GetActiveCaseCount().ToString();
+            lblOverdueInvoicesCount.Text = AlertService.GetOverdueInvoiceCount().ToString();
+            lblTodayApptsCount.Text = AppointmentService.GetTodayAppointmentCount().ToString();
+            lblActiveCasesCount.Text = AlertService.GetActiveCaseCount().ToString();
         }
 
-        // Fills listCriticalDocs Panel by adding labels dynamically
+        // Fills listCriticalDocs Panel by adding Labels dynamically
         private void LoadCriticalDocuments()
         {
             listCriticalDocs.Controls.Clear();
@@ -72,7 +101,7 @@ namespace visavault_g43
             }
         }
 
-        // Fills listTodayAppts Panel by adding labels dynamically
+        // Fills listTodayAppts Panel by adding Labels dynamically
         private void LoadTodayAppointments()
         {
             listTodayAppts.Controls.Clear();
@@ -93,7 +122,7 @@ namespace visavault_g43
             }
         }
 
-        // Fills listOverdueInvoices Panel by adding labels dynamically
+        // Fills listOverdueInvoices Panel by adding Labels dynamically
         private void LoadOverdueInvoices()
         {
             listOverdueInvoices.Controls.Clear();
@@ -134,7 +163,9 @@ namespace visavault_g43
 
         private void lblTotalClients_Paint(object sender, PaintEventArgs e)
         {
-
+            // Reserved for custom painting if needed
         }
+
+        
     }
 }

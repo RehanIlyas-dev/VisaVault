@@ -16,10 +16,18 @@ namespace visavault_g43
     public partial class Renewal_WorkFlow : Form
     {
         private int selectedCaseId = 0;
+
         public Renewal_WorkFlow()
         {
             InitializeComponent();
+            this.Load += Renewal_WorkFlow_Load;
+
+            // Wire grid selection and button events
+            dgvCases.SelectionChanged += dgvCases_SelectionChanged;
+            btnSearch.Click += btnSearch_Click;
+            button2.Click += button2_Click;
         }
+
         private void Renewal_WorkFlow_Load(object sender, EventArgs e)
         {
             // cmbStatusFilter — the one dropdown on the form
@@ -50,7 +58,8 @@ namespace visavault_g43
                 dgvCases.Rows[row].Cells["colIssueDate"].Value = rc.CreatedAt.ToString("dd-MMM-yy");
                 dgvCases.Rows[row].Cells["colOpened"].Value = rc.CreatedAt.ToString("dd-MMM-yy");
                 dgvCases.Rows[row].Cells["colLastUpdate"].Value = rc.UpdatedAt.ToString("dd-MMM-yy");
-                dgvCases.Rows[row].Cells["colDaysInStage"].Value = daysInStage;
+                // FIX: was "colDaysInStage" — correct name from Designer is "colDaysinStage"
+                dgvCases.Rows[row].Cells["colDaysinStage"].Value = daysInStage;
 
                 dgvCases.Rows[row].Tag = rc.RenewalCaseID;
             }
@@ -82,10 +91,14 @@ namespace visavault_g43
             panelUnderReview.BackColor = defaultColor;
             panelApprovedRejected.BackColor = defaultColor;
 
-            if (currentStage == "Pending") panelPending.BackColor = activeColor;
-            else if (currentStage == "Submitted") panelSubmitted.BackColor = activeColor;
-            else if (currentStage == "Under Review") panelUnderReview.BackColor = activeColor;
-            else if (currentStage == "Approved" || currentStage == "Rejected") panelApprovedRejected.BackColor = activeColor;
+            if (currentStage == "Pending")
+                panelPending.BackColor = activeColor;
+            else if (currentStage == "Submitted")
+                panelSubmitted.BackColor = activeColor;
+            else if (currentStage == "Under Review")
+                panelUnderReview.BackColor = activeColor;
+            else if (currentStage == "Approved" || currentStage == "Rejected")
+                panelApprovedRejected.BackColor = activeColor;
         }
 
         // btnSearch
@@ -95,9 +108,17 @@ namespace visavault_g43
             if (filter == "All Cases") filter = "All";
             LoadCases(filter);
         }
+
+        // button2 (Clear)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cmbStatusFilter.SelectedIndex = 0;
+            LoadCases("All");
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            // Reserved for custom painting if needed
         }
     }
 }

@@ -15,10 +15,17 @@ namespace visavault_g43
     public partial class Invoice : Form
     {
         private int selectedInvoiceId = 0;
+
         public Invoice()
         {
             InitializeComponent();
+            this.Load += Invoice_Load;
+
+            // FIX: Wire events that the Designer never registered
+            dgvInvoices.SelectionChanged += dgvInvoices_SelectionChanged;
+            btnSearch.Click += btnSearch_Click;
         }
+
         private void Invoice_Load(object sender, EventArgs e)
         {
             // cmbClientFilter — first dropdown
@@ -76,7 +83,7 @@ namespace visavault_g43
             }
         }
 
-        // When an invoice is selected load its line items in the bottom grid
+        // FIX: Capture selected invoice ID and load its line items when row changes
         private void dgvInvoices_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvInvoices.CurrentRow?.Tag == null) return;

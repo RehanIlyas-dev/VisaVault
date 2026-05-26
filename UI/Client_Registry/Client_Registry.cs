@@ -16,13 +16,24 @@ namespace visavault_g43
     public partial class Client_Registry : Form
     {
         private int selectedClientId = 0;
+
         public Client_Registry()
         {
             InitializeComponent();
+            this.Load += Client_Registry_Load;
+
+            // FIX: Wire events that the Designer never registered
+            dgvClients.SelectionChanged += dgvClients_SelectionChanged;
+            btnSearch.Click += btnSearch_Click;
+            btnClear.Click += btnClear_Click;
+            btnViewEdit.Click += btnViewEdit_Click;
+            btnChangeStatus.Click += btnChangeStatus_Click;
+            btnViewDocuments.Click += btnViewDocuments_Click;
+            btnOpenRenewalCase.Click += btnOpenRenewalCase_Click;
         }
+
         private void Client_Registry_Load(object sender, EventArgs e)
         {
-            // cmbStatusFilter is the dropdown next to the search textbox
             cmbStatusFilter.Items.Clear();
             cmbStatusFilter.Items.Add("All Status");
             cmbStatusFilter.Items.Add("Active");
@@ -57,11 +68,12 @@ namespace visavault_g43
                 if (c.Status == "Blacklisted")
                     dgvClients.Rows[row].DefaultCellStyle.BackColor = Color.MistyRose;
 
-                // Tag stores the real client ID for use in button clicks
+                // Tag stores the real client ID
                 dgvClients.Rows[row].Tag = c.ClientId;
             }
         }
 
+        // FIX: Capture selected client ID whenever the row changes
         private void dgvClients_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvClients.CurrentRow?.Tag != null)
@@ -136,7 +148,6 @@ namespace visavault_g43
             }
 
             string newStatus = ShowStatusDialog();
-
             if (string.IsNullOrWhiteSpace(newStatus)) return;
 
             ValidationResult result = ClientService.ChangeClientStatus(selectedClientId, newStatus);
@@ -147,6 +158,7 @@ namespace visavault_g43
 
             LoadClients("", "All Status");
         }
+
         private string ShowStatusDialog()
         {
             Form dialog = new Form();

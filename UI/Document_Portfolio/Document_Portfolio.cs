@@ -17,10 +17,20 @@ namespace visavault_g43
     {
         private int clientId = 0;
         private int selectedDocumentId = 0;
+
         public Document_Portfolio()
         {
             InitializeComponent();
+            this.Load += Document_Portfolio_Load;
+
+            // FIX: Wire events that the Designer never registered
+            dgvDocuments.SelectionChanged += dgvDocuments_SelectionChanged;
+            btnSearch.Click += btnSearch_Click;
+            btnClear.Click += btnClear_Click;
+            btnEdit.Click += btnEdit_Click;
+            btnDelete.Click += btnDelete_Click;
         }
+
         private void Document_Portfolio_Load(object sender, EventArgs e)
         {
             clientId = AuthService.CurrentClientId;
@@ -64,6 +74,7 @@ namespace visavault_g43
             }
         }
 
+        // FIX: Capture selected document ID whenever the row changes
         private void dgvDocuments_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvDocuments.CurrentRow?.Tag != null)
@@ -122,6 +133,6 @@ namespace visavault_g43
             LoadDocuments("");
         }
 
-       
+
     }
 }
