@@ -172,6 +172,7 @@
             this.lblTotalClients.Name = "lblTotalClients";
             this.lblTotalClients.Size = new System.Drawing.Size(200, 100);
             this.lblTotalClients.TabIndex = 1;
+            this.lblTotalClients.Paint += new System.Windows.Forms.PaintEventHandler(this.lblTotalClients_Paint);
             // 
             // label2
             // 

@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VisaVault.BLL;
 
 namespace visavault_g43
 {
@@ -87,7 +88,7 @@ namespace visavault_g43
 
         private void DMbtn_Click(object sender, EventArgs e)
         {
-            fromload(new Document_Manag());
+            fromload(new Document_Manag(AuthService.CurrentClientId, 0));
             hidesubmenu();
         }
 
