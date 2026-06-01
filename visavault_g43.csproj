@@ -239,7 +239,29 @@
     <EmbeddedResource Include="UI\Renewal_WorkFlow\Renewal_WorkFlow.resx">
       <DependentUpon>Renewal_WorkFlow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Resources\*.png" />
+    <None Include="Resources\arrows.png" />
+    <None Include="Resources\background.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\ChatGPT Image May 16, 2026, 11_57_51 PM.png" />
+    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM.png" />
+    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM1.png" />
+    <None Include="Resources\ChatGPT Image May 17, 2026, 07_08_17 AM2.png" />
+    <None Include="Resources\contract.png" />
+    <None Include="Resources\contract1.png" />
+    <None Include="Resources\form %281%29.png" />
+    <None Include="Resources\form.png" />
+    <None Include="Resources\home %281%29.png" />
+    <None Include="Resources\home %282%29.png" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\profit %281%29.png" />
+    <None Include="Resources\profit.png" />
+    <None Include="Resources\renewable.png" />
+    <None Include="Resources\renewal.png" />
+    <None Include="Resources\time.png" />
+    <None Include="Resources\user-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

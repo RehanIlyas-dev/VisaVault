@@ -11,7 +11,7 @@ namespace visavault_g43
 {
     internal class Database
     {
-        private string connString = "Server=localhost;Port=3306;Database=visavault;Uid=root;Pwd=1111";
+        private string connString = "Server=localhost;Port=3306;Database=visa_vault;Uid=root;Pwd=@HA55ANMUGHAL";
         public MySqlConnection GetConnection()
         {
             return new MySqlConnection(connString);
