@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
@@ -103,7 +103,8 @@ namespace visavault_g43.BLL
                     userId,
                     row["purpose"].ToString(),
                     Convert.ToDateTime(row["appointment_date"]),
-                    row["status"].ToString()
+                    row["status"].ToString(),
+                    row.Table.Columns.Contains("client_name") && row["client_name"] != DBNull.Value ? row["client_name"].ToString() : ""
                 ));
             }
             return appointments;

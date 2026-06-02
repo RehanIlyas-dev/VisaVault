@@ -145,17 +145,7 @@ namespace visavault_g43.BLL
 
         private static int GetProcessingDays(int documentTypeId, int ClientId)
         { 
-            DataTable Clientdt = ClientDAL.GetClientById(ClientId); // Assuming ClientDAL has a method to get a client by ID
-            if(Clientdt.Rows.Count > 0)
-            {
-                int CountryId = Convert.ToInt32(Clientdt.Rows[0]["country_id"]); // client table uses snake_case
-                DataTable feeDt = FeeDAL.GetActiveRule(CountryId, documentTypeId);
-                if (feeDt.Rows.Count > 0 && feeDt.Columns.Contains("processing_days"))
-                {
-                    return Convert.ToInt32(feeDt.Rows[0]["processing_days"]); // fee table uses snake_case
-                }
-            }
-            return 0;
+            return 15; // default 15 days since processing_days is not in the db
         }
 
         private static List<Document> MapDataTabletoDocumentList(DataTable dt)

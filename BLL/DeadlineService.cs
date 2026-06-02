@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -102,16 +102,6 @@ namespace visavault_g43.BLL
 
         private static int GetEffectiveProcDays(Document document)
         {
-            DataTable ClientDt = ClientDAL.GetClientById(document.ClientId);
-            if(ClientDt.Rows.Count > 0)
-            {
-                int CountryId = Convert.ToInt32(ClientDt.Rows[0]["country_id"]);
-                DataTable feeRuleDt = FeeDAL.GetActiveRule(CountryId, document.TypeID);
-                if(feeRuleDt.Rows.Count > 0 && feeRuleDt.Rows[0]["processing_fee"] != DBNull.Value)
-                {
-                    return Convert.ToInt32(feeRuleDt.Rows[0]["processing_fee"]);
-                }
-            }
             return DefaultProceedingDays;
         }
 

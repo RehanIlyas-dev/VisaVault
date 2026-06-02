@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
@@ -98,7 +98,7 @@ namespace visavault_g43.BLL
 
         private static bool ValidateCNIC(string cnic)
         {
-            if (string.IsNullOrWhiteSpace(cnic) || cnic.Length != 13)
+            if (string.IsNullOrWhiteSpace(cnic) || cnic.Length != 15)
                 return false;
             return Regex.IsMatch(cnic, @"^\d{5}-\d{7}-\d{1}$"); // Basic CNIC format validation (e.g., 12345-1234567-1)
         }

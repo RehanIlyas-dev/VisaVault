@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using visavault_g43.DLL;
 using visavault_g43.Models;
-
 namespace visavault_g43.BLL
 {
     public static class FeeService 
@@ -56,26 +55,7 @@ namespace visavault_g43.BLL
             return countries;
         }
 
-        public static List<Country> GetAllCountries()
-        {
-            return GetCountries();
-        }
 
-        // This methods return all Document Types for ComboBox 
-        public static List<DocumentType> GetAllDocumentTypes()
-        {
-            DataTable dt = FeeDAL.GetAllDocumentTypes();
-            List<DocumentType> documentTypes = new List<DocumentType>();
-            foreach (DataRow row in dt.Rows)
-            {
-                documentTypes.Add(new DocumentType
-                {
-                    DocumentTypeId = Convert.ToInt32(row["documenttype_id"]),
-                    DocumentTypeName = row["documenttype_name"]?.ToString() ?? string.Empty
-                });
-            }
-            return documentTypes;
-        }
 
         private static FeeRule GetActiveRule(int countryId, int documentTypeId)
         {
@@ -87,7 +67,7 @@ namespace visavault_g43.BLL
                 Convert.ToInt32(row["fee_id"]),
                 Convert.ToInt32(row["type_id"]),
                 Convert.ToInt32(row["country_id"]),
-                Convert.ToInt32(row["fee_name"]),
+                row["fee_name"]?.ToString() ?? string.Empty,
                 row["processing_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["processing_fee"]),
                 row["urgent_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["urgent_fee"]),
                 Convert.ToDecimal(row["base_fee"]),

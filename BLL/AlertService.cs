@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Contracts;
@@ -93,7 +93,7 @@ namespace visavault_g43.BLL
             return "None";
         }
 
-        public int GetCriticalDocumentCount() // Returns the count of documents that are currently in the "Critical" alert level
+        public static int GetCriticalDocumentCount() // Returns the count of documents that are currently in the "Critical" alert level
         {
             DataTable dt = DocumentDAL.GetCriticalDocuments();
             List<Document> alldocuments = MapDataTabletoDocumentsList(dt);

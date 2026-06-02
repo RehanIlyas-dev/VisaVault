@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using visavault_g43.BLL;
@@ -41,7 +41,7 @@ namespace VisaVault.BLL
                 return ValidationResult.Failure($"Authentication rejected. Your system access status profile is currently: {statusValue}.");
             }
 
-            string dbPasswordHash = userRow["password_hash"].ToString();
+            string dbPasswordHash = userRow["password"].ToString();
             if (password != dbPasswordHash)
             {
                 return ValidationResult.Failure("Invalid authentication security clearance passwords.");
@@ -90,7 +90,7 @@ namespace VisaVault.BLL
         public static void PopulateStaticData()
         {
             CachedCountries.Clear();
-            CachedCountries.AddRange(FeeService.GetAllCountries());
+            CachedCountries.AddRange(FeeService.GetCountries());
             CachedDocumentTypes.Clear();
             CachedDocumentTypes.AddRange(DocumentService.GetAllDocumentTypes());
             CachedStages.Clear();
