@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Renewal_WorkFlow
     {
@@ -57,6 +57,8 @@
             this.colOpened = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDaysinStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colViewDetails = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colAdvanceStage = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
@@ -148,7 +150,9 @@
             this.colIssueDate,
             this.colOpened,
             this.colLastUpdate,
-            this.colDaysinStage});
+            this.colDaysinStage,
+            this.colViewDetails,
+            this.colAdvanceStage});
             this.dgvCases.Location = new System.Drawing.Point(22, 117);
             this.dgvCases.Name = "dgvCases";
             this.dgvCases.RowHeadersWidth = 51;
@@ -359,6 +363,32 @@
             this.colDaysinStage.Name = "colDaysinStage";
             this.colDaysinStage.Width = 125;
             // 
+            // colViewDetails
+            // 
+            this.colViewDetails.HeaderText = "Details";
+            this.colViewDetails.MinimumWidth = 6;
+            this.colViewDetails.Name = "colViewDetails";
+            this.colViewDetails.Text = "View Details";
+            this.colViewDetails.UseColumnTextForButtonValue = true;
+            this.colViewDetails.Width = 110;
+            this.colViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colViewDetails.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(40, 14, 85);
+            this.colViewDetails.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colViewDetails.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            // 
+            // colAdvanceStage
+            // 
+            this.colAdvanceStage.HeaderText = "Action";
+            this.colAdvanceStage.MinimumWidth = 6;
+            this.colAdvanceStage.Name = "colAdvanceStage";
+            this.colAdvanceStage.Text = "Advance Stage";
+            this.colAdvanceStage.UseColumnTextForButtonValue = true;
+            this.colAdvanceStage.Width = 120;
+            this.colAdvanceStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colAdvanceStage.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(0, 120, 80);
+            this.colAdvanceStage.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colAdvanceStage.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            // 
             // Renewal_WorkFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -415,5 +445,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colOpened;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDaysinStage;
+        private System.Windows.Forms.DataGridViewButtonColumn colViewDetails;
+        private System.Windows.Forms.DataGridViewButtonColumn colAdvanceStage;
     }
 }

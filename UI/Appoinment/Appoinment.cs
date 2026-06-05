@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +39,7 @@ namespace visavault_g43
             {
                 int row = dgvAppointments.Rows.Add();
                 dgvAppointments.Rows[row].Cells["colTime"].Value = a.AppointmentDate.ToString("hh:mm tt");
-                dgvAppointments.Rows[row].Cells["colClient"].Value = $"Client {a.ClientId}";
+                dgvAppointments.Rows[row].Cells["colClient"].Value = string.IsNullOrEmpty(a.ClientName) ? $"Client {a.ClientId}" : a.ClientName;
                 dgvAppointments.Rows[row].Cells["colPurpose"].Value = a.Purpose;
                 dgvAppointments.Rows[row].Cells["colStatus"].Value = a.Status;
 

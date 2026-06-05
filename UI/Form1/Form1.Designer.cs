@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Form1
     {
@@ -28,10 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHome = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewClients = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewDocuments = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewCases = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewInvoices = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewReports = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewAppointments = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewExpiryAlerts = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSideMenue = new System.Windows.Forms.Panel();
             this.EAbtn = new System.Windows.Forms.Button();
             this.appbtn = new System.Windows.Forms.Button();
             this.panelFinance = new System.Windows.Forms.Panel();
+            this.RPbtn = new System.Windows.Forms.Button();
             this.FCbtn = new System.Windows.Forms.Button();
             this.Ibtn = new System.Windows.Forms.Button();
             this.financebtn = new System.Windows.Forms.Button();
@@ -51,12 +67,139 @@
             this.Homebtn = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.Mainpanel = new System.Windows.Forms.Panel();
+            this.mainMenuStrip.SuspendLayout();
             this.panelSideMenue.SuspendLayout();
             this.panelFinance.SuspendLayout();
             this.panelCases.SuspendLayout();
             this.panelDocument.SuspendLayout();
             this.panelClient.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mainMenuStrip
+            // 
+            this.mainMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.mainMenuStrip.ForeColor = System.Drawing.Color.Gainsboro;
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(1682, 24);
+            this.mainMenuStrip.TabIndex = 2;
+            this.mainMenuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHome,
+            this.toolStripSeparator1,
+            this.menuExit});
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // menuHome
+            // 
+            this.menuHome.Name = "menuHome";
+            this.menuHome.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Home)));
+            this.menuHome.Size = new System.Drawing.Size(180, 22);
+            this.menuHome.Text = "Home";
+            this.menuHome.Click += new System.EventHandler(this.menuHome_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
+            this.menuExit.Text = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuViewClients,
+            this.menuViewDocuments,
+            this.menuViewCases,
+            this.menuViewInvoices,
+            this.menuViewReports,
+            this.menuViewAppointments,
+            this.menuViewExpiryAlerts});
+            this.viewToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // menuViewClients
+            // 
+            this.menuViewClients.Name = "menuViewClients";
+            this.menuViewClients.Size = new System.Drawing.Size(180, 22);
+            this.menuViewClients.Text = "Client Registry";
+            this.menuViewClients.Click += new System.EventHandler(this.CRbtn_Click);
+            // 
+            // menuViewDocuments
+            // 
+            this.menuViewDocuments.Name = "menuViewDocuments";
+            this.menuViewDocuments.Size = new System.Drawing.Size(180, 22);
+            this.menuViewDocuments.Text = "Document Portfolio";
+            this.menuViewDocuments.Click += new System.EventHandler(this.DPbtn_Click);
+            // 
+            // menuViewCases
+            // 
+            this.menuViewCases.Name = "menuViewCases";
+            this.menuViewCases.Size = new System.Drawing.Size(180, 22);
+            this.menuViewCases.Text = "Renewal Workflow";
+            this.menuViewCases.Click += new System.EventHandler(this.RWbtn_Click);
+            // 
+            // menuViewInvoices
+            // 
+            this.menuViewInvoices.Name = "menuViewInvoices";
+            this.menuViewInvoices.Size = new System.Drawing.Size(180, 22);
+            this.menuViewInvoices.Text = "Invoices";
+            this.menuViewInvoices.Click += new System.EventHandler(this.Ibtn_Click);
+            // 
+            // menuViewReports
+            // 
+            this.menuViewReports.Name = "menuViewReports";
+            this.menuViewReports.Size = new System.Drawing.Size(180, 22);
+            this.menuViewReports.Text = "Reports Dashboard";
+            this.menuViewReports.Click += new System.EventHandler(this.RPbtn_Click);
+            // 
+            // menuViewAppointments
+            // 
+            this.menuViewAppointments.Name = "menuViewAppointments";
+            this.menuViewAppointments.Size = new System.Drawing.Size(180, 22);
+            this.menuViewAppointments.Text = "Appointments";
+            this.menuViewAppointments.Click += new System.EventHandler(this.appbtn_Click);
+            // 
+            // menuViewExpiryAlerts
+            // 
+            this.menuViewExpiryAlerts.Name = "menuViewExpiryAlerts";
+            this.menuViewExpiryAlerts.Size = new System.Drawing.Size(180, 22);
+            this.menuViewExpiryAlerts.Text = "Expiry Alerts";
+            this.menuViewExpiryAlerts.Click += new System.EventHandler(this.EAbtn_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAbout});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // menuAbout
+            // 
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuAbout.Text = "About VisaVault";
+            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
             // panelSideMenue
             // 
@@ -123,13 +266,33 @@
             // panelFinance
             // 
             this.panelFinance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.panelFinance.Controls.Add(this.RPbtn);
             this.panelFinance.Controls.Add(this.FCbtn);
             this.panelFinance.Controls.Add(this.Ibtn);
             this.panelFinance.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFinance.Location = new System.Drawing.Point(0, 849);
             this.panelFinance.Name = "panelFinance";
-            this.panelFinance.Size = new System.Drawing.Size(250, 97);
+            this.panelFinance.Size = new System.Drawing.Size(250, 137);
             this.panelFinance.TabIndex = 11;
+            // 
+            // RPbtn
+            // 
+            this.RPbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.RPbtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RPbtn.FlatAppearance.BorderSize = 0;
+            this.RPbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.RPbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.RPbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RPbtn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.RPbtn.Location = new System.Drawing.Point(0, 80);
+            this.RPbtn.Name = "RPbtn";
+            this.RPbtn.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.RPbtn.Size = new System.Drawing.Size(250, 40);
+            this.RPbtn.TabIndex = 2;
+            this.RPbtn.Text = "Reports Dashboard";
+            this.RPbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RPbtn.UseVisualStyleBackColor = false;
+            this.RPbtn.Click += new System.EventHandler(this.RPbtn_Click);
             // 
             // FCbtn
             // 
@@ -466,8 +629,10 @@
             this.ClientSize = new System.Drawing.Size(1682, 1055);
             this.Controls.Add(this.Mainpanel);
             this.Controls.Add(this.panelSideMenue);
+            this.Controls.Add(this.mainMenuStrip);
+            this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "VisaVault";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelSideMenue.ResumeLayout(false);
             this.panelFinance.ResumeLayout(false);
@@ -475,12 +640,30 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.panelDocument.ResumeLayout(false);
             this.panelClient.ResumeLayout(false);
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuHome;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menuExit;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuViewClients;
+        private System.Windows.Forms.ToolStripMenuItem menuViewDocuments;
+        private System.Windows.Forms.ToolStripMenuItem menuViewCases;
+        private System.Windows.Forms.ToolStripMenuItem menuViewInvoices;
+        private System.Windows.Forms.ToolStripMenuItem menuViewReports;
+        private System.Windows.Forms.ToolStripMenuItem menuViewAppointments;
+        private System.Windows.Forms.ToolStripMenuItem menuViewExpiryAlerts;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuAbout;
         private System.Windows.Forms.Panel panelSideMenue;
         private System.Windows.Forms.Button Homebtn;
         private System.Windows.Forms.Panel panelLogo;
@@ -496,6 +679,7 @@
         private System.Windows.Forms.Button CRbtn;
         private System.Windows.Forms.Button Clientbtn;
         private System.Windows.Forms.Panel panelFinance;
+        private System.Windows.Forms.Button RPbtn;
         private System.Windows.Forms.Button FCbtn;
         private System.Windows.Forms.Button Ibtn;
         private System.Windows.Forms.Button financebtn;

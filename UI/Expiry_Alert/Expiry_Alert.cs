@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using visavault_g43.BLL;
@@ -87,8 +88,10 @@ namespace visavault_g43
                 DateTime actionDate = DocumentService.GetActionDate(doc);
 
                 int row = dgvAlerts.Rows.Add();
-                dgvAlerts.Rows[row].Cells["colClient"].Value = $"Client {doc.ClientId}";
-                dgvAlerts.Rows[row].Cells["colDocType"].Value = $"Type {doc.TypeID}";
+                var client = ClientService.GetClientbyID(doc.ClientId);
+                dgvAlerts.Rows[row].Cells["colClient"].Value = client != null ? client.ClientName : $"Client {doc.ClientId}";
+                var docType = AuthService.CachedDocumentTypes.FirstOrDefault(t => t.DocumentTypeId == doc.TypeID);
+                dgvAlerts.Rows[row].Cells["colDocType"].Value = docType != null ? docType.DocumentTypeName : $"Type {doc.TypeID}";
                 dgvAlerts.Rows[row].Cells["colExpiryDate"].Value = doc.ExpiryDate.ToString("dd-MMM-yyyy");
                 dgvAlerts.Rows[row].Cells["colCountry"].Value = "—";
                 dgvAlerts.Rows[row].Cells["colActionDays"].Value = actionDate.ToString("dd-MMM-yyyy");

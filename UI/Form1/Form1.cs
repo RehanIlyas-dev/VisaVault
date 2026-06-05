@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VisaVault.BLL;
+using visavault_g43.BLL;
 
 namespace visavault_g43
 {
@@ -150,7 +150,9 @@ namespace visavault_g43
         {
             if(this.Mainpanel.Controls.Count > 0)
             {
+                var oldForm = this.Mainpanel.Controls[0] as Form;
                 this.Mainpanel.Controls.RemoveAt(0);
+                oldForm?.Dispose();
             }
             Form f = Form as Form;
             f.TopLevel = false;
@@ -174,6 +176,33 @@ namespace visavault_g43
         {
 
             fromload(new Expiry_Alert());
+        }
+
+        private void RPbtn_Click(object sender, EventArgs e)
+        {
+            fromload(new ReportsForm());
+            hidesubmenu();
+        }
+
+        // ── MenuStrip handlers ──────────────────────────────────────────────
+        private void menuHome_Click(object sender, EventArgs e)
+        {
+            fromload(new Home());
+            hidesubmenu();
+        }
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "VisaVault v1.0\nVisa & Document Management System\n\n© 2026 VisaVault Team",
+                "About VisaVault",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

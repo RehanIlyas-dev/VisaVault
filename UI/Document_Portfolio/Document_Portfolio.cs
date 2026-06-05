@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VisaVault.BLL;
 using visavault_g43.BLL;
 using visavault_g43.Models;
 
@@ -53,7 +52,8 @@ namespace visavault_g43
 
                 int row = dgvDocuments.Rows.Add();
                 dgvDocuments.Rows[row].Cells["colID"].Value = $"D-{doc.DocumentId:D3}";
-                dgvDocuments.Rows[row].Cells["colType"].Value = doc.TypeID.ToString();
+                var docType = AuthService.CachedDocumentTypes.FirstOrDefault(t => t.DocumentTypeId == doc.TypeID);
+                dgvDocuments.Rows[row].Cells["colType"].Value = docType != null ? docType.DocumentTypeName : doc.TypeID.ToString();
                 dgvDocuments.Rows[row].Cells["colDocName"].Value = doc.DocumentNo;
                 dgvDocuments.Rows[row].Cells["colCountry"].Value = "—";
                 dgvDocuments.Rows[row].Cells["colIssueDate"].Value = doc.IssueDate.ToString("dd-MMM-yyyy");

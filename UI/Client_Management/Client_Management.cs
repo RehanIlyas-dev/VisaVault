@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +14,7 @@ namespace visavault_g43
 {
     public partial class Client_Management : Form
     {
+        private int existingCountryId = 0;
         private int editClientId = 0;
         public Client_Management()
         {
@@ -40,6 +41,7 @@ namespace visavault_g43
                 Client existing = ClientService.GetClientbyID(editClientId);
                 if (existing != null)
                 {
+                    existingCountryId = existing.CountryId;
                     txtFullName.Text = existing.ClientName;
                     txtCNIC.Text = existing.CnicNo;
                     txtPhone.Text = existing.ContactNo;
@@ -62,7 +64,7 @@ namespace visavault_g43
                 txtEmail.Text.Trim(),
                 txtPhone.Text.Trim(),
                 txtAddress.Text.Trim(),
-                0,              // CountryId not on this form
+                existingCountryId,              // Preserve CountryId
                 DateTime.Now,
                 DateTime.Now,
                 cmbStatus.SelectedItem?.ToString() ?? "Active"
@@ -86,24 +88,9 @@ namespace visavault_g43
             this.Close();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void panel3_Paint(object sender, PaintEventArgs e) { }
+        private void textBox4_TextChanged(object sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 }
