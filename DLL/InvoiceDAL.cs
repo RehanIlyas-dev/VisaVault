@@ -52,20 +52,48 @@ namespace visavault_g43.DLL
             };
             return db.ExecuteQuery(query, parameters);
         }
+        public static int InsertInvoiceWithItems(Invoice invoice, List<InvoiceLineItem> lineItems)
+        {
+            int newInvoiceId = 0;
+            db.ExecuteTransaction((conn, tx) => {
+                string q1 = "INSERT INTO invoice (case_id, client_id, due_date, status, amount) VALUES (@CaseId, @ClientId, @DueDate, @Status, @Amount); SELECT LAST_INSERT_ID();";
+                using (MySqlCommand cmd1 = new MySqlCommand(q1, conn, tx)) {
+                    cmd1.Parameters.Add(new MySqlParameter("@CaseId", invoice.CaseId));
+                    cmd1.Parameters.Add(new MySqlParameter("@ClientId", invoice.ClientId));
+                    cmd1.Parameters.Add(new MySqlParameter("@DueDate", invoice.DueDate));
+                    cmd1.Parameters.Add(new MySqlParameter("@Status", invoice.Status));
+                    cmd1.Parameters.Add(new MySqlParameter("@Amount", invoice.Amount));
+                    newInvoiceId = Convert.ToInt32(cmd1.ExecuteScalar());
+                }
+                string q2 = "INSERT INTO invoicelineitem (invoice_id, fee_id, quantity, unit_price, total_price) VALUES (@InvoiceId, @FeeId, @Quantity, @UnitPrice, @TotalPrice);";
+                foreach (var item in lineItems) {
+                    using (MySqlCommand cmd2 = new MySqlCommand(q2, conn, tx)) {
+                        cmd2.Parameters.Add(new MySqlParameter("@InvoiceId", newInvoiceId));
+                        cmd2.Parameters.Add(new MySqlParameter("@FeeId", item.FeeId));
+                        cmd2.Parameters.Add(new MySqlParameter("@Quantity", item.Quantity));
+                        cmd2.Parameters.Add(new MySqlParameter("@UnitPrice", item.UnitPrice));
+                        cmd2.Parameters.Add(new MySqlParameter("@TotalPrice", item.TotalPrice));
+                        cmd2.ExecuteNonQuery();
+                    }
+                }
+            });
+            return newInvoiceId;
+        }
+
         public static int InsertInvoice(Invoice invoice)
         {
             string query = "INSERT INTO invoice (case_id, client_id, due_date, status, amount) " +
-                "VALUES (@CaseId, @ClientId, @DueDate, @Status, @Amount);";
+                "VALUES (@CaseId, @ClientId, @DueDate, @Status, @Amount); SELECT LAST_INSERT_ID();";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
-        new MySqlParameter("@CaseId", invoice.CaseId),
-        new MySqlParameter("@ClientId", invoice.ClientId),
-        new MySqlParameter("@DueDate", invoice.DueDate),
-        new MySqlParameter("@Status", invoice.Status),
-        new MySqlParameter("@Amount", invoice.Amount)
+                new MySqlParameter("@CaseId", invoice.CaseId),
+                new MySqlParameter("@ClientId", invoice.ClientId),
+                new MySqlParameter("@DueDate", invoice.DueDate),
+                new MySqlParameter("@Status", invoice.Status),
+                new MySqlParameter("@Amount", invoice.Amount)
             };
-            return db.ExecuteNonQuery(query, parameters);
+            return Convert.ToInt32(db.ExecuteScalar(query, parameters));
         }
         public static int InsertInvoiceLineItem(InvoiceLineItem lineItem)
         {
@@ -156,6 +184,17 @@ namespace visavault_g43.DLL
             string query = "SELECT COUNT(*) FROM invoice WHERE status IN ('Unpaid', 'Partially Paid')" +
                 " AND DATEDIFF(CURRENT_DATE(), due_date) > 20;";
             return Convert.ToInt32(db.ExecuteScalar(query));
+        }
+        
+        public static int GetInvoiceCount(int clientId = 0, string statusFilter = "All")
+        {
+            string query = "SELECT COUNT(*) FROM invoice WHERE (@ClientId = 0 OR client_id = @ClientId) AND (@StatusFilter = 'All' OR status = @StatusFilter);";
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+                new MySqlParameter("@ClientId", clientId),
+                new MySqlParameter("@StatusFilter", statusFilter)
+            };
+            return Convert.ToInt32(db.ExecuteScalar(query, parameters));
         }
     }
 }

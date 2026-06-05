@@ -99,8 +99,8 @@ namespace visavault_g43.DLL
         }
         public static DataTable GetCaseDocuments(int caseId)
         {
-            string query = "SELECT d.document_id, d.client_id, d.type_id, dt.documenttype_name, d.file_path, d.issue_date, d.expiry_date, d.status," +
-                " d.created_at, d.updated_at FROM document d JOIN renewalcase rc ON d.document_id = rc.document_id " +
+            string query = "SELECT d.document_id, d.document_no, d.client_id, d.type_id, dt.documenttype_name, d.issue_date, d.expiry_date" +
+                " FROM document d JOIN renewalcase rc ON d.document_id = rc.document_id " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id WHERE rc.renewalcase_id = @CaseId;";
 
             MySqlParameter[] parameters = new MySqlParameter[]

@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using visavault_g43;
@@ -15,11 +15,25 @@ namespace visavault_g43.DLL
             string query = "SELECT * FROM client WHERE status = 'Active';";
             return db.ExecuteQuery(query);
         }
-        public static DataTable SearchClient(string keyword, string filter)
+        public static DataTable SearchClient(string keyword, string statusFilter)
         {
-            string query = $"SELECT * FROM client WHERE {filter} LIKE @k;";
-            MySqlParameter[] parameters = { new MySqlParameter("@k", "%" + keyword + "%") };
-            return db.ExecuteQuery(query, parameters);
+            string statusCondition = "";
+            if (statusFilter != "All Status" && statusFilter != "All")
+            {
+                statusCondition = " AND status = @s";
+            }
+            string query = $"SELECT * FROM client WHERE (client_name LIKE @k OR cnic_no LIKE @k OR contact_no LIKE @k OR email LIKE @k){statusCondition};";
+            
+            var parameters = new System.Collections.Generic.List<MySqlParameter> 
+            { 
+                new MySqlParameter("@k", "%" + keyword + "%") 
+            };
+            if (statusCondition != "")
+            {
+                parameters.Add(new MySqlParameter("@s", statusFilter));
+            }
+
+            return db.ExecuteQuery(query, parameters.ToArray());
         }
         public static DataTable GetClientById(int clientId)
         {
@@ -30,7 +44,7 @@ namespace visavault_g43.DLL
 
         public static int InsertClient(Client client)
         {
-            string query = "INSERT INTO client(client_name, cnic_no, email, contact_no, address, country_id) VALUES(@n, @cnic, @e, @cont, @a, @coun);";
+            string query = "INSERT INTO client(client_name, cnic_no, email, contact_no, address, country_id) VALUES(@n, @cnic, @e, @cont, @a, @coun); SELECT LAST_INSERT_ID();";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@n", client.ClientName),
                 new MySqlParameter("@cnic", client.CnicNo),

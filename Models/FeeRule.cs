@@ -12,7 +12,7 @@ namespace visavault_g43.Models
         public int FeeId { get; set; }
         public int TypeId { get; set; }
         public int CountryId { get; set; }
-        public int FeeName { get; set; }
+        public string FeeName { get; set; }
         public decimal? ProcessingFee { get; set; }
         public decimal? UrgentFee { get; set; }
         public decimal BaseFee { get; set; }
@@ -21,7 +21,7 @@ namespace visavault_g43.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public FeeRule(int FeeId, int TypeId, int CountryId, int FeeName, decimal? ProcessingFee, decimal? UrgentFee, decimal BaseFee, DateTime? ValidFrom, DateTime? ValidTo, DateTime CreatedAt, DateTime UpdatedAt)
+        public FeeRule(int FeeId, int TypeId, int CountryId, string FeeName, decimal? ProcessingFee, decimal? UrgentFee, decimal BaseFee, DateTime? ValidFrom, DateTime? ValidTo, DateTime CreatedAt, DateTime UpdatedAt)
         {
             this.FeeId = FeeId;
             this.TypeId = TypeId;

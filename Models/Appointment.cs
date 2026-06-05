@@ -14,8 +14,9 @@ namespace visavault_g43.Models
         public string Purpose { get; set; }
         public int UserId { get; set; }
         public int ClientId { get; set; }
+        public string ClientName { get; set; }
 
-        public Appointment(int AppointmentId, int ClientId, int UserId, string Purpose, DateTime AppointmentDate, string Status)
+        public Appointment(int AppointmentId, int ClientId, int UserId, string Purpose, DateTime AppointmentDate, string Status, string ClientName = "")
         {
             this.AppointmentId = AppointmentId;
             this.ClientId = ClientId;
@@ -23,6 +24,7 @@ namespace visavault_g43.Models
             this.Purpose = Purpose;
             this.AppointmentDate = AppointmentDate;
             this.Status = Status;
+            this.ClientName = ClientName;
         }
     }
 }

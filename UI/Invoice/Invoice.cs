@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,12 +59,13 @@ namespace visavault_g43
 
             foreach (var inv in invoices)
             {
-                decimal paid = inv.Amount - InvoiceService.GetBalance(inv.InvoiceID);
                 decimal balance = InvoiceService.GetBalance(inv.InvoiceID);
+                decimal paid = inv.Amount - balance;
 
                 int row = dgvInvoices.Rows.Add();
                 dgvInvoices.Rows[row].Cells["colInvoiceID"].Value = $"INV-{inv.InvoiceID:D3}";
-                dgvInvoices.Rows[row].Cells["colClient"].Value = $"Client {inv.ClientId}";
+                var client = ClientService.GetClientbyID(inv.ClientId);
+                dgvInvoices.Rows[row].Cells["colClient"].Value = client != null ? client.ClientName : $"Client {inv.ClientId}";
                 dgvInvoices.Rows[row].Cells["colCase"].Value = $"R-{inv.CaseId:D3}";
                 dgvInvoices.Rows[row].Cells["colTotal"].Value = $"Rs {inv.Amount:N0}";
                 dgvInvoices.Rows[row].Cells["colPaid"].Value = $"Rs {paid:N0}";

@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ namespace visavault_g43.DLL
         static Database db = new Database();
         public static DataTable GetUserByEmail(string email)
         {
-            string query = "SELECT user_id, username, email, password, last_login, created_at, status FROM user WHERE email = @Email;";
+            string query = "SELECT user_id, username, email, password, full_name, last_login, created_at, status FROM user WHERE email = @Email;";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
@@ -24,7 +24,7 @@ namespace visavault_g43.DLL
         }
         public static DataTable GetUserById(int userId)
         {
-            string query = "SELECT user_id, username, email, password, last_login, created_at, status FROM user WHERE user_id = @UserId;";
+            string query = "SELECT user_id, username, email, password, full_name, last_login, created_at, status FROM user WHERE user_id = @UserId;";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
@@ -44,7 +44,7 @@ namespace visavault_g43.DLL
         }
         public static DataTable GetAllUsers()
         {
-            string query = "SELECT user_id, username, email, password, last_login, created_at, status FROM user ORDER BY username ASC;";
+            string query = "SELECT user_id, username, email, password, full_name, last_login, created_at, status FROM user ORDER BY username ASC;";
             return db.ExecuteQuery(query);
         }
         public static int UpdateUserStatus(int userId, string status)

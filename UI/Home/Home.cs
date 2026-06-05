@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -90,7 +90,9 @@ namespace visavault_g43
             {
                 string level = DocumentService.GetAlertLevel(doc);
                 int days = DocumentService.GetDaystoAction(doc);
-                string text = $"Client {doc.ClientId}  —  {doc.DocumentNo}  —  {level}  ({days} days)";
+                var client = ClientService.GetClientbyID(doc.ClientId);
+                string clientName = client != null ? client.ClientName : $"Client {doc.ClientId}";
+                string text = $"{clientName}  —  {doc.DocumentNo}  —  {level}  ({days} days)";
 
                 Color rowColor = Color.White;
                 if (level == "Expired") rowColor = Color.FromArgb(255, 200, 200);
@@ -117,7 +119,9 @@ namespace visavault_g43
 
             foreach (var a in appts)
             {
-                string text = $"{a.AppointmentDate:hh:mm tt}  —  Client {a.ClientId}  —  {a.Purpose}";
+                var client = ClientService.GetClientbyID(a.ClientId);
+                string clientName = client != null ? client.ClientName : $"Client {a.ClientId}";
+                string text = $"{a.AppointmentDate:hh:mm tt}  —  {clientName}  —  {a.Purpose}";
                 AddRowToPanel(listTodayAppts, text, Color.White, ref yPos);
             }
         }
@@ -140,7 +144,9 @@ namespace visavault_g43
             foreach (var inv in invoices)
             {
                 int daysOver = (DateTime.Today - inv.DueDate.Date).Days;
-                string text = $"INV-{inv.InvoiceID:D3}  —  Client {inv.ClientId}  —  Rs {inv.Amount:N0}  —  {daysOver} days overdue";
+                var client = ClientService.GetClientbyID(inv.ClientId);
+                string clientName = client != null ? client.ClientName : $"Client {inv.ClientId}";
+                string text = $"INV-{inv.InvoiceID:D3}  —  {clientName}  —  Rs {inv.Amount:N0}  —  {daysOver} days overdue";
                 AddRowToPanel(listOverdueInvoices, text, Color.FromArgb(255, 240, 200), ref yPos);
             }
         }
