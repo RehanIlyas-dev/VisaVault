@@ -14,36 +14,46 @@ namespace visavault_g43.BLL
     {
         public static List<Appointment> GetAppointments(DateTime? filterdate = null)
         {
-            DataTable dt = AppointmentDAL.GetAppointments(filterdate); // Assuming AppointmentDAL is a data access layer class that retrieves appointments from the database
-            return MapDataTableToAppointmentList(dt);
+            try {
+                DataTable dt = AppointmentDAL.GetAppointments(filterdate); 
+                return MapDataTableToAppointmentList(dt);
+            } catch (Exception) {
+                return new List<Appointment>();
+            }
         }
 
         public static List<Appointment> GetTodayAppointments()
         {
-            DataTable dt = AppointmentDAL.GetTodaysAppointments(); // DAL method is GetTodaysAppointments
-            return MapDataTableToAppointmentList(dt);
+            try {
+                DataTable dt = AppointmentDAL.GetTodaysAppointments();  
+                return MapDataTableToAppointmentList(dt);
+            } catch (Exception) {
+                return new List<Appointment>();
+            }
         }
 
         public static ValidationResult BookAppointment(Appointment appointment)
         {
-            if(appointment.AppointmentDate <= DateTime.Now) // Validate that the appointment date is in the future
-                return ValidationResult.Failure("Appointment date must be in the future.");
-            if(appointment.ClientId <= 0)
-                return ValidationResult.Failure("Valid client ID is required.");
-            if(appointment.UserId <= 0)
-                return ValidationResult.Failure("Valid user ID is required.");
+            try {
+                if(appointment.AppointmentDate <= DateTime.Now)     
+                    return ValidationResult.Failure("Appointment date must be in the future.");
+                if(appointment.ClientId <= 0)
+                    return ValidationResult.Failure("Valid client ID is required.");
+                if(appointment.UserId <= 0)
+                    return ValidationResult.Failure("Valid user ID is required.");
 
-            appointment.Status = "Booked"; // Set the status to "Booked" when creating a new appointment
-
-            // DAL.InsertAppointment returns number of rows affected in current DAL
-            int rows = AppointmentDAL.InsertAppointment(appointment);
-            if (rows > 0)
-            {
-                return ValidationResult.Success("Appointment booked successfully.");
-            }
-            else
-            {
-                return ValidationResult.Failure("Failed to book appointment. Please try again.");
+                appointment.Status = "Booked"; 
+                int rows = AppointmentDAL.InsertAppointment(appointment);
+                if (rows > 0)
+                {
+                    return ValidationResult.Success("Appointment booked successfully.");
+                }
+                else
+                {
+                    return ValidationResult.Failure("Failed to book appointment. Please try again.");
+                }
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
             }
         }
         
@@ -70,25 +80,33 @@ namespace visavault_g43.BLL
 
         public static int GetTodayAppointmentCount()
         {
-            return AppointmentDAL.GetTodaysAppointmentCount();
+            try {
+                return AppointmentDAL.GetTodaysAppointmentCount();
+            } catch (Exception) {
+                return 0;
+            }
         }
 
         public static ValidationResult ChangeStatus(int appointmentId, string status)
         {
-            if(appointmentId <= 0)
-                return ValidationResult.Failure("Invalid appointment ID.");
-            DataTable dt = AppointmentDAL.GetAppointmentById(appointmentId); 
-            if (dt.Rows.Count == 0)
-                return ValidationResult.Failure("Appointment not found.");
+            try {
+                if(appointmentId <= 0)
+                    return ValidationResult.Failure("Invalid appointment ID.");
+                DataTable dt = AppointmentDAL.GetAppointmentById(appointmentId); 
+                if (dt.Rows.Count == 0)
+                    return ValidationResult.Failure("Appointment not found.");
 
-            int rowsAffected = AppointmentDAL.UpdateAppointmentStatus(appointmentId, status); 
-            if (rowsAffected > 0)
-                return ValidationResult.Success($"Appointment status updated to {status}.");
-            else
-                return ValidationResult.Failure("Failed to update appointment status. Please try again.");
+                int rowsAffected = AppointmentDAL.UpdateAppointmentStatus(appointmentId, status); 
+                if (rowsAffected > 0)
+                    return ValidationResult.Success($"Appointment status updated to {status}.");
+                else
+                    return ValidationResult.Failure("Failed to update appointment status. Please try again.");
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
+            }
         }
 
-        public static List<Appointment> MapDataTableToAppointmentList(DataTable dt) // Helper method to convert DataTable to List<Appointment>
+        public static List<Appointment> MapDataTableToAppointmentList(DataTable dt) 
         {
             List<Appointment> appointments = new List<Appointment>();
             foreach (DataRow row in dt.Rows)

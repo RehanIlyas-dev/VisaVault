@@ -10,7 +10,6 @@ namespace visavault_g43.BLL
 {
     public static class FeeService 
     {
-        // This method returns fee breadkown for country + document type combination
         public static FeeBreakdown CalculateFee(int CountryId, int DocumentTypeid, bool isUrgent)
         {
             FeeBreakdown breakdown = new FeeBreakdown();
@@ -33,49 +32,53 @@ namespace visavault_g43.BLL
             return breakdown;
         }
 
-        // This Method returns Total Fee ready for use in an invoice line item
         public static decimal GetTotalFeeForInvoice(int countryId, int documentTypeId, bool isUrgent)
         {
             FeeBreakdown breakdown = CalculateFee(countryId, documentTypeId, isUrgent);
             return breakdown.IsActive ? breakdown.TotalFee : 0m;
         }
-        // This method retrieves the active fee rule for a given country and document type, returning a FeeRule object if found, or null if no active rule exists.
         public static List<Country> GetCountries()
         {
-            DataTable dt = FeeDAL.GetAllCountries();
-            List<Country> countries = new List<Country>();
-            foreach (DataRow row in dt.Rows)
-            {
-                countries.Add(new Country(
-                    Convert.ToInt32(row["country_id"]),
-                    row["country_name"]?.ToString() ?? string.Empty,
-                    row.Table.Columns.Contains("country_code") ? row["country_code"]?.ToString() ?? string.Empty : string.Empty
-                ));
+            try {
+                DataTable dt = FeeDAL.GetAllCountries();
+                List<Country> countries = new List<Country>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    countries.Add(new Country(
+                        Convert.ToInt32(row["country_id"]),
+                        row["country_name"]?.ToString() ?? string.Empty,
+                        row.Table.Columns.Contains("country_code") ? row["country_code"]?.ToString() ?? string.Empty : string.Empty
+                    ));
+                }
+                return countries;
+            } catch (Exception) {
+                return new List<Country>();
             }
-            return countries;
         }
-
-
 
         private static FeeRule GetActiveRule(int countryId, int documentTypeId)
         {
-            DataTable dt = FeeDAL.GetActiveRule(countryId, documentTypeId);
-            if (dt.Rows.Count == 0) return null;
+            try {
+                DataTable dt = FeeDAL.GetActiveRule(countryId, documentTypeId);
+                if (dt.Rows.Count == 0) return null;
 
-            DataRow row = dt.Rows[0];
-            return new FeeRule(
-                Convert.ToInt32(row["fee_id"]),
-                Convert.ToInt32(row["type_id"]),
-                Convert.ToInt32(row["country_id"]),
-                row["fee_name"]?.ToString() ?? string.Empty,
-                row["processing_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["processing_fee"]),
-                row["urgent_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["urgent_fee"]),
-                Convert.ToDecimal(row["base_fee"]),
-                row["valid_from"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["valid_from"]),
-                row["valid_to"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["valid_to"]),
-                DateTime.MinValue,
-                DateTime.MinValue
-            );
+                DataRow row = dt.Rows[0];
+                return new FeeRule(
+                    Convert.ToInt32(row["fee_id"]),
+                    Convert.ToInt32(row["type_id"]),
+                    Convert.ToInt32(row["country_id"]),
+                    row["fee_name"]?.ToString() ?? string.Empty,
+                    row["processing_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["processing_fee"]),
+                    row["urgent_fee"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(row["urgent_fee"]),
+                    Convert.ToDecimal(row["base_fee"]),
+                    row["valid_from"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["valid_from"]),
+                    row["valid_to"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["valid_to"]),
+                    DateTime.MinValue,
+                    DateTime.MinValue
+                );
+            } catch (Exception) {
+                return null;
+            }
         }
 
         private static decimal ApplyUrgencyFee(decimal baseFee, bool isUrgent, FeeRule rule)

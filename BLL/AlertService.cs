@@ -14,99 +14,121 @@ namespace visavault_g43.BLL
     {
         public static List<Document> GetDocumentsbyAlertLevel(string filter)
         {
-            DataTable dt = DocumentDAL.GetCriticalDocuments();
-            List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
+            try {
+                DataTable dt = DocumentDAL.GetCriticalDocuments();
+                List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
 
-            if (String.IsNullOrWhiteSpace(filter) || filter == "All")
-                return alldocuments;
+                if (String.IsNullOrWhiteSpace(filter) || filter == "All")
+                    return alldocuments;
 
-            List<Document> filteredDocuments = new List<Document>();
-            foreach (Document doc in alldocuments)
-            {
-                string level = DocumentService.GetAlertLevel(doc);
-                if (level == filter)
+                List<Document> filteredDocuments = new List<Document>();
+                foreach (Document doc in alldocuments)
                 {
-                    filteredDocuments.Add(doc);
+                    string level = DocumentService.GetAlertLevel(doc);
+                    if (level == filter)
+                    {
+                        filteredDocuments.Add(doc);
+                    }
                 }
+                return filteredDocuments;
+            } catch (Exception) {
+                return new List<Document>();
             }
-            return filteredDocuments;
         }
 
-        public static Dictionary<string, int> GetAlertSummary() // Returns a summary of document counts by alert level
+        public static Dictionary<string, int> GetAlertSummary() 
         {
-            var summary = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) // Initialize summary with all levels to ensure they are present even if count is zero
-            {
-                { "Critical", 0 },
-                { "Warning", 0 },
-                { "Safe", 0 },
-                { "Expired", 0 }
-            };
-
-            DataTable dt = DocumentDAL.GetCriticalDocuments();
-            List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
-            foreach (Document doc in alldocuments)
-            {
-                string level = DocumentService.GetAlertLevel(doc);
-                if (summary.ContainsKey(level)) // Increment count for the alert level if it exists in the summary
+            try {
+                var summary = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
                 {
-                    summary[level]++;
+                    { "Critical", 0 },
+                    { "Warning", 0 },
+                    { "Safe", 0 },
+                    { "Expired", 0 }
+                };
+
+                DataTable dt = DocumentDAL.GetCriticalDocuments();
+                List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
+                foreach (Document doc in alldocuments)
+                {
+                    string level = DocumentService.GetAlertLevel(doc);
+                    if (summary.ContainsKey(level)) 
+                    {
+                        summary[level]++;
+                    }
                 }
+                return summary;
+            } catch (Exception) {
+                return new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+                {
+                    { "Critical", 0 },
+                    { "Warning", 0 },
+                    { "Safe", 0 },
+                    { "Expired", 0 }
+                };
             }
-            return summary;
         }
 
         public static string GetClientAlertLevel(int ClientId)
         {
-            if (ClientId <= 0) return null;
+            try {
+                if (ClientId <= 0) return null;
 
-            DataTable dt = DocumentDAL.GetDocumentsByClient(ClientId);
-            List<Document> clientdocs = MapDataTabletoDocumentsList(dt);
+                DataTable dt = DocumentDAL.GetDocumentsByClient(ClientId);
+                List<Document> clientdocs = MapDataTabletoDocumentsList(dt);
 
-            if (clientdocs.Count == 0) return "None";
-            bool hasCritical = false, hasWarning = false, hasExpired = false, hasSafe = false;
+                if (clientdocs.Count == 0) return "None";
+                bool hasCritical = false, hasWarning = false, hasExpired = false, hasSafe = false;
 
-            foreach (var doc in clientdocs)
-            {
-                string level = DocumentService.GetAlertLevel(doc);
-                switch (level)
+                foreach (var doc in clientdocs)
                 {
-                    case "Critical":
-                        hasCritical = true;
-                        break;
-                    case "Warning":
-                        hasWarning = true;
-                        break;
-                    case "Expired":
-                        hasExpired = true;
-                        break;
-                    case "Safe":
-                        hasSafe = true;
-                        break;
+                    string level = DocumentService.GetAlertLevel(doc);
+                    switch (level)
+                    {
+                        case "Critical":
+                            hasCritical = true;
+                            break;
+                        case "Warning":
+                            hasWarning = true;
+                            break;
+                        case "Expired":
+                            hasExpired = true;
+                            break;
+                        case "Safe":
+                            hasSafe = true;
+                            break;
+                    }
                 }
+
+                if (hasCritical) return "Critical";
+                if (hasWarning) return "Warning";
+                if (hasExpired) return "Expired";
+                if (hasSafe) return "Safe";
+
+                return "None";
+            } catch (Exception) {
+                return "None";
             }
-
-            if (hasCritical) return "Critical";
-            if (hasWarning) return "Warning";
-            if (hasExpired) return "Expired";
-            if (hasSafe) return "Safe";
-
-            return "None";
         }
 
-        public static int GetCriticalDocumentCount() // Returns the count of documents that are currently in the "Critical" alert level
+        public static int GetCriticalDocumentCount() 
         {
-            DataTable dt = DocumentDAL.GetCriticalDocuments();
-            List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
-            int count = 0;
+            try {
+                DataTable dt = DocumentDAL.GetCriticalDocuments();
+                List<Document> alldocuments = MapDataTabletoDocumentsList(dt);
+                int count = 0;
 
-            foreach (var doc in alldocuments)
-            {
-                if (DocumentService.GetAlertLevel(doc) == "Critical")
+                foreach (var doc in alldocuments)
                 {
-                    count++;
+                    if (DocumentService.GetAlertLevel(doc) == "Critical")
+                    {
+                        count++;
+                    }
                 }
+                return count;
+            } catch (Exception) {
+                return 0;
             }
-            return count;
         }
 
         public static int GetOverdueInvoiceCount()
@@ -116,7 +138,6 @@ namespace visavault_g43.BLL
 
         public static int GetActiveCaseCount()
         {
-            // Use the RenewalService which encapsulates DAL access and business rules
             return RenewalService.GetActiveCaseCount();
         }
 

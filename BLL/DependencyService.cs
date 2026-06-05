@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,42 +11,48 @@ namespace visavault_g43.BLL
 {
     public static class DependencyService
     {
-        // Check dependencies for a client and document type
         public static List<DependencyCheckResult> RunDependencyCheck(int clientId, int documentTypeId)
         {
-            var summaryList = new List<DependencyCheckResult>();
-            DataTable dependencyDetails = DependencyDAL.GetRequiredDocumentTypes(documentTypeId);
+            try {
+                var summaryList = new List<DependencyCheckResult>();
+                DataTable dependencyDetails = DependencyDAL.GetRequiredDocumentTypes(documentTypeId);
 
-            foreach (DataRow row in dependencyDetails.Rows)
-            {
-                int reqTypeId = row.Field<int>("documenttype_id");
-                string reqTypeName = row.Field<string>("documenttype_name") ?? string.Empty;
+                foreach (DataRow row in dependencyDetails.Rows)
+                {
+                    int reqTypeId = row.Field<int>("documenttype_id");
+                    string reqTypeName = row.Field<string>("documenttype_name") ?? string.Empty;
 
-                bool exists = DependencyDAL.ClientHasDocument(clientId, reqTypeId);
-                bool isValid = DependencyDAL.ClientHasValidDocument(clientId, reqTypeId);
+                    bool exists = DependencyDAL.ClientHasDocument(clientId, reqTypeId);
+                    bool isValid = DependencyDAL.ClientHasValidDocument(clientId, reqTypeId);
 
-                string statusValue = "Missing";
-                if (exists) statusValue = isValid ? "Ok" : "Expired";
+                    string statusValue = "Missing";
+                    if (exists) statusValue = isValid ? "Ok" : "Expired";
 
-                summaryList.Add(new DependencyCheckResult(reqTypeName, exists, isValid, statusValue));
+                    summaryList.Add(new DependencyCheckResult(reqTypeName, exists, isValid, statusValue));
+                }
+
+                return summaryList;
+            } catch (Exception) {
+                return new List<DependencyCheckResult>();
             }
-
-            return summaryList;
         }
 
-        // Get document dependency pairs for a document type
         public static List<DocumentDependency> GetDependenciesForType(int documentTypeId)
         {
-            DataTable dt = DependencyDAL.GetDependenciesForType(documentTypeId);
-            var dependencies = new List<DocumentDependency>();
+            try {
+                DataTable dt = DependencyDAL.GetDependenciesForType(documentTypeId);
+                var dependencies = new List<DocumentDependency>();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                int requiredId = row.Field<int>("requireddocumenttype_id");
-                dependencies.Add(new DocumentDependency(0, documentTypeId, requiredId));
+                foreach (DataRow row in dt.Rows)
+                {
+                    int requiredId = row.Field<int>("requireddocumenttype_id");
+                    dependencies.Add(new DocumentDependency(0, documentTypeId, requiredId));
+                }
+
+                return dependencies;
+            } catch (Exception) {
+                return new List<DocumentDependency>();
             }
-
-            return dependencies;
         }
     }
 }

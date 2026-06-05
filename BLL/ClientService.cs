@@ -16,84 +16,112 @@ namespace visavault_g43.BLL
         
         public static List<visavault_g43.Models.Client> GetClients()
         {
-            DataTable dt = ClientDAL.GetAllClients(); // DAL returns rows using DB column names
-            return MapDataTableToClients(dt);
+            try {
+                DataTable dt = ClientDAL.GetAllClients(); 
+                return MapDataTableToClients(dt);
+            } catch (Exception) {
+                return new List<visavault_g43.Models.Client>();
+            }
         }
 
         public static List<visavault_g43.Models.Client> SearchClient(string Keyword, string StatusFilter)
         {
-            if (string.IsNullOrWhiteSpace(Keyword)) Keyword = " ";
-            DataTable dt = ClientDAL.SearchClient(Keyword, StatusFilter); // DAL.SearchClient expects (keyword, filterColumn)
-            return MapDataTableToClients(dt);
+            try {
+                if (string.IsNullOrWhiteSpace(Keyword)) Keyword = " ";
+                DataTable dt = ClientDAL.SearchClient(Keyword, StatusFilter); 
+                return MapDataTableToClients(dt);
+            } catch (Exception) {
+                return new List<visavault_g43.Models.Client>();
+            }
         }
 
         public static visavault_g43.Models.Client GetClientbyID(int clientID)
         {
-            if (clientID <= 0) return null;
-            DataTable dt = ClientDAL.GetClientById(clientID); // Assuming ClientDAL has a method to get a client by ID
-            if (dt.Rows.Count == 0) return null;
+            try {
+                if (clientID <= 0) return null;
+                DataTable dt = ClientDAL.GetClientById(clientID); 
+                if (dt.Rows.Count == 0) return null;
 
-            DataRow row = dt.Rows[0];
-            return MapDataRowToClient(row); // Assuming a method to map DataRow to Client object
+                DataRow row = dt.Rows[0];
+                return MapDataRowToClient(row); 
+            } catch (Exception) {
+                return null;
+            }
         }
 
         public static ValidationResult SaveClient(visavault_g43.Models.Client client)
         {
-            if (string.IsNullOrWhiteSpace(client.ClientName))
-                return ValidationResult.Failure("Client name is required.");
-            if (!ValidateCNIC(client.CnicNo))
-                return ValidationResult.Failure("Invalid CNIC number.");
-            if (!ValidatePhone(client.ContactNo))
-                return ValidationResult.Failure("Invalid phone number.");
-            if (!string.IsNullOrWhiteSpace(client.Email) && !ValidateEmail(client.Email))
-                return ValidationResult.Failure("Invalid email address.");
-            if (!IsCNICUnique(client.CnicNo))
-                return ValidationResult.Failure("CNIC number is already in use.");
+            try {
+                if (string.IsNullOrWhiteSpace(client.ClientName))
+                    return ValidationResult.Failure("Client name is required.");
+                if (!ValidateCNIC(client.CnicNo))
+                    return ValidationResult.Failure("Invalid CNIC number.");
+                if (!ValidatePhone(client.ContactNo))
+                    return ValidationResult.Failure("Invalid phone number.");
+                if (!string.IsNullOrWhiteSpace(client.Email) && !ValidateEmail(client.Email))
+                    return ValidationResult.Failure("Invalid email address.");
+                if (!IsCNICUnique(client.CnicNo))
+                    return ValidationResult.Failure("CNIC number is already in use.");
 
-            client.Status = "Active"; // Set default status to Active
+                client.Status = "Active";
 
-            int newID = ClientDAL.InsertClient(client); // DAL.InsertClient returns inserted id per DAL implementation
-            if (newID > 0)
-            {
-                client.ClientId = newID;
-                return ValidationResult.Success();
+                int newID = ClientDAL.InsertClient(client);
+                if (newID > 0)
+                {
+                    client.ClientId = newID;
+                    return ValidationResult.Success();
+                }
+                return ValidationResult.Failure("Failed to save client.");
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
             }
-            return ValidationResult.Failure("Failed to save client.");
         }
 
         public static ValidationResult UpdateClient(visavault_g43.Models.Client client)
         {
-            if (client.ClientId <= 0)
-                return ValidationResult.Failure("Invalid client ID.");
-            if (string.IsNullOrWhiteSpace(client.ClientName))
-                return ValidationResult.Failure("Client name is required.");
-            if (!ValidateCNIC(client.CnicNo))
-                return ValidationResult.Failure("Invalid CNIC number.");
-            if (!ValidatePhone(client.ContactNo))
-                return ValidationResult.Failure("Invalid phone number.");
-            if (!string.IsNullOrWhiteSpace(client.Email) && !ValidateEmail(client.Email))
-                return ValidationResult.Failure("Invalid email address.");
-            if (!IsCNICUnique(client.CnicNo, client.ClientId))
-                return ValidationResult.Failure("CNIC number is already in use by another client.");
-            bool success = ClientDAL.UpdateClient(client); // Assuming ClientDAL has a method to update a client
-            return success ? ValidationResult.Success() : ValidationResult.Failure("Failed to update client.");
+            try {
+                if (client.ClientId <= 0)
+                    return ValidationResult.Failure("Invalid client ID.");
+                if (string.IsNullOrWhiteSpace(client.ClientName))
+                    return ValidationResult.Failure("Client name is required.");
+                if (!ValidateCNIC(client.CnicNo))
+                    return ValidationResult.Failure("Invalid CNIC number.");
+                if (!ValidatePhone(client.ContactNo))
+                    return ValidationResult.Failure("Invalid phone number.");
+                if (!string.IsNullOrWhiteSpace(client.Email) && !ValidateEmail(client.Email))
+                    return ValidationResult.Failure("Invalid email address.");
+                if (!IsCNICUnique(client.CnicNo, client.ClientId))
+                    return ValidationResult.Failure("CNIC number is already in use by another client.");
+                bool success = ClientDAL.UpdateClient(client); 
+                return success ? ValidationResult.Success() : ValidationResult.Failure("Failed to update client.");
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
+            }
         }
 
         public static ValidationResult ChangeClientStatus(int ClientID, string NewStatus)
         {
-            if (ClientID <= 0)
-                return ValidationResult.Failure("Invalid client ID.");
-            if (string.IsNullOrWhiteSpace(NewStatus))
-                return ValidationResult.Failure("Invalid status.");
-            bool success = ClientDAL.UpdateClientStatus(ClientID, NewStatus); // Assuming ClientDAL has a method to change the status of a client
-            if (success)
-                return ValidationResult.Success();
-            return ValidationResult.Failure("Failed to change client status.");
+            try {
+                if (ClientID <= 0)
+                    return ValidationResult.Failure("Invalid client ID.");
+                if (string.IsNullOrWhiteSpace(NewStatus))
+                    return ValidationResult.Failure("Invalid status.");
+                bool success = ClientDAL.UpdateClientStatus(ClientID, NewStatus); 
+                if (success)
+                    return ValidationResult.Success();
+                return ValidationResult.Failure("Failed to change client status.");
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
+            }
         }
 
         public static int GetTotalClients()
         {
-            return ClientDAL.GetTotalClientCount(); // Assuming ClientDAL has a method to get the total number of clients
+            try {
+                return ClientDAL.GetTotalClientCount(); 
+            } catch (Exception) {
+                return 0;
+            }
         }
 
         private static bool ValidateCNIC(string cnic)
@@ -117,11 +145,10 @@ namespace visavault_g43.BLL
 
         private static bool IsCNICUnique(string cnic, int? clientId = null)
         {
-            // DAL.CNICExists returns true if CNIC exists; invert to indicate uniqueness
             return !ClientDAL.CNICExists(cnic, clientId ?? 0);
         }
 
-        private static List<visavault_g43.Models.Client> MapDataTableToClients(DataTable dt) // Assuming a method to map a DataTable to a list of Client objects
+        private static List<visavault_g43.Models.Client> MapDataTableToClients(DataTable dt) 
         {
             List<visavault_g43.Models.Client> clients = new List<visavault_g43.Models.Client>();
             foreach (DataRow row in dt.Rows)
@@ -131,9 +158,8 @@ namespace visavault_g43.BLL
             return clients;
         }
 
-        private static visavault_g43.Models.Client MapDataRowToClient(DataRow row) // Map DB columns (snake_case) to Client model
+        private static visavault_g43.Models.Client MapDataRowToClient(DataRow row) 
         {
-            // Simplified mapping using DataRow.Field<T>() with null/default fallbacks
                 return new Client(
                     Convert.ToInt32(row["client_id"]),
                     row["client_name"]?.ToString() ?? string.Empty,

@@ -13,43 +13,51 @@ namespace visavault_g43.BLL
 
     public class InvoiceService
     {
-        // Returns invoices from the DAL using the DAL method names and maps them to models.
         public static List<Invoice> GetAllInvoices(int clientId = 0, string status = "All")
         {
-            DataTable dt = InvoiceDAL.GetAllInvoices(clientId, status);
-            if (dt == null) return new List<Invoice>();
-            return dt.AsEnumerable().Select(row => MapDataRowToInvoice(row)).ToList();
+            try {
+                DataTable dt = InvoiceDAL.GetAllInvoices(clientId, status);
+                if (dt == null) return new List<Invoice>();
+                return dt.AsEnumerable().Select(row => MapDataRowToInvoice(row)).ToList();
+            } catch (Exception) {
+                return new List<Invoice>();
+            }
         }
 
-        // Returns one invoice and its line items.
         public static Invoice GetInvoiceById(int invoiceId)
         {
-            if (invoiceId <= 0) return null;
-            DataTable dt = InvoiceDAL.GetInvoiceById(invoiceId);
-            if (dt == null || dt.Rows.Count == 0) return null;
+            try {
+                if (invoiceId <= 0) return null;
+                DataTable dt = InvoiceDAL.GetInvoiceById(invoiceId);
+                if (dt == null || dt.Rows.Count == 0) return null;
 
-            Invoice invoice = MapDataRowToInvoice(dt.Rows[0]);
-            invoice.LineItems = GetLineItems(invoiceId);
-            return invoice;
+                Invoice invoice = MapDataRowToInvoice(dt.Rows[0]);
+                invoice.LineItems = GetLineItems(invoiceId);
+                return invoice;
+            } catch (Exception) {
+                return null;
+            }
         }
 
-        // Returns line items for an invoice.
         public static List<InvoiceLineItem> GetLineItems(int invoiceId)
         {
-            DataTable dt = InvoiceDAL.GetLineItems(invoiceId);
-            if (dt == null) return new List<InvoiceLineItem>();
+            try {
+                DataTable dt = InvoiceDAL.GetLineItems(invoiceId);
+                if (dt == null) return new List<InvoiceLineItem>();
 
-            return dt.AsEnumerable().Select(row => new InvoiceLineItem(
-                row.Field<int?>("item_id") ?? 0,
-                row.Field<int?>("invoice_id") ?? 0,
-                row.Field<int?>("fee_id") ?? 0,
-                row.Field<int?>("quantity") ?? 0,
-                row.Field<decimal?>("unit_price") ?? 0m,
-                row.Field<decimal?>("total_price") ?? 0m
-            )).ToList();
+                return dt.AsEnumerable().Select(row => new InvoiceLineItem(
+                    row.Field<int?>("item_id") ?? 0,
+                    row.Field<int?>("invoice_id") ?? 0,
+                    row.Field<int?>("fee_id") ?? 0,
+                    row.Field<int?>("quantity") ?? 0,
+                    row.Field<decimal?>("unit_price") ?? 0m,
+                    row.Field<decimal?>("total_price") ?? 0m
+                )).ToList();
+            } catch (Exception) {
+                return new List<InvoiceLineItem>();
+            }
         }
 
-        // Saves an invoice and its line items.
         public static ValidationResult SaveInvoice(Invoice invoice, List<InvoiceLineItem> lineItems)
         {
             if (invoice == null) return ValidationResult.Failure("Invoice cannot be null.");
@@ -73,96 +81,112 @@ namespace visavault_g43.BLL
             invoice.Status = string.IsNullOrWhiteSpace(invoice.Status) ? "Unpaid" : invoice.Status;
             invoice.Amount = runningTotal;
 
-            if (InvoiceDAL.InsertInvoice(invoice) <= 0) return ValidationResult.Failure("Failed to save invoice.");
-
-            Invoice savedInvoice = GetAllInvoices(invoice.ClientId, invoice.Status)
-                .OrderByDescending(x => x.CreatedAt)
-                .FirstOrDefault(x => x.CaseId == invoice.CaseId && x.ClientId == invoice.ClientId && x.DueDate.Date == invoice.DueDate.Date && x.Amount == invoice.Amount);
-
-            if (savedInvoice == null) return ValidationResult.Failure("Invoice saved, but it could not be reloaded.");
-
-            foreach (InvoiceLineItem item in lineItems)
+            try
             {
-                item.InvoiceID = savedInvoice.InvoiceID;
-                InvoiceDAL.InsertInvoiceLineItem(item);
+                int insertedInvoiceId = InvoiceDAL.InsertInvoiceWithItems(invoice, lineItems);
+                if (insertedInvoiceId <= 0) return ValidationResult.Failure("Failed to save invoice.");
+                return ValidationResult.Success("Invoice saved successfully.");
             }
-
-            return ValidationResult.Success("Invoice saved successfully.");
+            catch (Exception ex)
+            {
+                return ValidationResult.Failure("Database error: " + ex.Message);
+            }
         }
 
-        // Records a payment for an invoice.
         public static ValidationResult RecordPayment(Payment payment)
         {
-            if (payment == null) return ValidationResult.Failure("Payment cannot be null.");
-            if (!payment.AmountPaid.HasValue || payment.AmountPaid.Value <= 0) return ValidationResult.Failure("Payment amount must be greater than zero.");
+            try {
+                if (payment == null) return ValidationResult.Failure("Payment cannot be null.");
+                if (!payment.AmountPaid.HasValue || payment.AmountPaid.Value <= 0) return ValidationResult.Failure("Payment amount must be greater than zero.");
 
-            ValidationResult amountCheck = ValidatePaymentAmount(payment.InvoiceId, payment.AmountPaid.Value);
-            if (!amountCheck.IsValid) return amountCheck;
+                ValidationResult amountCheck = ValidatePaymentAmount(payment.InvoiceId, payment.AmountPaid.Value);
+                if (!amountCheck.IsValid) return amountCheck;
 
-            if (InvoiceDAL.InsertPayment(payment) <= 0) return ValidationResult.Failure("Failed to record payment.");
+                if (InvoiceDAL.InsertPayment(payment) <= 0) return ValidationResult.Failure("Failed to record payment.");
 
-            UpdateInvoiceStatus(payment.InvoiceId);
-            return ValidationResult.Success("Payment recorded successfully.");
+                UpdateInvoiceStatus(payment.InvoiceId);
+                return ValidationResult.Success("Payment recorded successfully.");
+            } catch (Exception ex) {
+                return ValidationResult.Failure("Database error: " + ex.Message);
+            }
         }
 
-        // Recalculates invoice amount from all line items.
         public static decimal ReCalculateTotalFromItems(int invoiceId)
         {
-            List<InvoiceLineItem> items = GetLineItems(invoiceId);
-            decimal total = items.Sum(item => item.TotalPrice > 0 ? item.TotalPrice : item.Amount);
-            InvoiceDAL.UpdateInvoiceTotal(invoiceId, total);
-            UpdateInvoiceStatus(invoiceId);
-            return total;
+            try {
+                List<InvoiceLineItem> items = GetLineItems(invoiceId);
+                decimal total = items.Sum(item => item.TotalPrice > 0 ? item.TotalPrice : item.Amount);
+                InvoiceDAL.UpdateInvoiceTotal(invoiceId, total);
+                UpdateInvoiceStatus(invoiceId);
+                return total;
+            } catch (Exception) {
+                return 0m;
+            }
         }
 
-        // Returns invoice balance.
         public static decimal GetBalance(int invoiceId)
         {
-            Invoice inv = GetInvoiceById(invoiceId);
-            if (inv == null) return 0m;
-            decimal totalPayments = InvoiceDAL.GetTotalPaidAmount(invoiceId);
-            return inv.Amount - totalPayments;
+            try {
+                Invoice inv = GetInvoiceById(invoiceId);
+                if (inv == null) return 0m;
+                decimal totalPayments = InvoiceDAL.GetTotalPaidAmount(invoiceId);
+                return inv.Amount - totalPayments;
+            } catch (Exception) {
+                return 0m;
+            }
         }
 
-        // Updates invoice status based on amount paid and due date.
         public static void UpdateInvoiceStatus(int invoiceId)
         {
-            Invoice inv = GetInvoiceById(invoiceId);
-            if (inv == null || inv.Status == "Cancelled") return;
+            try {
+                Invoice inv = GetInvoiceById(invoiceId);
+                if (inv == null || inv.Status == "Cancelled") return;
 
-            decimal totalPaid = InvoiceDAL.GetTotalPaidAmount(invoiceId);
-            string status = DetermineStatus(inv.Amount, totalPaid, inv.DueDate);
-            InvoiceDAL.UpdateInvoiceStatus(invoiceId, status);
+                decimal totalPaid = InvoiceDAL.GetTotalPaidAmount(invoiceId);
+                string status = DetermineStatus(inv.Amount, totalPaid, inv.DueDate);
+                InvoiceDAL.UpdateInvoiceStatus(invoiceId, status);
+            } catch (Exception) {
+                // Ignore failure
+            }
         }
 
-        // Returns true if the invoice is overdue.
         public static bool IsOverdue(Invoice invoice)
         {
-            if (invoice == null) return false;
-            decimal totalPaid = InvoiceDAL.GetTotalPaidAmount(invoice.InvoiceID);
-            return DateTime.Today > invoice.DueDate.Date && totalPaid < invoice.Amount;
+            try {
+                if (invoice == null) return false;
+                decimal totalPaid = InvoiceDAL.GetTotalPaidAmount(invoice.InvoiceID);
+                return DateTime.Today > invoice.DueDate.Date && totalPaid < invoice.Amount;
+            } catch (Exception) {
+                return false;
+            }
         }
 
-        // Returns all payments for an invoice.
         public static List<Payment> GetPaymentsForInvoice(int invoiceId)
         {
-            DataTable dt = InvoiceDAL.GetPaymentsForInvoice(invoiceId);
-            if (dt == null) return new List<Payment>();
+            try {
+                DataTable dt = InvoiceDAL.GetPaymentsForInvoice(invoiceId);
+                if (dt == null) return new List<Payment>();
 
-            return dt.AsEnumerable().Select(row => new Payment(
-                row.Field<int?>("payment_id") ?? 0,
-                row.Field<int?>("invoice_id") ?? 0,
-                row.Field<decimal?>("amount_paid") ?? 0m,
-                string.Empty,
-                row.Field<DateTime?>("payment_date") ?? DateTime.MinValue,
-                row.Field<string>("payment_method") ?? string.Empty,
-                row.Field<int?>("user_id") ?? 0
-            )).ToList();
+                return dt.AsEnumerable().Select(row => new Payment(
+                    row.Field<int?>("payment_id") ?? 0,
+                    row.Field<int?>("invoice_id") ?? 0,
+                    row.Field<decimal?>("amount_paid") ?? 0m,
+                    row.Field<DateTime?>("payment_date") ?? DateTime.MinValue,
+                    row.Field<string>("payment_method") ?? string.Empty,
+                    row.Field<int?>("user_id") ?? 0
+                )).ToList();
+            } catch (Exception) {
+                return new List<Payment>();
+            }
         }
 
         public static int GetInvoiceCount(int clientId = 0, string status = "All")
         {
-            return GetAllInvoices(clientId, status).Count;
+            try {
+                return InvoiceDAL.GetInvoiceCount(clientId, status);    
+            } catch (Exception) {
+                return 0;
+            }
         }
 
         private static string DetermineStatus(decimal totalAmount, decimal totalPaid, DateTime dueDate)
