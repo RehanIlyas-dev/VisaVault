@@ -27,7 +27,7 @@ namespace visavault_g43.BLL
         public static List<visavault_g43.Models.Client> SearchClient(string Keyword, string StatusFilter)
         {
             try {
-                if (string.IsNullOrWhiteSpace(Keyword)) Keyword = " ";
+                if (string.IsNullOrWhiteSpace(Keyword)) Keyword = "";
                 DataTable dt = ClientDAL.SearchClient(Keyword, StatusFilter); 
                 return MapDataTableToClients(dt);
             } catch (Exception) {
@@ -63,7 +63,7 @@ namespace visavault_g43.BLL
                 if (!IsCNICUnique(client.CnicNo))
                     return ValidationResult.Failure("CNIC number is already in use.");
 
-                client.Status = "Active";
+                client.Status = "active";
 
                 int newID = ClientDAL.InsertClient(client);
                 if (newID > 0)

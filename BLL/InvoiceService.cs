@@ -103,8 +103,6 @@ namespace visavault_g43.BLL
                 if (!amountCheck.IsValid) return amountCheck;
 
                 if (InvoiceDAL.InsertPayment(payment) <= 0) return ValidationResult.Failure("Failed to record payment.");
-
-                UpdateInvoiceStatus(payment.InvoiceId);
                 return ValidationResult.Success("Payment recorded successfully.");
             } catch (Exception ex) {
                 return ValidationResult.Failure("Database error: " + ex.Message);
@@ -146,7 +144,6 @@ namespace visavault_g43.BLL
                 string status = DetermineStatus(inv.Amount, totalPaid, inv.DueDate);
                 InvoiceDAL.UpdateInvoiceStatus(invoiceId, status);
             } catch (Exception) {
-                // Ignore failure
             }
         }
 

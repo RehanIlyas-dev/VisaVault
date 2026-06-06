@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace visavault_g43.BLL
                 List<DeadlineRow> GridData = new List<DeadlineRow>();
                 DataTable DocumentTable = FilterClientId > 0
                     ? DocumentDAL.GetDocumentsByClient(FilterClientId)
-                    : DocumentDAL.GetCriticalDocuments();
+                    : DocumentDAL.GetAllDocuments();
 
                 foreach(DataRow row in DocumentTable.Rows)
                 {

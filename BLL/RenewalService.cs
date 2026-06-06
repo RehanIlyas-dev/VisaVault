@@ -67,13 +67,8 @@ namespace visavault_g43.BLL
                 if (!IsOpen(current)) return ValidationResult.Failure("Case is not open.");
                 if (!IsValidStage(newStageId)) return ValidationResult.Failure("Invalid target stage.");
 
-                int rows = RenewalDAL.UpdateCaseStage(caseId, newStageId, changedByUserId);
-                if (rows > 0)
-                {
-                    RenewalDAL.InsertStageLog(caseId, newStageId, changedByUserId, remarks ?? string.Empty);
-                    return ValidationResult.Success("Case advanced successfully.");
-                }
-                return ValidationResult.Failure("Failed to advance case.");
+                RenewalDAL.AdvanceCaseStage(caseId, changedByUserId, remarks ?? string.Empty);
+                return ValidationResult.Success("Case advanced successfully.");
             } catch (Exception ex) {
                 return ValidationResult.Failure("Database error: " + ex.Message);
             }
@@ -103,10 +98,10 @@ namespace visavault_g43.BLL
                 if (dt == null) return list;
                 return dt.AsEnumerable().Select(row => new RenewalStageLog(
                     row.Field<int?>("log_id") ?? 0,
-                    row.Field<int?>("changed_by_user_id") ?? 0,
+                    row.Field<int?>("user_id") ?? 0,
                     row.Field<int?>("renewalcase_id") ?? 0,
-                    row.Field<int?>("stage_id") ?? 0,
-                    row.Field<DateTime?>("log_date") ?? DateTime.MinValue,
+                    row.Field<int?>("currentstage_id") ?? 0,
+                    row.Field<DateTime?>("updated_at") ?? DateTime.MinValue,
                     row.Field<string>("remarks") ?? string.Empty
                 )).ToList();
             } catch (Exception) {

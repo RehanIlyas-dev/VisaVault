@@ -9,7 +9,6 @@ namespace visavault_g43.BLL
 {
     public static class AuthService
     {
-        // Static Cache Lists for Application Performance Optimization
         public static List<Country> CachedCountries { get; private set; } = new List<Country>();
         public static List<DocumentType> CachedDocumentTypes { get; private set; } = new List<DocumentType>();
         public static List<RenewalStage> CachedStages { get; private set; } = new List<RenewalStage>();
@@ -75,7 +74,7 @@ namespace visavault_g43.BLL
                     UserId = Convert.ToInt32(row["user_id"]),
                     Email = row["email"].ToString(),
                     Status = row["status"].ToString(),
-                    FullName = row["full_name"].ToString(),
+                    FullName = row.Table.Columns.Contains("username") ? row["username"].ToString() : string.Empty,
                     LastLogin = row["last_login"] != DBNull.Value ? Convert.ToDateTime(row["last_login"]) : (DateTime?)null
                 };
             } catch (Exception) {

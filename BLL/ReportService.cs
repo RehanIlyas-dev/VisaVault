@@ -10,7 +10,6 @@ namespace visavault_g43.BLL
     public static class ReportService
     {
         private static Database db = new Database();
-        // Client Registry Report
         public static void GenerateClientRegistryReport(string destPath, string statusFilter, int countryId = 0)
         {
             string countryName = "All Countries";
@@ -42,24 +41,19 @@ namespace visavault_g43.BLL
         public static void GenerateActiveRenewalsReport(string destPath, int stageId = 0)
         {
             string stageName = "All Stages";
-            string query = "SELECT rc.renewalcase_id, c.client_name, dt.documenttype_name, rs.stage_name, u.username, rc.created_at " +
-                           "FROM renewalcase rc " +
-                           "JOIN client c ON rc.client_id = c.client_id " +
-                           "JOIN document d ON rc.document_id = d.document_id " +
-                           "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
-                           "JOIN renewalstage rs ON rc.currentstage_id = rs.stage_id " +
-                           "JOIN user u ON rc.user_id = u.user_id WHERE 1=1";
+            string query = "SELECT v.renewalcase_id, v.client_name, v.documenttype_name, v.current_stage AS stage_name, v.assigned_user AS username, v.created_at " +
+                           "FROM vw_active_renewals v JOIN renewalstage rs ON v.current_stage = rs.stage_name WHERE 1=1";
             var paramsList = new System.Collections.Generic.List<MySqlParameter>();
 
             if (stageId > 0)
             {
-                query += " AND rc.currentstage_id = @stageId";
+                query += " AND rs.stage_id = @stageId";
                 paramsList.Add(new MySqlParameter("@stageId", stageId));
 
                 DataTable sDt = db.ExecuteQuery("SELECT stage_name FROM renewalstage WHERE stage_id = @id", new[] { new MySqlParameter("@id", stageId) });
                 if (sDt.Rows.Count > 0) stageName = sDt.Rows[0]["stage_name"].ToString();
             }
-            query += " ORDER BY rc.renewalcase_id DESC;";
+            query += " ORDER BY v.renewalcase_id DESC;";
 
             DataTable dt = db.ExecuteQuery(query, paramsList.ToArray());
             string subtitle = $"Stage Filter: {stageName}";
@@ -69,13 +63,21 @@ namespace visavault_g43.BLL
 
         public static void GenerateExpiringDocumentsReport(string destPath, int nextDays = 90)
         {
-            string query = "SELECT d.document_id, d.document_no, dt.documenttype_name, c.client_name, d.expiry_date, DATEDIFF(d.expiry_date, CURDATE()) AS days_left " +
-                           "FROM document d " +
-                           "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
-                           "JOIN client c ON d.client_id = c.client_id " +
-                           "WHERE d.expiry_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL @days DAY) " +
-                           "ORDER BY d.expiry_date ASC;";
-            DataTable dt = db.ExecuteQuery(query, new[] { new MySqlParameter("@days", nextDays) });
+            DataTable dt;
+            if (nextDays == 90)
+            {
+                dt = db.ExecuteQuery("SELECT document_id, document_no, documenttype_name, client_name, expiry_date, days_until_expiry AS days_left FROM vw_expiring_documents ORDER BY expiry_date ASC;");
+            }
+            else
+            {
+                string query = "SELECT d.document_id, d.document_no, dt.documenttype_name, c.client_name, d.expiry_date, DATEDIFF(d.expiry_date, CURDATE()) AS days_left " +
+                               "FROM document d " +
+                               "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
+                               "JOIN client c ON d.client_id = c.client_id " +
+                               "WHERE d.expiry_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL @days DAY) " +
+                               "ORDER BY d.expiry_date ASC;";
+                dt = db.ExecuteQuery(query, new[] { new MySqlParameter("@days", nextDays) });
+            }
             string subtitle = $"Documents Expiring in the Next {nextDays} Days";
             string[] headers = { "Doc ID", "Document No", "Type", "Client Name", "Expiry Date", "Days Remaining" };
             GenerateReportPdf("Expiring Client Documents Report", headers, dt, destPath, subtitle);
@@ -83,44 +85,17 @@ namespace visavault_g43.BLL
 
         public static void GenerateAccountsReceivableReport(string destPath, string statusFilter = "All")
         {
-            string query = "SELECT i.invoice_id, c.client_name, i.due_date, i.amount, i.status, " +
-                           "COALESCE((SELECT SUM(p.amount_paid) FROM payment p WHERE p.invoice_id = i.invoice_id), 0) AS total_paid " +
-                           "FROM invoice i JOIN client c ON i.client_id = c.client_id WHERE 1=1";
+            string query = "SELECT invoice_id, client_name, due_date, total_amount AS amount, status, total_paid, balance_due FROM vw_invoice_summary WHERE 1=1";
             var paramsList = new System.Collections.Generic.List<MySqlParameter>();
 
             if (statusFilter != "All" && !string.IsNullOrEmpty(statusFilter))
             {
-                query += " AND i.status = @status";
+                query += " AND status = @status";
                 paramsList.Add(new MySqlParameter("@status", statusFilter));
             }
-            query += " ORDER BY i.due_date ASC;";
+            query += " ORDER BY due_date ASC;";
 
-            DataTable srcDt = db.ExecuteQuery(query, paramsList.ToArray());
-            
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Invoice ID");
-            dt.Columns.Add("Client Name");
-            dt.Columns.Add("Due Date");
-            dt.Columns.Add("Total Amount");
-            dt.Columns.Add("Total Paid");
-            dt.Columns.Add("Balance Due");
-            dt.Columns.Add("Status");
-
-            foreach (DataRow row in srcDt.Rows)
-            {
-                decimal amount = Convert.ToDecimal(row["amount"]);
-                decimal paid = Convert.ToDecimal(row["total_paid"]);
-                decimal balance = amount - paid;
-                dt.Rows.Add(
-                    row["invoice_id"],
-                    row["client_name"],
-                    Convert.ToDateTime(row["due_date"]).ToString("yyyy-MM-dd"),
-                    amount.ToString("F2"),
-                    paid.ToString("F2"),
-                    balance.ToString("F2"),
-                    row["status"]
-                );
-            }
+            DataTable dt = db.ExecuteQuery(query, paramsList.ToArray());
 
             string subtitle = $"Status Filter: {statusFilter}";
             string[] headers = { "Inv ID", "Client Name", "Due Date", "Total Amount", "Total Paid", "Balance Due", "Status" };
@@ -162,21 +137,18 @@ namespace visavault_g43.BLL
         public static void GenerateFeeRatesReport(string destPath, int countryId = 0)
         {
             string countryName = "All Countries";
-            string query = "SELECT fr.fee_id, dt.documenttype_name, co.country_name, fr.fee_name, fr.base_fee, fr.urgent_fee, fr.processing_fee " +
-                           "FROM feerule fr " +
-                           "JOIN documenttype dt ON fr.type_id = dt.documenttype_id " +
-                           "JOIN country co ON fr.country_id = co.country_id WHERE 1=1";
+            string query = "SELECT fee_id, documenttype_name, country_name, fee_name, base_fee, urgent_fee, processing_fee FROM vw_fee_rules_summary WHERE 1=1";
             var paramsList = new System.Collections.Generic.List<MySqlParameter>();
 
             if (countryId > 0)
             {
-                query += " AND fr.country_id = @countryId";
-                paramsList.Add(new MySqlParameter("@countryId", countryId));
+                query += " AND country_name = @countryName";
 
                 DataTable cDt = db.ExecuteQuery("SELECT country_name FROM country WHERE country_id = @id", new[] { new MySqlParameter("@id", countryId) });
                 if (cDt.Rows.Count > 0) countryName = cDt.Rows[0]["country_name"].ToString();
+                paramsList.Add(new MySqlParameter("@countryName", countryName));
             }
-            query += " ORDER BY co.country_name, dt.documenttype_name;";
+            query += " ORDER BY country_name, documenttype_name;";
 
             DataTable dt = db.ExecuteQuery(query, paramsList.ToArray());
             string subtitle = $"Country Filter: {countryName}";
@@ -227,8 +199,6 @@ namespace visavault_g43.BLL
             string[] headers = { "Log ID", "Stage Name", "Updated By", "Remarks / Activity", "Timestamp" };
             GenerateReportPdf("Case Timeline Audit Report", headers, dt, destPath, subtitle);
         }
-
-        // Helper PDF Writer
         private static void GenerateReportPdf(string title, string[] headers, DataTable data, string destPath, string subtitle = "")
         {
             Document doc = new Document(PageSize.A4, 36f, 36f, 54f, 54f);

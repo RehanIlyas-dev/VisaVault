@@ -14,9 +14,9 @@ namespace visavault_g43.BLL
         public static List<Document> GetDocumentsbyClientId(int clientId)
         {
             try {
-                if(clientId <= 0)
-                   return new List<Document>(); 
-                DataTable dt = DocumentDAL.GetDocumentsByClient(clientId);
+                DataTable dt = clientId > 0
+                    ? DocumentDAL.GetDocumentsByClient(clientId)
+                    : DocumentDAL.GetAllDocuments();
                 return MapDataTabletoDocumentList(dt);
             } catch (Exception) {
                 return new List<Document>();
@@ -39,7 +39,7 @@ namespace visavault_g43.BLL
             try {
                 if (String.IsNullOrWhiteSpace(document.DocumentNo))
                     return ValidationResult.Failure("Document number cannot be empty.");
-                if (document.TypeID < 0)
+                if (document.TypeID <= 0)
                     return ValidationResult.Failure("Invalid document type ID.");
                 if (document.ClientId <= 0)
                     return ValidationResult.Failure("Invalid client ID.");
@@ -64,7 +64,7 @@ namespace visavault_g43.BLL
                     return ValidationResult.Failure("Invalid document ID.");
                 if (String.IsNullOrWhiteSpace(document.DocumentNo))
                     return ValidationResult.Failure("Document number cannot be empty.");
-                if (document.TypeID < 0)
+                if (document.TypeID <= 0)
                     return ValidationResult.Failure("Invalid document type ID.");
                 if (document.ClientId <= 0)
                     return ValidationResult.Failure("Invalid client ID.");

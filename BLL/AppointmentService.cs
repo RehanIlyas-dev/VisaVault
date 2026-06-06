@@ -42,7 +42,7 @@ namespace visavault_g43.BLL
                 if(appointment.UserId <= 0)
                     return ValidationResult.Failure("Valid user ID is required.");
 
-                appointment.Status = "Booked"; 
+                appointment.Status = "scheduled"; 
                 int rows = AppointmentDAL.InsertAppointment(appointment);
                 if (rows > 0)
                 {
@@ -59,17 +59,17 @@ namespace visavault_g43.BLL
         
         public static ValidationResult MarkComplete(int appointmentId)
         {
-            return ChangeStatus(appointmentId, "Completed");
+            return ChangeStatus(appointmentId, "complete");
         }
 
         public static ValidationResult MarkUnAttended(int appointmentId)
         {
-            return ChangeStatus(appointmentId, "Unattended");
+            return ChangeStatus(appointmentId, "unattended");
         }
 
         public static ValidationResult CancelAppointment(int appointmentId)
         {
-            return ChangeStatus(appointmentId, "Cancelled");
+            return ChangeStatus(appointmentId, "cancelled");
         }
 
         public static bool isToday(Appointment appointment)
