@@ -43,8 +43,8 @@ namespace visavault_g43.DLL
         }
         public static DataTable GetLineItems(int invoiceId)
         {
-            string query = "SELECT ii.item_id, ii.invoice_id, ii.fee_id, f.fee_name, ii.quantity, ii.unit_price, ii.total_price" +
-                " FROM invoice_item ii JOIN feerule f ON ii.fee_id = f.fee_id WHERE ii.invoice_id = @InvoiceId;";
+            string query = "SELECT ii.item_id, ii.invoice_id, ii.fee_id, f.fee_name, 1 AS quantity, ii.amount AS unit_price, ii.amount AS total_price" +
+                " FROM invoicelineitem ii JOIN feerule f ON ii.fee_id = f.fee_id WHERE ii.invoice_id = @InvoiceId;";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
@@ -65,14 +65,12 @@ namespace visavault_g43.DLL
                     cmd1.Parameters.Add(new MySqlParameter("@Amount", invoice.Amount));
                     newInvoiceId = Convert.ToInt32(cmd1.ExecuteScalar());
                 }
-                string q2 = "INSERT INTO invoicelineitem (invoice_id, fee_id, quantity, unit_price, total_price) VALUES (@InvoiceId, @FeeId, @Quantity, @UnitPrice, @TotalPrice);";
+                string q2 = "INSERT INTO invoicelineitem (invoice_id, fee_id, amount) VALUES (@InvoiceId, @FeeId, @Amount);";
                 foreach (var item in lineItems) {
                     using (MySqlCommand cmd2 = new MySqlCommand(q2, conn, tx)) {
                         cmd2.Parameters.Add(new MySqlParameter("@InvoiceId", newInvoiceId));
                         cmd2.Parameters.Add(new MySqlParameter("@FeeId", item.FeeId));
-                        cmd2.Parameters.Add(new MySqlParameter("@Quantity", item.Quantity));
-                        cmd2.Parameters.Add(new MySqlParameter("@UnitPrice", item.UnitPrice));
-                        cmd2.Parameters.Add(new MySqlParameter("@TotalPrice", item.TotalPrice));
+                        cmd2.Parameters.Add(new MySqlParameter("@Amount", item.TotalPrice > 0 ? item.TotalPrice : item.Amount));
                         cmd2.ExecuteNonQuery();
                     }
                 }
@@ -97,16 +95,14 @@ namespace visavault_g43.DLL
         }
         public static int InsertInvoiceLineItem(InvoiceLineItem lineItem)
         {
-            string query = "INSERT INTO invoicelineitem (invoice_id, fee_id, quantity, unit_price, total_price) " +
-                "VALUES (@InvoiceId, @FeeId, @Quantity, @UnitPrice, @TotalPrice);";
+            string query = "INSERT INTO invoicelineitem (invoice_id, fee_id, amount) " +
+                "VALUES (@InvoiceId, @FeeId, @Amount);";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
         new MySqlParameter("@InvoiceId", lineItem.InvoiceID),
         new MySqlParameter("@FeeId", lineItem.FeeId),
-        new MySqlParameter("@Quantity", lineItem.Quantity),
-        new MySqlParameter("@UnitPrice", lineItem.UnitPrice),
-        new MySqlParameter("@TotalPrice", lineItem.TotalPrice)
+        new MySqlParameter("@Amount", lineItem.TotalPrice > 0 ? lineItem.TotalPrice : lineItem.Amount)
             };
             return db.ExecuteNonQuery(query, parameters);
         }
@@ -122,16 +118,13 @@ namespace visavault_g43.DLL
         }
         public static int InsertPayment(Payment payment)
         {
-            
-            string query = "INSERT INTO payment (invoice_id, amount_paid, payment_method, payment_date, user_id) " +
-                "VALUES (@InvoiceId, @AmountPaid, @PaymentMethod, @PaymentDate, @UserId);";
+            string query = "CALL sp_RecordPayment(@InvoiceId, @AmountPaid, @PaymentMethod, @UserId);";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
         new MySqlParameter("@InvoiceId", payment.InvoiceId),
         new MySqlParameter("@AmountPaid", payment.AmountPaid),
         new MySqlParameter("@PaymentMethod", payment.PaymentMethod),
-        new MySqlParameter("@PaymentDate", payment.PaymentDate),
         new MySqlParameter("@UserId", payment.UserId)
             };
 

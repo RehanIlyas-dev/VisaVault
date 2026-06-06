@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +15,6 @@ namespace visavault_g43.Models
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
         public bool IsActive { get; set; }
-
-        // Parameterless constructor to allow property-based initialization
         public FeeBreakdown()
         {
             BaseFee = 0m;

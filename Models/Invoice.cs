@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +17,6 @@ namespace visavault_g43.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public decimal Amount { get; set; }
-
-        // Parameterless ctor for object initializers used in services
         public Invoice()
         {
             LineItems = new List<InvoiceLineItem>();

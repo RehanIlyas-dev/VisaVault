@@ -55,7 +55,7 @@ namespace visavault_g43.DLL
             string query = "UPDATE appointment SET status = @Status WHERE appointment_id = @AppointmentId";
             MySqlParameter[] parameters = new MySqlParameter[]
             {
-                new MySqlParameter("@Status", status),
+                new MySqlParameter("@Status", status.ToLowerInvariant()),
                 new MySqlParameter("@AppointmentId", appointmentId)
             };
             return new Database().ExecuteNonQuery(query, parameters);

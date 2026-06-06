@@ -18,7 +18,7 @@ namespace visavault_g43.DLL
         {
             string query =
                 "SELECT d.document_id, d.client_id, c.client_name, d.document_no, d.type_id, " +
-                "dt.documenttype_name, d.issue_date, d.expiry_date " +
+                "dt.documenttype_name, d.issue_date, d.expiry_date, d.processing_days, d.buffer_days " +
                 "FROM document d " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
                 "JOIN client c ON c.client_id = d.client_id " +
@@ -31,15 +31,28 @@ namespace visavault_g43.DLL
             return db.ExecuteQuery(query, parameters);
         }
 
+        public static DataTable GetAllDocuments()
+        {
+            string query =
+                "SELECT d.document_id, d.client_id, c.client_name, d.document_no, d.type_id, " +
+                "dt.documenttype_name, d.issue_date, d.expiry_date, d.processing_days, d.buffer_days " +
+                "FROM document d " +
+                "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
+                "JOIN client c ON c.client_id = d.client_id " +
+                "ORDER BY c.client_name, d.expiry_date ASC;";
+
+            return db.ExecuteQuery(query);
+        }
+
         public static DataTable SearchDocuments(int clientId, string keyword)
         {
             string query =
                 "SELECT d.document_id, c.client_id, c.client_name, d.document_no, " +
-                "d.type_id, dt.documenttype_name, d.expiry_date, d.issue_date " +
+                "d.type_id, dt.documenttype_name, d.expiry_date, d.issue_date, d.processing_days, d.buffer_days " +
                 "FROM document d " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
                 "JOIN client c ON c.client_id = d.client_id " +
-                "WHERE c.client_id = @ClientId " +
+                "WHERE (@ClientId = 0 OR c.client_id = @ClientId) " +
                 "AND (d.document_no LIKE @Keyword OR dt.documenttype_name LIKE @Keyword);";
 
             MySqlParameter[] parameters = new MySqlParameter[]
@@ -101,7 +114,7 @@ namespace visavault_g43.DLL
         {
             string query =
                 "SELECT d.document_id, c.client_id, c.client_name, d.document_no, d.type_id, " +
-                "dt.documenttype_name, d.expiry_date, d.issue_date " +
+                "dt.documenttype_name, d.expiry_date, d.issue_date, d.processing_days, d.buffer_days " +
                 "FROM document d " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
                 "JOIN client c ON c.client_id = d.client_id " +
@@ -135,16 +148,11 @@ namespace visavault_g43.DLL
             int result = Convert.ToInt32(db.ExecuteScalar(query, parameters));
             return result > 0;
         }
-
-        // FIX: Removed d.processing_days and d.buffer_days — these columns do NOT exist
-        // in the document table. Instead, fetch all documents expiring within 45 days
-        // (a safe upper bound). The BLL's GetAlertLevel() then classifies each one
-        // as Critical / Warning / Safe using the feerule processing days.
         public static DataTable GetCriticalDocuments()
         {
             string query =
                 "SELECT d.document_id, d.client_id, c.client_name, d.document_no, d.type_id, " +
-                "dt.documenttype_name, d.issue_date, d.expiry_date " +
+                "dt.documenttype_name, d.issue_date, d.expiry_date, d.processing_days, d.buffer_days " +
                 "FROM document d " +
                 "JOIN documenttype dt ON d.type_id = dt.documenttype_id " +
                 "JOIN client c ON c.client_id = d.client_id " +

@@ -67,9 +67,21 @@ namespace visavault_g43.DLL
             };
             return db.ExecuteNonQuery(query, parameters);
         }
+        public static int AdvanceCaseStage(int caseId, int changedByUserId, string remarks)
+        {
+            string query = "CALL sp_AdvanceRenewalStage(@CaseId, @UserId, @Remarks);";
+
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+        new MySqlParameter("@CaseId", caseId),
+        new MySqlParameter("@UserId", changedByUserId),
+        new MySqlParameter("@Remarks", remarks)
+            };
+            return db.ExecuteNonQuery(query, parameters);
+        }
         public static int InsertStageLog(int caseId, int stageId, int changedByUserId, string remarks)
         {
-            string query = "INSERT INTO renewalstagelog (renewalcase_id, stage_id, user_id, remarks) VALUES (@CaseId, @StageId, @UserId, @Remarks);";
+            string query = "INSERT INTO renewalstagelog (renewalcase_id, currentstage_id, user_id, remarks) VALUES (@CaseId, @StageId, @UserId, @Remarks);";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
@@ -87,9 +99,9 @@ namespace visavault_g43.DLL
         }
         public static DataTable GetStageLog(int caseId)
         {
-            string query = "SELECT rsl.log_id, rsl.renewalcase_id, rsl.stage_id, rs.stage_name, rs.stage_no, rsl.user_id, " +
-                "rsl.remarks, rsl.changed_at FROM renewalstagelog rsl JOIN renewalstage rs ON rsl.stage_id = rs.stage_id " +
-                "WHERE rsl.renewalcase_id = @CaseId ORDER BY rsl.changed_at DESC;";
+            string query = "SELECT rsl.log_id, rsl.renewalcase_id, rsl.currentstage_id, rs.stage_name, rs.stage_no, rsl.user_id, " +
+                "rsl.remarks, rsl.updated_at FROM renewalstagelog rsl JOIN renewalstage rs ON rsl.currentstage_id = rs.stage_id " +
+                "WHERE rsl.renewalcase_id = @CaseId ORDER BY rsl.updated_at DESC;";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {

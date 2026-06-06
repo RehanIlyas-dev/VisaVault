@@ -12,7 +12,7 @@ namespace visavault_g43.DLL
 
         public static DataTable GetAllClients()
         {
-            string query = "SELECT * FROM client WHERE status = 'Active';";
+            string query = "SELECT * FROM client WHERE status = 'active';";
             return db.ExecuteQuery(query);
         }
         public static DataTable SearchClient(string keyword, string statusFilter)
@@ -89,7 +89,7 @@ namespace visavault_g43.DLL
         {
             string query = "UPDATE client SET status=@s WHERE client_id=@id;";
             MySqlParameter[] parameters = {
-                new MySqlParameter("@s", newStatus),
+                new MySqlParameter("@s", newStatus.ToLowerInvariant()),
                 new MySqlParameter("@id", clientId)
             };
             int rowsAffected = db.ExecuteNonQuery(query, parameters);
