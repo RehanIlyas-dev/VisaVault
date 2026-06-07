@@ -44,7 +44,7 @@ namespace visavault_g43.DLL
         public static int InsertCase(int clientId, int documentId, int currentStageId, int openedByUserId)
         {
             string query = "INSERT INTO renewalcase (client_id, document_id, currentstage_id, user_id) " +
-                "VALUES (@ClientId, @DocumentId, @CurrentStageId, @UserId);";
+                "VALUES (@ClientId, @DocumentId, @CurrentStageId, @UserId); SELECT LAST_INSERT_ID();";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {
@@ -53,7 +53,7 @@ namespace visavault_g43.DLL
         new MySqlParameter("@CurrentStageId", currentStageId),
         new MySqlParameter("@UserId", openedByUserId)
             };
-            return db.ExecuteNonQuery(query, parameters);
+            return Convert.ToInt32(db.ExecuteScalar(query, parameters));
         }
         public static int UpdateCaseStage(int caseId, int newStageId, int changedByUserId)
         {

@@ -137,15 +137,13 @@ namespace visavault_g43.BLL
         {
             try {
                 if (rc == null) return false;
-                var stages = RenewalDAL.GetAllStages();
-                if (stages == null) return true;
-                foreach (DataRow row in stages.Rows)
+                foreach (var stage in AuthService.CachedStages)
                 {
-                    if (row.Table.Columns.Contains("stage_id") && row["stage_id"] != DBNull.Value && Convert.ToInt32(row["stage_id"]) == rc.CurrentStageId)
+                    if (stage.StageId == rc.CurrentStageId)
                     {
-                        if (row.Table.Columns.Contains("is_terminal") && row["is_terminal"] != DBNull.Value)
-                            return !Convert.ToBoolean(row["is_terminal"]);
-                        return true;
+                        string name = stage.StageName ?? string.Empty;
+                        return !name.Equals("Completed", StringComparison.OrdinalIgnoreCase)
+                            && !name.Equals("Rejected", StringComparison.OrdinalIgnoreCase);
                     }
                 }
                 return true;

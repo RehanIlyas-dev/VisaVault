@@ -15,6 +15,7 @@ namespace visavault_g43.Models
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
+        public string FeeName { get; set; }
         public InvoiceLineItem()
         {
         }

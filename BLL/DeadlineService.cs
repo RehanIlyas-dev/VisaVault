@@ -30,9 +30,8 @@ namespace visavault_g43.BLL
                     DateTime actionDate = CalculateActionDate(doc);
                     int daysLeft = DaysToAction(doc);
                     string alertLevel = GetAlertLevel(daysLeft);
-                    int processingDays = GetEffectiveProcDays(doc);
 
-                    GridData.Add(new DeadlineRow(clientName, typeName, doc.ExpiryDate, actionDate, daysLeft, alertLevel, processingDays));
+                    GridData.Add(new DeadlineRow(clientName, typeName, doc.ExpiryDate, actionDate, daysLeft, alertLevel, doc.ProcessingDays, doc.BufferDays));
                 }
                 return GridData;
             } catch (Exception) {
@@ -42,8 +41,8 @@ namespace visavault_g43.BLL
 
         public static DateTime CalculateActionDate(Document document)
         {
-            int ProcessingDays = GetEffectiveProcDays(document);
-            return document.ExpiryDate.AddDays(-ProcessingDays);
+            int processingDays = document.ProcessingDays > 0 ? document.ProcessingDays : DefaultProceedingDays;
+            return document.ExpiryDate.AddDays(-processingDays);
         }
         public static int DaysToAction(Document document)
         {
@@ -80,7 +79,7 @@ namespace visavault_g43.BLL
 
         private static Document MapDocument(DataRow row, int clientIdOverride = 0)
         {
-            return new Document(
+            var doc = new Document(
                 GetInt(row, "document_id"),
                 GetString(row, "document_no"),
                 GetDate(row, "issue_date"),
@@ -88,6 +87,11 @@ namespace visavault_g43.BLL
                 GetInt(row, "type_id"),
                 clientIdOverride > 0 ? clientIdOverride : GetInt(row, "client_id")
             );
+            int procDays = GetInt(row, "processing_days", DefaultProceedingDays);
+            int bufferDays = GetInt(row, "buffer_days", DefaultBufferDays);
+            doc.ProcessingDays = procDays > 0 ? procDays : DefaultProceedingDays;
+            doc.BufferDays = bufferDays > 0 ? bufferDays : DefaultBufferDays;
+            return doc;
         }
 
         private static int GetInt(DataRow row, string columnName, int defaultValue = 0)
@@ -103,11 +107,6 @@ namespace visavault_g43.BLL
         private static DateTime GetDate(DataRow row, string columnName)
         {
             return row.Table.Columns.Contains(columnName) && row[columnName] != DBNull.Value ? Convert.ToDateTime(row[columnName]) : DateTime.MinValue;
-        }
-
-        private static int GetEffectiveProcDays(Document document)
-        {
-            return DefaultProceedingDays;
         }
 
     }

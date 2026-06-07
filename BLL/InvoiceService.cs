@@ -45,14 +45,20 @@ namespace visavault_g43.BLL
                 DataTable dt = InvoiceDAL.GetLineItems(invoiceId);
                 if (dt == null) return new List<InvoiceLineItem>();
 
-                return dt.AsEnumerable().Select(row => new InvoiceLineItem(
-                    row.Field<int?>("item_id") ?? 0,
-                    row.Field<int?>("invoice_id") ?? 0,
-                    row.Field<int?>("fee_id") ?? 0,
-                    row.Field<int?>("quantity") ?? 0,
-                    row.Field<decimal?>("unit_price") ?? 0m,
-                    row.Field<decimal?>("total_price") ?? 0m
-                )).ToList();
+                return dt.AsEnumerable().Select(row => {
+                    var item = new InvoiceLineItem(
+                        row.Field<int?>("item_id") ?? 0,
+                        row.Field<int?>("invoice_id") ?? 0,
+                        row.Field<int?>("fee_id") ?? 0,
+                        row.Field<int?>("quantity") ?? 0,
+                        row.Field<decimal?>("unit_price") ?? 0m,
+                        row.Field<decimal?>("total_price") ?? 0m
+                    );
+                    item.FeeName = row.Table.Columns.Contains("fee_name") && row["fee_name"] != DBNull.Value
+                        ? row["fee_name"].ToString()
+                        : $"Fee Rule {item.FeeId}";
+                    return item;
+                }).ToList();
             } catch (Exception) {
                 return new List<InvoiceLineItem>();
             }

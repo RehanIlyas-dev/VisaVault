@@ -129,8 +129,8 @@ namespace visavault_g43.BLL
 
         public static DateTime GetActionDate(Document document)
         {
-            int ProcessingDays = GetProcessingDays(document.TypeID, document.ClientId); 
-            return document.ExpiryDate.AddDays(-ProcessingDays);
+            int processingDays = document.ProcessingDays > 0 ? document.ProcessingDays : 15;
+            return document.ExpiryDate.AddDays(-processingDays);
         }
 
         public static int GetDaystoAction(Document document)
@@ -175,11 +175,6 @@ namespace visavault_g43.BLL
             }
         }
 
-        private static int GetProcessingDays(int documentTypeId, int ClientId)
-        { 
-            return 15; 
-        }
-
         private static List<Document> MapDataTabletoDocumentList(DataTable dt)
         {
             List<Document> documents = new List<Document>();
@@ -192,7 +187,7 @@ namespace visavault_g43.BLL
 
         private static Document MapDataRowToDocument(DataRow row)
         {
-            return new Document(
+            var doc = new Document(
                 Convert.ToInt32(row["document_id"]),
                 row["document_no"]?.ToString() ?? string.Empty,
                 row["issue_date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["issue_date"]),
@@ -200,6 +195,11 @@ namespace visavault_g43.BLL
                 Convert.ToInt32(row["type_id"]),
                 Convert.ToInt32(row["client_id"])
             );
+            if (row.Table.Columns.Contains("processing_days") && row["processing_days"] != DBNull.Value)
+                doc.ProcessingDays = Convert.ToInt32(row["processing_days"]);
+            if (row.Table.Columns.Contains("buffer_days") && row["buffer_days"] != DBNull.Value)
+                doc.BufferDays = Convert.ToInt32(row["buffer_days"]);
+            return doc;
         }
 
     }

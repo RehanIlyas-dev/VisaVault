@@ -15,6 +15,8 @@ namespace visavault_g43.Models
         public int TypeID { get; set; }
         public int TypeId { get => TypeID; set => TypeID = value; }
         public int ClientId { get; set; }
+        public int ProcessingDays { get; set; } = 15;
+        public int BufferDays { get; set; } = 30;
 
         public Document(int DocumentId, string DocumentNo, DateTime IssueDate, DateTime ExpiryDate, int TypeID, int ClientId)
         {

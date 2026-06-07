@@ -18,7 +18,7 @@ namespace visavault_g43.DLL
           
             string query = "SELECT fee_id, type_id, country_id, valid_from, valid_to, fee_name, base_fee, urgent_fee, processing_fee, " +
                 "created_at, updated_at FROM feerule " +
-                "WHERE country_id = @CountryId AND type_id = @DocumentTypeId AND CURDATE() >= valid_from  AND CURDATE() <= valid_to;";
+                "WHERE country_id = @CountryId AND type_id = @DocumentTypeId AND CURDATE() >= valid_from AND (valid_to IS NULL OR CURDATE() <= valid_to);";
 
             MySqlParameter[] parameters = new MySqlParameter[]
             {

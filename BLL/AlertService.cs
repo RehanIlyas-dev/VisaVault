@@ -147,14 +147,19 @@ namespace visavault_g43.BLL
             if (dt == null) return documents;
             foreach (DataRow dr in dt.Rows)
             {
-                documents.Add(new Document(
+                var doc = new Document(
                     Convert.ToInt32(dr["document_id"]),
                     dr["document_no"]?.ToString() ?? string.Empty,
                     dr["issue_date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["issue_date"]),
                     dr["expiry_date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["expiry_date"]),
                     Convert.ToInt32(dr["type_id"]),
                     Convert.ToInt32(dr["client_id"])
-                ));
+                );
+                if (dr.Table.Columns.Contains("processing_days") && dr["processing_days"] != DBNull.Value)
+                    doc.ProcessingDays = Convert.ToInt32(dr["processing_days"]);
+                if (dr.Table.Columns.Contains("buffer_days") && dr["buffer_days"] != DBNull.Value)
+                    doc.BufferDays = Convert.ToInt32(dr["buffer_days"]);
+                documents.Add(doc);
             }
             return documents;
         }

@@ -15,8 +15,9 @@ namespace visavault_g43.Models
        public int DaysLeft { get; set; }
        public string AlertLevel { get; set; }
        public int ProcessingDays { get; set; }
+       public int BufferDays { get; set; }
 
-        public DeadlineRow(string clientName, string documentType, DateTime expiryDate, DateTime actionDate, int daysLeft, string alertLevel, int processingDays)
+        public DeadlineRow(string clientName, string documentType, DateTime expiryDate, DateTime actionDate, int daysLeft, string alertLevel, int processingDays, int bufferDays = 30)
         {
             ClientName = clientName;
             DocumentType = documentType;
@@ -25,6 +26,7 @@ namespace visavault_g43.Models
             DaysLeft = daysLeft;
             AlertLevel = alertLevel;
             ProcessingDays = processingDays;
+            BufferDays = bufferDays;
         }
     }
 
