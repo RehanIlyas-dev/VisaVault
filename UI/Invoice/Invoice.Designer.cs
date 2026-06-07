@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Invoice
     {
@@ -61,7 +61,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -84,7 +84,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 32);
@@ -93,7 +93,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.cmbStatusFilter);
             this.panel1.Controls.Add(this.cmbClientFilter);
@@ -105,11 +105,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(746, 37);
             this.btnSearch.Name = "btnSearch";
@@ -120,9 +120,9 @@
             // 
             // cmbStatusFilter
             // 
-            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.White;
             this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbStatusFilter.FormattingEnabled = true;
             this.cmbStatusFilter.Location = new System.Drawing.Point(474, 42);
             this.cmbStatusFilter.Name = "cmbStatusFilter";
@@ -131,9 +131,9 @@
             // 
             // cmbClientFilter
             // 
-            this.cmbClientFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbClientFilter.BackColor = System.Drawing.Color.White;
             this.cmbClientFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbClientFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbClientFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbClientFilter.FormattingEnabled = true;
             this.cmbClientFilter.Location = new System.Drawing.Point(234, 42);
             this.cmbClientFilter.Name = "cmbClientFilter";
@@ -158,10 +158,38 @@
             this.dgvInvoices.RowTemplate.Height = 24;
             this.dgvInvoices.Size = new System.Drawing.Size(993, 164);
             this.dgvInvoices.TabIndex = 7;
+            System.Windows.Forms.DataGridViewCellStyle dgvInvoicesHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvInvoicesHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvInvoicesHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvInvoicesHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvInvoicesRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvInvoicesRowStyle.BackColor = System.Drawing.Color.White;
+            dgvInvoicesRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvInvoicesRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvInvoicesRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvInvoicesRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvInvoices.BackgroundColor = System.Drawing.Color.White;
+            this.dgvInvoices.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvInvoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvInvoices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvInvoices.EnableHeadersVisualStyles = false;
+            this.dgvInvoices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvInvoices.ColumnHeadersDefaultCellStyle = dgvInvoicesHeaderStyle;
+            this.dgvInvoices.ColumnHeadersHeight = 40;
+            this.dgvInvoices.DefaultCellStyle = dgvInvoicesRowStyle;
+            this.dgvInvoices.RowHeadersVisible = false;
+            this.dgvInvoices.RowTemplate.Height = 35;
+            this.dgvInvoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInvoices.AllowUserToAddRows = false;
+            this.dgvInvoices.AllowUserToDeleteRows = false;
+            this.dgvInvoices.ReadOnly = true;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dgvLineItems);
             this.panel2.Location = new System.Drawing.Point(93, 558);
@@ -173,7 +201,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(63, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(356, 32);
@@ -188,12 +216,40 @@
             this.colDescription,
             this.colFeeType,
             this.colAmount});
-            this.dgvLineItems.Location = new System.Drawing.Point(213, 87);
+            this.dgvLineItems.Location = new System.Drawing.Point(63, 87);
             this.dgvLineItems.Name = "dgvLineItems";
             this.dgvLineItems.RowHeadersWidth = 51;
             this.dgvLineItems.RowTemplate.Height = 24;
-            this.dgvLineItems.Size = new System.Drawing.Size(721, 164);
+            this.dgvLineItems.Size = new System.Drawing.Size(993, 164);
             this.dgvLineItems.TabIndex = 6;
+            System.Windows.Forms.DataGridViewCellStyle dgvLineItemsHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvLineItemsHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvLineItemsHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvLineItemsHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvLineItemsRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvLineItemsRowStyle.BackColor = System.Drawing.Color.White;
+            dgvLineItemsRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvLineItemsRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvLineItemsRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvLineItemsRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvLineItems.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLineItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLineItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvLineItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvLineItems.EnableHeadersVisualStyles = false;
+            this.dgvLineItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvLineItems.ColumnHeadersDefaultCellStyle = dgvLineItemsHeaderStyle;
+            this.dgvLineItems.ColumnHeadersHeight = 40;
+            this.dgvLineItems.DefaultCellStyle = dgvLineItemsRowStyle;
+            this.dgvLineItems.RowHeadersVisible = false;
+            this.dgvLineItems.RowTemplate.Height = 35;
+            this.dgvLineItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLineItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLineItems.AllowUserToAddRows = false;
+            this.dgvLineItems.AllowUserToDeleteRows = false;
+            this.dgvLineItems.ReadOnly = true;
             // 
             // colInvoiceID
             // 
@@ -283,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1378, 914);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

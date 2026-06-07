@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Deadline_Calculator
     {
@@ -52,7 +52,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,7 +75,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(269, 32);
@@ -84,7 +84,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.cmbClient);
@@ -96,11 +96,11 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(800, 56);
             this.btnClear.Name = "btnClear";
@@ -111,11 +111,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(657, 56);
             this.btnSearch.Name = "btnSearch";
@@ -126,9 +126,9 @@
             // 
             // cmbClient
             // 
-            this.cmbClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbClient.BackColor = System.Drawing.Color.White;
             this.cmbClient.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbClient.ForeColor = System.Drawing.Color.White;
+            this.cmbClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbClient.FormattingEnabled = true;
             this.cmbClient.Location = new System.Drawing.Point(347, 60);
             this.cmbClient.Name = "cmbClient";
@@ -153,6 +153,34 @@
             this.dgvDeadlines.RowTemplate.Height = 24;
             this.dgvDeadlines.Size = new System.Drawing.Size(1236, 168);
             this.dgvDeadlines.TabIndex = 27;
+            System.Windows.Forms.DataGridViewCellStyle dgvDeadlinesHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvDeadlinesHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvDeadlinesHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvDeadlinesHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvDeadlinesRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvDeadlinesRowStyle.BackColor = System.Drawing.Color.White;
+            dgvDeadlinesRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvDeadlinesRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvDeadlinesRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvDeadlinesRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvDeadlines.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDeadlines.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDeadlines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvDeadlines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvDeadlines.EnableHeadersVisualStyles = false;
+            this.dgvDeadlines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDeadlines.ColumnHeadersDefaultCellStyle = dgvDeadlinesHeaderStyle;
+            this.dgvDeadlines.ColumnHeadersHeight = 40;
+            this.dgvDeadlines.DefaultCellStyle = dgvDeadlinesRowStyle;
+            this.dgvDeadlines.RowHeadersVisible = false;
+            this.dgvDeadlines.RowTemplate.Height = 35;
+            this.dgvDeadlines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDeadlines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDeadlines.AllowUserToAddRows = false;
+            this.dgvDeadlines.AllowUserToDeleteRows = false;
+            this.dgvDeadlines.ReadOnly = true;
             // 
             // colClient
             // 
@@ -214,7 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1414, 1008);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);

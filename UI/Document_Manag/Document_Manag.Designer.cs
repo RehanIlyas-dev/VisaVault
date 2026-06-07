@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Document_Manag
     {
@@ -54,7 +54,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -77,7 +77,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(329, 32);
@@ -86,7 +86,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.cmbCountry);
             this.panel1.Controls.Add(this.txtIssueDate);
             this.panel1.Controls.Add(this.txtDocumentNumber);
@@ -107,9 +107,9 @@
             // 
             // cmbCountry
             // 
-            this.cmbCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbCountry.BackColor = System.Drawing.Color.White;
             this.cmbCountry.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbCountry.ForeColor = System.Drawing.Color.White;
+            this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(648, 180);
             this.cmbCountry.Name = "cmbCountry";
@@ -118,9 +118,9 @@
             // 
             // txtIssueDate
             // 
-            this.txtIssueDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtIssueDate.BackColor = System.Drawing.Color.White;
             this.txtIssueDate.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtIssueDate.ForeColor = System.Drawing.Color.White;
+            this.txtIssueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtIssueDate.Location = new System.Drawing.Point(648, 231);
             this.txtIssueDate.Name = "txtIssueDate";
             this.txtIssueDate.Size = new System.Drawing.Size(201, 28);
@@ -128,9 +128,9 @@
             // 
             // txtDocumentNumber
             // 
-            this.txtDocumentNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtDocumentNumber.BackColor = System.Drawing.Color.White;
             this.txtDocumentNumber.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.txtDocumentNumber.ForeColor = System.Drawing.Color.White;
+            this.txtDocumentNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtDocumentNumber.Location = new System.Drawing.Point(648, 132);
             this.txtDocumentNumber.Name = "txtDocumentNumber";
             this.txtDocumentNumber.Size = new System.Drawing.Size(267, 32);
@@ -138,9 +138,9 @@
             // 
             // txtExpiryDate
             // 
-            this.txtExpiryDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtExpiryDate.BackColor = System.Drawing.Color.White;
             this.txtExpiryDate.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.txtExpiryDate.ForeColor = System.Drawing.Color.White;
+            this.txtExpiryDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtExpiryDate.Location = new System.Drawing.Point(648, 280);
             this.txtExpiryDate.Name = "txtExpiryDate";
             this.txtExpiryDate.Size = new System.Drawing.Size(202, 32);
@@ -148,9 +148,9 @@
             // 
             // cmbDocumentType
             // 
-            this.cmbDocumentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbDocumentType.BackColor = System.Drawing.Color.White;
             this.cmbDocumentType.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbDocumentType.ForeColor = System.Drawing.Color.White;
+            this.cmbDocumentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbDocumentType.FormattingEnabled = true;
             this.cmbDocumentType.Location = new System.Drawing.Point(648, 81);
             this.cmbDocumentType.Name = "cmbDocumentType";
@@ -159,9 +159,9 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtNotes.BackColor = System.Drawing.Color.White;
             this.txtNotes.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtNotes.ForeColor = System.Drawing.Color.White;
+            this.txtNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtNotes.Location = new System.Drawing.Point(648, 336);
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(315, 28);
@@ -171,7 +171,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label12.Location = new System.Drawing.Point(54, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(244, 32);
@@ -182,7 +182,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label7.Location = new System.Drawing.Point(370, 336);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 26);
@@ -193,7 +193,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label6.Location = new System.Drawing.Point(370, 81);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(169, 26);
@@ -204,7 +204,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label5.Location = new System.Drawing.Point(370, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(201, 26);
@@ -215,7 +215,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label4.Location = new System.Drawing.Point(370, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 26);
@@ -226,7 +226,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label3.Location = new System.Drawing.Point(370, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 26);
@@ -237,7 +237,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label2.Location = new System.Drawing.Point(370, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 26);
@@ -246,11 +246,11 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(701, 570);
             this.btnClear.Name = "btnClear";
@@ -261,11 +261,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(539, 570);
             this.btnSave.Name = "btnSave";
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1414, 1008);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);

@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Home
     {
@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-
+        
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -69,7 +69,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.lblTodayAppts);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Location = new System.Drawing.Point(810, 110);
@@ -79,7 +79,7 @@
             // 
             // lblTodayAppts
             // 
-            this.lblTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblTodayAppts.Location = new System.Drawing.Point(16, 17);
             this.lblTodayAppts.Name = "lblTodayAppts";
             this.lblTodayAppts.Size = new System.Drawing.Size(200, 100);
@@ -89,7 +89,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Book Antiqua", 11.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label4.Location = new System.Drawing.Point(12, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(211, 23);
@@ -98,7 +98,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel10.BackColor = System.Drawing.Color.White;
             this.panel10.Controls.Add(this.lblCriticalDocs);
             this.panel10.Controls.Add(this.label1);
             this.panel10.Location = new System.Drawing.Point(285, 110);
@@ -108,7 +108,7 @@
             // 
             // lblCriticalDocs
             // 
-            this.lblCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblCriticalDocs.Location = new System.Drawing.Point(15, 12);
             this.lblCriticalDocs.Name = "lblCriticalDocs";
             this.lblCriticalDocs.Size = new System.Drawing.Size(200, 100);
@@ -118,7 +118,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(19, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 26);
@@ -127,7 +127,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.lblOverdueInvoices);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(548, 110);
@@ -137,7 +137,7 @@
             // 
             // lblOverdueInvoices
             // 
-            this.lblOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblOverdueInvoices.Location = new System.Drawing.Point(18, 17);
             this.lblOverdueInvoices.Name = "lblOverdueInvoices";
             this.lblOverdueInvoices.Size = new System.Drawing.Size(200, 100);
@@ -147,7 +147,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label3.Location = new System.Drawing.Point(25, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 26);
@@ -157,7 +157,7 @@
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.lblTotalClients);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(23, 110);
@@ -167,7 +167,7 @@
             // 
             // lblTotalClients
             // 
-            this.lblTotalClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblTotalClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblTotalClients.Location = new System.Drawing.Point(17, 12);
             this.lblTotalClients.Name = "lblTotalClients";
             this.lblTotalClients.Size = new System.Drawing.Size(200, 100);
@@ -178,7 +178,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label2.Location = new System.Drawing.Point(44, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 26);
@@ -187,7 +187,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -210,7 +210,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 32);
@@ -219,7 +219,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.lblActiveCases);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Location = new System.Drawing.Point(1071, 110);
@@ -230,7 +230,7 @@
             // lblActiveCases
             // 
             this.lblActiveCases.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.lblActiveCases.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblActiveCases.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblActiveCases.Location = new System.Drawing.Point(16, 17);
             this.lblActiveCases.Name = "lblActiveCases";
             this.lblActiveCases.Size = new System.Drawing.Size(200, 100);
@@ -240,7 +240,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label5.Location = new System.Drawing.Point(47, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 26);
@@ -249,7 +249,7 @@
             // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel12.BackColor = System.Drawing.Color.White;
             this.panel12.Controls.Add(this.listCriticalDocs);
             this.panel12.Controls.Add(this.label6);
             this.panel12.Location = new System.Drawing.Point(23, 331);
@@ -259,7 +259,7 @@
             // 
             // listCriticalDocs
             // 
-            this.listCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listCriticalDocs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.listCriticalDocs.Location = new System.Drawing.Point(30, 62);
             this.listCriticalDocs.Name = "listCriticalDocs";
             this.listCriticalDocs.Size = new System.Drawing.Size(467, 377);
@@ -269,7 +269,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Book Antiqua", 14.2F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label6.Location = new System.Drawing.Point(12, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(374, 28);
@@ -278,7 +278,7 @@
             // 
             // panel13
             // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel13.BackColor = System.Drawing.Color.White;
             this.panel13.Controls.Add(this.listTodayAppts);
             this.panel13.Controls.Add(this.label7);
             this.panel13.Location = new System.Drawing.Point(566, 331);
@@ -288,7 +288,7 @@
             // 
             // listTodayAppts
             // 
-            this.listTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listTodayAppts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.listTodayAppts.Location = new System.Drawing.Point(22, 62);
             this.listTodayAppts.Name = "listTodayAppts";
             this.listTodayAppts.Size = new System.Drawing.Size(699, 137);
@@ -298,7 +298,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Book Antiqua", 14.2F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label7.Location = new System.Drawing.Point(17, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(263, 28);
@@ -307,7 +307,7 @@
             // 
             // panel14
             // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel14.BackColor = System.Drawing.Color.White;
             this.panel14.Controls.Add(this.listOverdueInvoices);
             this.panel14.Controls.Add(this.label8);
             this.panel14.Location = new System.Drawing.Point(566, 579);
@@ -317,7 +317,7 @@
             // 
             // listOverdueInvoices
             // 
-            this.listOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.listOverdueInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.listOverdueInvoices.Location = new System.Drawing.Point(22, 54);
             this.listOverdueInvoices.Name = "listOverdueInvoices";
             this.listOverdueInvoices.Size = new System.Drawing.Size(699, 137);
@@ -327,7 +327,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Book Antiqua", 14.2F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label8.Location = new System.Drawing.Point(17, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(206, 28);
@@ -338,7 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1360, 867);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel13);

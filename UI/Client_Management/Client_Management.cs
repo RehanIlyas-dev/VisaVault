@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using visavault_g43.BLL;
 using visavault_g43.Models;
-
 namespace visavault_g43
 {
     public partial class Client_Management : Form
@@ -19,23 +18,22 @@ namespace visavault_g43
         public Client_Management()
         {
             InitializeComponent();
+            btnSave.Click += btnSave_Click;
+            btnCancel.Click += btnCancel_Click;
         }
         public Client_Management(int clientId)
         {
             InitializeComponent();
             editClientId = clientId;
+            btnSave.Click += btnSave_Click;
+            btnCancel.Click += btnCancel_Click;
         }
-
         private void Client_Management_Load(object sender, EventArgs e)
         {
-            // Fill Status dropdown
             cmbStatus.Items.Clear();
-            cmbStatus.Items.Add("Active");
-            cmbStatus.Items.Add("Inactive");
-            cmbStatus.Items.Add("Blacklisted");
+            cmbStatus.Items.Add("active");
+            cmbStatus.Items.Add("inactive");
             cmbStatus.SelectedIndex = 0;
-
-            // If editing, load existing client data into fields
             if (editClientId > 0)
             {
                 Client existing = ClientService.GetClientbyID(editClientId);
@@ -47,14 +45,10 @@ namespace visavault_g43
                     txtPhone.Text = existing.ContactNo;
                     txtEmail.Text = existing.Email;
                     txtAddress.Text = existing.Address;
-                    cmbStatus.Text = existing.Status;
-                    // txtDateOfBirth and txtNationality are on the form
-                    // but not stored in the Client model so left blank
+                    cmbStatus.Text = string.IsNullOrWhiteSpace(existing.Status) ? "active" : existing.Status.ToLowerInvariant();
                 }
             }
         }
-
-        // btnSave
         private void btnSave_Click(object sender, EventArgs e)
         {
             Client client = new Client(
@@ -67,27 +61,21 @@ namespace visavault_g43
                 existingCountryId,              // Preserve CountryId
                 DateTime.Now,
                 DateTime.Now,
-                cmbStatus.SelectedItem?.ToString() ?? "Active"
+                (cmbStatus.SelectedItem?.ToString() ?? "active").ToLowerInvariant()
             );
-
             ValidationResult result = editClientId > 0
                 ? ClientService.UpdateClient(client)
                 : ClientService.SaveClient(client);
-
             MessageBox.Show(result.Message,
                 result.IsValid ? "Saved" : "Error",
                 MessageBoxButtons.OK,
                 result.IsValid ? MessageBoxIcon.Information : MessageBoxIcon.Error);
-
             if (result.IsValid) this.Close();
         }
-
-        // btnCancel
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void panel1_Paint(object sender, PaintEventArgs e) { }
         private void panel3_Paint(object sender, PaintEventArgs e) { }
         private void textBox4_TextChanged(object sender, EventArgs e) { }

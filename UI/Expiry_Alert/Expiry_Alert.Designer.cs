@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Expiry_Alert
     {
@@ -64,7 +64,7 @@
             // 
             // panelCritical
             // 
-            this.panelCritical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelCritical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelCritical.Location = new System.Drawing.Point(17, 12);
             this.panelCritical.Name = "panelCritical";
             this.panelCritical.Size = new System.Drawing.Size(200, 100);
@@ -72,7 +72,7 @@
             // 
             // panelWarning
             // 
-            this.panelWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelWarning.Location = new System.Drawing.Point(18, 17);
             this.panelWarning.Name = "panelWarning";
             this.panelWarning.Size = new System.Drawing.Size(200, 100);
@@ -80,7 +80,7 @@
             // 
             // panelSafe
             // 
-            this.panelSafe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelSafe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelSafe.Location = new System.Drawing.Point(16, 17);
             this.panelSafe.Name = "panelSafe";
             this.panelSafe.Size = new System.Drawing.Size(200, 100);
@@ -90,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label2.Location = new System.Drawing.Point(25, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(192, 26);
@@ -101,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label3.Location = new System.Drawing.Point(10, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 26);
@@ -112,7 +112,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label4.Location = new System.Drawing.Point(36, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 26);
@@ -121,7 +121,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,7 +144,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(170, 32);
@@ -153,7 +153,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.dgvAlerts);
             this.panel6.Location = new System.Drawing.Point(52, 371);
             this.panel6.Name = "panel6";
@@ -177,11 +177,39 @@
             this.dgvAlerts.RowTemplate.Height = 24;
             this.dgvAlerts.Size = new System.Drawing.Size(1139, 164);
             this.dgvAlerts.TabIndex = 9;
+            System.Windows.Forms.DataGridViewCellStyle dgvAlertsHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvAlertsHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvAlertsHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvAlertsHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvAlertsRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvAlertsRowStyle.BackColor = System.Drawing.Color.White;
+            dgvAlertsRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvAlertsRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvAlertsRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvAlertsRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvAlerts.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAlerts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAlerts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvAlerts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvAlerts.EnableHeadersVisualStyles = false;
+            this.dgvAlerts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAlerts.ColumnHeadersDefaultCellStyle = dgvAlertsHeaderStyle;
+            this.dgvAlerts.ColumnHeadersHeight = 40;
+            this.dgvAlerts.DefaultCellStyle = dgvAlertsRowStyle;
+            this.dgvAlerts.RowHeadersVisible = false;
+            this.dgvAlerts.RowTemplate.Height = 35;
+            this.dgvAlerts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlerts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAlerts.AllowUserToAddRows = false;
+            this.dgvAlerts.AllowUserToDeleteRows = false;
+            this.dgvAlerts.ReadOnly = true;
             // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.panelCritical);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(126, 106);
@@ -191,7 +219,7 @@
             // 
             // panelExpired
             // 
-            this.panelExpired.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelExpired.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelExpired.Location = new System.Drawing.Point(15, 12);
             this.panelExpired.Name = "panelExpired";
             this.panelExpired.Size = new System.Drawing.Size(200, 100);
@@ -201,7 +229,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(72, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 26);
@@ -210,7 +238,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.panelSafe);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Location = new System.Drawing.Point(992, 106);
@@ -220,7 +248,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.panelWarning);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(706, 106);
@@ -230,7 +258,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel10.BackColor = System.Drawing.Color.White;
             this.panel10.Controls.Add(this.panelExpired);
             this.panel10.Controls.Add(this.label1);
             this.panel10.Location = new System.Drawing.Point(420, 106);
@@ -291,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1342, 820);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel10);

@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Appoinment
     {
@@ -48,7 +48,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -71,7 +71,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(193, 32);
@@ -80,7 +80,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnFilter);
             this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.label2);
@@ -92,11 +92,11 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnFilter.ForeColor = System.Drawing.Color.White;
             this.btnFilter.Location = new System.Drawing.Point(775, 86);
             this.btnFilter.Name = "btnFilter";
@@ -107,9 +107,9 @@
             // 
             // txtDate
             // 
-            this.txtDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtDate.BackColor = System.Drawing.Color.White;
             this.txtDate.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.txtDate.ForeColor = System.Drawing.Color.White;
+            this.txtDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtDate.Location = new System.Drawing.Point(495, 91);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(181, 32);
@@ -119,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label2.Location = new System.Drawing.Point(234, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(214, 26);
@@ -140,6 +140,34 @@
             this.dgvAppointments.RowTemplate.Height = 24;
             this.dgvAppointments.Size = new System.Drawing.Size(793, 164);
             this.dgvAppointments.TabIndex = 20;
+            System.Windows.Forms.DataGridViewCellStyle dgvAppointmentsHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvAppointmentsHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvAppointmentsHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvAppointmentsHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvAppointmentsRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvAppointmentsRowStyle.BackColor = System.Drawing.Color.White;
+            dgvAppointmentsRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvAppointmentsRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvAppointmentsRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvAppointmentsRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvAppointments.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAppointments.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAppointments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvAppointments.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvAppointments.EnableHeadersVisualStyles = false;
+            this.dgvAppointments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAppointments.ColumnHeadersDefaultCellStyle = dgvAppointmentsHeaderStyle;
+            this.dgvAppointments.ColumnHeadersHeight = 40;
+            this.dgvAppointments.DefaultCellStyle = dgvAppointmentsRowStyle;
+            this.dgvAppointments.RowHeadersVisible = false;
+            this.dgvAppointments.RowTemplate.Height = 35;
+            this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAppointments.AllowUserToAddRows = false;
+            this.dgvAppointments.AllowUserToDeleteRows = false;
+            this.dgvAppointments.ReadOnly = true;
             // 
             // colTime
             // 
@@ -173,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1324, 773);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);

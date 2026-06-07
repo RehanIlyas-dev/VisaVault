@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Fee_Calculator
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button btnCalculateFee;
+            this.btnCalculateFee = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@
             this.colComponent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            btnCalculateFee = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -54,7 +53,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -77,7 +76,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(196, 32);
@@ -86,7 +85,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.cmbDocumentType);
             this.panel1.Controls.Add(this.cmbCountry);
             this.panel1.Controls.Add(this.label3);
@@ -101,7 +100,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label3.Location = new System.Drawing.Point(352, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 26);
@@ -112,7 +111,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label2.Location = new System.Drawing.Point(352, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 26);
@@ -123,7 +122,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(62, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 32);
@@ -132,7 +131,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.dgvFeeBreakdown);
             this.panel2.Location = new System.Drawing.Point(142, 406);
@@ -144,7 +143,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label4.Location = new System.Drawing.Point(62, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(220, 32);
@@ -164,27 +163,56 @@
             this.dgvFeeBreakdown.RowTemplate.Height = 24;
             this.dgvFeeBreakdown.Size = new System.Drawing.Size(815, 182);
             this.dgvFeeBreakdown.TabIndex = 12;
+            System.Windows.Forms.DataGridViewCellStyle dgvFeeBreakdownHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvFeeBreakdownHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvFeeBreakdownHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvFeeBreakdownHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvFeeBreakdownRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvFeeBreakdownRowStyle.BackColor = System.Drawing.Color.White;
+            dgvFeeBreakdownRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvFeeBreakdownRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvFeeBreakdownRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvFeeBreakdownRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvFeeBreakdown.BackgroundColor = System.Drawing.Color.White;
+            this.dgvFeeBreakdown.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvFeeBreakdown.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvFeeBreakdown.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvFeeBreakdown.EnableHeadersVisualStyles = false;
+            this.dgvFeeBreakdown.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvFeeBreakdown.ColumnHeadersDefaultCellStyle = dgvFeeBreakdownHeaderStyle;
+            this.dgvFeeBreakdown.ColumnHeadersHeight = 40;
+            this.dgvFeeBreakdown.DefaultCellStyle = dgvFeeBreakdownRowStyle;
+            this.dgvFeeBreakdown.RowHeadersVisible = false;
+            this.dgvFeeBreakdown.RowTemplate.Height = 35;
+            this.dgvFeeBreakdown.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFeeBreakdown.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFeeBreakdown.AllowUserToAddRows = false;
+            this.dgvFeeBreakdown.AllowUserToDeleteRows = false;
+            this.dgvFeeBreakdown.ReadOnly = true;
             // 
             // btnCalculateFee
             // 
-            btnCalculateFee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
-            btnCalculateFee.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            btnCalculateFee.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            btnCalculateFee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnCalculateFee.Font = new System.Drawing.Font("Book Antiqua", 9.2F, System.Drawing.FontStyle.Bold);
-            btnCalculateFee.ForeColor = System.Drawing.Color.White;
-            btnCalculateFee.Location = new System.Drawing.Point(1017, 320);
-            btnCalculateFee.Name = "btnCalculateFee";
-            btnCalculateFee.Size = new System.Drawing.Size(192, 40);
-            btnCalculateFee.TabIndex = 61;
-            btnCalculateFee.Text = "Calculate Fee";
-            btnCalculateFee.UseVisualStyleBackColor = false;
+            this.btnCalculateFee.BackColor = System.Drawing.Color.White;
+            this.btnCalculateFee.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnCalculateFee.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnCalculateFee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalculateFee.Font = new System.Drawing.Font("Book Antiqua", 9.2F, System.Drawing.FontStyle.Bold);
+            this.btnCalculateFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnCalculateFee.Location = new System.Drawing.Point(1017, 320);
+            this.btnCalculateFee.Name = "btnCalculateFee";
+            this.btnCalculateFee.Size = new System.Drawing.Size(192, 40);
+            this.btnCalculateFee.TabIndex = 61;
+            this.btnCalculateFee.Text = "Calculate Fee";
+            this.btnCalculateFee.UseVisualStyleBackColor = false;
+            this.btnCalculateFee.Click += new System.EventHandler(this.btnCalculateFee_Click);
             // 
             // cmbCountry
             // 
-            this.cmbCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbCountry.BackColor = System.Drawing.Color.White;
             this.cmbCountry.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbCountry.ForeColor = System.Drawing.Color.White;
+            this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(589, 77);
             this.cmbCountry.Name = "cmbCountry";
@@ -193,9 +221,9 @@
             // 
             // cmbDocumentType
             // 
-            this.cmbDocumentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbDocumentType.BackColor = System.Drawing.Color.White;
             this.cmbDocumentType.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbDocumentType.ForeColor = System.Drawing.Color.White;
+            this.cmbDocumentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbDocumentType.FormattingEnabled = true;
             this.cmbDocumentType.Location = new System.Drawing.Point(589, 131);
             this.cmbDocumentType.Name = "cmbDocumentType";
@@ -227,9 +255,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1360, 867);
-            this.Controls.Add(btnCalculateFee);
+            this.Controls.Add(this.btnCalculateFee);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
@@ -265,5 +293,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colComponent;
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
+        private System.Windows.Forms.Button btnCalculateFee;
     }
 }

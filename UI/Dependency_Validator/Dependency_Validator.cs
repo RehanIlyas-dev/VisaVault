@@ -25,6 +25,8 @@ namespace visavault_g43
         {
             InitializeComponent();
             this.Load += Dependency_Validator_Load;
+            btnSearchClient.Click += btnSearchClient_Click;
+            btnSearchDocument.Click += btnSearchDocument_Click;
         }
 
         private void Dependency_Validator_Load(object sender, EventArgs e)
@@ -33,16 +35,13 @@ namespace visavault_g43
             lblResultsText = new Label();
             lblResultsText.AutoSize = false;
             lblResultsText.Dock = DockStyle.Fill;
-            lblResultsText.ForeColor = Color.White;
+            lblResultsText.ForeColor = Color.FromArgb(45, 45, 48);
             lblResultsText.BackColor = Color.Transparent;
             lblResultsText.Font = new Font("Segoe UI", 10f);
             lblResultsText.TextAlign = ContentAlignment.TopLeft;
-            lblResultsText.Text = "";
+            lblResultsText.Text = "Select a client and document type, then click Search.";
+            lblResults.Controls.Clear();
             lblResults.Controls.Add(lblResultsText);
-
-            // Wire button click events
-            btnSearchClient.Click += btnSearchClient_Click;
-            btnSearchDocument.Click += btnSearchDocument_Click;
 
             // Fill cmbSelectClient
             cmbSelectClient.Items.Clear();
@@ -87,6 +86,8 @@ namespace visavault_g43
         // btnSearchDocument — runs the dependency check and shows results in lblResultsText
         private void btnSearchDocument_Click(object sender, EventArgs e)
         {
+            if (selectedClientId <= 0)
+                selectedClientId = GetClientIdFromCombo();
             if (selectedClientId <= 0)
             {
                 MessageBox.Show("Please select a client first.", "No Client",
@@ -157,8 +158,9 @@ namespace visavault_g43
                 return;
             }
 
+            int openedByUserId = AuthService.CurrentUserId > 0 ? AuthService.CurrentUserId : 1;
             ValidationResult result = RenewalService.OpenCase(
-                selectedClientId, documentId, AuthService.CurrentUserId);
+                selectedClientId, documentId, openedByUserId);
 
             MessageBox.Show(result.Message,
                 result.IsValid ? "Case Opened" : "Error",

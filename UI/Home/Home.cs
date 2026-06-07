@@ -20,7 +20,7 @@ namespace visavault_g43
         private Label lblOverdueInvoicesCount;
         private Label lblTodayApptsCount;
         private Label lblActiveCasesCount;
-
+         
         public Home()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace visavault_g43
             lbl.Dock = DockStyle.Fill;
             lbl.TextAlign = ContentAlignment.MiddleCenter;
             lbl.Font = new Font("Book Antiqua", 26f, FontStyle.Bold);
-            lbl.ForeColor = Color.White;
+            lbl.ForeColor = Color.FromArgb(16, 68, 115);
             lbl.BackColor = Color.Transparent;
             lbl.Text = "0";
             parent.Controls.Add(lbl);
@@ -82,7 +82,7 @@ namespace visavault_g43
 
             if (docs.Count == 0)
             {
-                AddRowToPanel(listCriticalDocs, "No critical documents.", Color.White, ref yPos);
+                AddRowToPanel(listCriticalDocs, "No critical documents.", Color.Transparent, Color.FromArgb(45, 45, 48), ref yPos);
                 return;
             }
 
@@ -94,12 +94,12 @@ namespace visavault_g43
                 string clientName = client != null ? client.ClientName : $"Client {doc.ClientId}";
                 string text = $"{clientName}  —  {doc.DocumentNo}  —  {level}  ({days} days)";
 
-                Color rowColor = Color.White;
-                if (level == "Expired") rowColor = Color.FromArgb(255, 200, 200);
-                if (level == "Critical") rowColor = Color.FromArgb(255, 220, 200);
-                if (level == "Warning") rowColor = Color.FromArgb(255, 255, 200);
+                Color fontColor = Color.FromArgb(45, 45, 48);
+                if (level == "Expired") fontColor = Color.FromArgb(220, 53, 69);
+                if (level == "Critical") fontColor = Color.FromArgb(253, 126, 20);
+                if (level == "Warning") fontColor = Color.FromArgb(255, 193, 7);
 
-                AddRowToPanel(listCriticalDocs, text, rowColor, ref yPos);
+                AddRowToPanel(listCriticalDocs, text, Color.Transparent, fontColor, ref yPos);
             }
         }
 
@@ -113,7 +113,7 @@ namespace visavault_g43
 
             if (appts.Count == 0)
             {
-                AddRowToPanel(listTodayAppts, "No appointments today.", Color.White, ref yPos);
+                AddRowToPanel(listTodayAppts, "No appointments today.", Color.Transparent, Color.FromArgb(45, 45, 48), ref yPos);
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace visavault_g43
                 var client = ClientService.GetClientbyID(a.ClientId);
                 string clientName = client != null ? client.ClientName : $"Client {a.ClientId}";
                 string text = $"{a.AppointmentDate:hh:mm tt}  —  {clientName}  —  {a.Purpose}";
-                AddRowToPanel(listTodayAppts, text, Color.White, ref yPos);
+                AddRowToPanel(listTodayAppts, text, Color.Transparent, Color.FromArgb(45, 45, 48), ref yPos);
             }
         }
 
@@ -137,7 +137,7 @@ namespace visavault_g43
 
             if (invoices.Count == 0)
             {
-                AddRowToPanel(listOverdueInvoices, "No overdue invoices.", Color.White, ref yPos);
+                AddRowToPanel(listOverdueInvoices, "No overdue invoices.", Color.Transparent, Color.FromArgb(45, 45, 48), ref yPos);
                 return;
             }
 
@@ -147,12 +147,12 @@ namespace visavault_g43
                 var client = ClientService.GetClientbyID(inv.ClientId);
                 string clientName = client != null ? client.ClientName : $"Client {inv.ClientId}";
                 string text = $"INV-{inv.InvoiceID:D3}  —  {clientName}  —  Rs {inv.Amount:N0}  —  {daysOver} days overdue";
-                AddRowToPanel(listOverdueInvoices, text, Color.FromArgb(255, 240, 200), ref yPos);
+                AddRowToPanel(listOverdueInvoices, text, Color.Transparent, Color.FromArgb(220, 53, 69), ref yPos);
             }
         }
 
         // Helper: adds one text row as a Label inside the given Panel
-        private void AddRowToPanel(Panel panel, string text, Color backColor, ref int yPos)
+        private void AddRowToPanel(Panel panel, string text, Color backColor, Color foreColor, ref int yPos)
         {
             Label lbl = new Label();
             lbl.Text = text;
@@ -161,7 +161,7 @@ namespace visavault_g43
             lbl.Height = 22;
             lbl.Location = new Point(5, yPos);
             lbl.BackColor = backColor;
-            lbl.ForeColor = Color.White;
+            lbl.ForeColor = foreColor;
             lbl.Font = new Font("Segoe UI", 9f);
             panel.Controls.Add(lbl);
             yPos += 25;

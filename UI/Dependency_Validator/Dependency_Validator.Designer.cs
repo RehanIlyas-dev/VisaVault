@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Dependency_Validator
     {
@@ -49,7 +49,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnSearchDocument);
             this.panel1.Controls.Add(this.cmbDocumentToRenew);
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(209, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(211, 26);
@@ -73,11 +73,11 @@
             // 
             // btnSearchDocument
             // 
-            this.btnSearchDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearchDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearchDocument.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearchDocument.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearchDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchDocument.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearchDocument.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearchDocument.ForeColor = System.Drawing.Color.White;
             this.btnSearchDocument.Location = new System.Drawing.Point(722, 36);
             this.btnSearchDocument.Name = "btnSearchDocument";
@@ -88,18 +88,19 @@
             // 
             // cmbDocumentToRenew
             // 
-            this.cmbDocumentToRenew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbDocumentToRenew.BackColor = System.Drawing.Color.White;
             this.cmbDocumentToRenew.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbDocumentToRenew.ForeColor = System.Drawing.Color.White;
+            this.cmbDocumentToRenew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbDocumentToRenew.FormattingEnabled = true;
+            this.cmbDocumentToRenew.DropDownWidth = 260;
             this.cmbDocumentToRenew.Location = new System.Drawing.Point(463, 41);
             this.cmbDocumentToRenew.Name = "cmbDocumentToRenew";
-            this.cmbDocumentToRenew.Size = new System.Drawing.Size(135, 32);
+            this.cmbDocumentToRenew.Size = new System.Drawing.Size(240, 32);
             this.cmbDocumentToRenew.TabIndex = 62;
             // 
             // lblResults
             // 
-            this.lblResults.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.lblResults.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.lblResults.Location = new System.Drawing.Point(46, 176);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(979, 173);
@@ -109,7 +110,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label8.Location = new System.Drawing.Point(41, 134);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(272, 26);
@@ -118,7 +119,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnSearchClient);
             this.panel2.Controls.Add(this.cmbSelectClient);
@@ -131,7 +132,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label6.Location = new System.Drawing.Point(209, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 26);
@@ -140,11 +141,11 @@
             // 
             // btnSearchClient
             // 
-            this.btnSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearchClient.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearchClient.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchClient.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearchClient.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearchClient.ForeColor = System.Drawing.Color.White;
             this.btnSearchClient.Location = new System.Drawing.Point(711, 40);
             this.btnSearchClient.Name = "btnSearchClient";
@@ -155,18 +156,19 @@
             // 
             // cmbSelectClient
             // 
-            this.cmbSelectClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbSelectClient.BackColor = System.Drawing.Color.White;
             this.cmbSelectClient.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbSelectClient.ForeColor = System.Drawing.Color.White;
+            this.cmbSelectClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbSelectClient.FormattingEnabled = true;
+            this.cmbSelectClient.DropDownWidth = 320;
             this.cmbSelectClient.Location = new System.Drawing.Point(463, 45);
             this.cmbSelectClient.Name = "cmbSelectClient";
-            this.cmbSelectClient.Size = new System.Drawing.Size(135, 32);
+            this.cmbSelectClient.Size = new System.Drawing.Size(240, 32);
             this.cmbSelectClient.TabIndex = 60;
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -189,7 +191,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(58, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(303, 32);
@@ -200,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1414, 1008);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);

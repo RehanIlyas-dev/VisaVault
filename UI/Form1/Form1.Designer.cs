@@ -615,7 +615,7 @@ namespace visavault_g43
             // 
             // Mainpanel
             // 
-            this.Mainpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.Mainpanel.BackColor = System.Drawing.Color.White;
             this.Mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Mainpanel.Location = new System.Drawing.Point(250, 0);
             this.Mainpanel.Name = "Mainpanel";

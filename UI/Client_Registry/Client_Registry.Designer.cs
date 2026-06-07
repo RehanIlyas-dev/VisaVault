@@ -1,4 +1,4 @@
-﻿namespace visavault_g43
+namespace visavault_g43
 {
     partial class Client_Registry
     {
@@ -56,7 +56,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -79,7 +79,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(206, 32);
@@ -88,7 +88,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.dgvClients);
@@ -101,11 +101,11 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(911, 48);
             this.btnClear.Name = "btnClear";
@@ -116,11 +116,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(768, 48);
             this.btnSearch.Name = "btnSearch";
@@ -146,12 +146,40 @@
             this.dgvClients.RowTemplate.Height = 24;
             this.dgvClients.Size = new System.Drawing.Size(1093, 168);
             this.dgvClients.TabIndex = 13;
+            System.Windows.Forms.DataGridViewCellStyle dgvClientsHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvClientsHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvClientsHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvClientsHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvClientsRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvClientsRowStyle.BackColor = System.Drawing.Color.White;
+            dgvClientsRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvClientsRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvClientsRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvClientsRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvClients.BackgroundColor = System.Drawing.Color.White;
+            this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvClients.EnableHeadersVisualStyles = false;
+            this.dgvClients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dgvClientsHeaderStyle;
+            this.dgvClients.ColumnHeadersHeight = 40;
+            this.dgvClients.DefaultCellStyle = dgvClientsRowStyle;
+            this.dgvClients.RowHeadersVisible = false;
+            this.dgvClients.RowTemplate.Height = 35;
+            this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClients.AllowUserToAddRows = false;
+            this.dgvClients.AllowUserToDeleteRows = false;
+            this.dgvClients.ReadOnly = true;
             // 
             // cmbStatusFilter
             // 
-            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.White;
             this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbStatusFilter.FormattingEnabled = true;
             this.cmbStatusFilter.Location = new System.Drawing.Point(555, 52);
             this.cmbStatusFilter.Name = "cmbStatusFilter";
@@ -160,9 +188,9 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtSearch.ForeColor = System.Drawing.Color.White;
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtSearch.Location = new System.Drawing.Point(223, 54);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(275, 28);
@@ -170,11 +198,11 @@
             // 
             // btnViewEdit
             // 
-            this.btnViewEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnViewEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnViewEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnViewEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnViewEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewEdit.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnViewEdit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnViewEdit.ForeColor = System.Drawing.Color.White;
             this.btnViewEdit.Location = new System.Drawing.Point(238, 606);
             this.btnViewEdit.Name = "btnViewEdit";
@@ -185,11 +213,11 @@
             // 
             // btnChangeStatus
             // 
-            this.btnChangeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnChangeStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnChangeStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnChangeStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnChangeStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangeStatus.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnChangeStatus.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnChangeStatus.ForeColor = System.Drawing.Color.White;
             this.btnChangeStatus.Location = new System.Drawing.Point(968, 606);
             this.btnChangeStatus.Name = "btnChangeStatus";
@@ -200,11 +228,11 @@
             // 
             // btnViewDocuments
             // 
-            this.btnViewDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnViewDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnViewDocuments.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnViewDocuments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnViewDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewDocuments.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnViewDocuments.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnViewDocuments.ForeColor = System.Drawing.Color.White;
             this.btnViewDocuments.Location = new System.Drawing.Point(479, 606);
             this.btnViewDocuments.Name = "btnViewDocuments";
@@ -215,11 +243,11 @@
             // 
             // btnOpenRenewalCase
             // 
-            this.btnOpenRenewalCase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnOpenRenewalCase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnOpenRenewalCase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnOpenRenewalCase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnOpenRenewalCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenRenewalCase.Font = new System.Drawing.Font("Book Antiqua", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnOpenRenewalCase.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnOpenRenewalCase.ForeColor = System.Drawing.Color.White;
             this.btnOpenRenewalCase.Location = new System.Drawing.Point(711, 606);
             this.btnOpenRenewalCase.Name = "btnOpenRenewalCase";
@@ -281,7 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1432, 1055);
             this.Controls.Add(this.btnOpenRenewalCase);
             this.Controls.Add(this.btnViewDocuments);

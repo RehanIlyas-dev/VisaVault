@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using visavault_g43.BLL;
-
 namespace visavault_g43
 {
     public partial class Form1 : Form
@@ -26,7 +25,6 @@ namespace visavault_g43
             panelCases.Visible = false;
             panelDocument.Visible = false;
             panelFinance.Visible = false;
-
         }
         private void hidesubmenu()
         {
@@ -46,7 +44,6 @@ namespace visavault_g43
             {
                 panelFinance.Visible = false;
             }
-
         }
         private void showsubmenue(Panel subMenu)
         {
@@ -58,90 +55,69 @@ namespace visavault_g43
             else
             {
                 subMenu.Visible = false;
-
             }
-
         }
-
         private void Clientbtn_Click(object sender, EventArgs e)
         {
             showsubmenue(panelClient);
         }
-
         private void CRbtn_Click(object sender, EventArgs e)
         {
             fromload(new Client_Registry());
             hidesubmenu();
         }
-
         private void CMbtn_Click(object sender, EventArgs e)
         {
             fromload(new Client_Management());
             hidesubmenu();
         }
-
         private void DPbtn_Click(object sender, EventArgs e)
         {
             fromload(new Document_Portfolio());
             hidesubmenu();
         }
-
         private void DMbtn_Click(object sender, EventArgs e)
         {
             fromload(new Document_Manag(AuthService.CurrentClientId, 0));
             hidesubmenu();
         }
-
         private void RWbtn_Click(object sender, EventArgs e)
         {
             fromload(new Renewal_WorkFlow());
             hidesubmenu();
         }
-
-        private void ARbtn_Click(object sender, EventArgs e)
-        {
-            hidesubmenu();
-        }
-
         private void DVbtn_Click(object sender, EventArgs e)
         {
             fromload(new Dependency_Validator());
             hidesubmenu();
         }
-
         private void DCbtn_Click(object sender, EventArgs e)
         {
             fromload(new Deadline_Calculator());
             hidesubmenu();
         }
-
         private void Ibtn_Click(object sender, EventArgs e)
         {
             fromload(new Invoice());
             hidesubmenu();
         }
-
         private void FCbtn_Click(object sender, EventArgs e)
         {
             fromload(new Fee_Calculator());
             hidesubmenu();
         }
-
         private void Documentbtn_Click(object sender, EventArgs e)
         {
             showsubmenue(panelDocument);
         }
-
         private void btncase_Click(object sender, EventArgs e)
         {
             showsubmenue(panelCases);
         }
-
         private void financebtn_Click(object sender, EventArgs e)
         {
             showsubmenue(panelFinance);
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             fromload(new Home());
@@ -161,41 +137,32 @@ namespace visavault_g43
             this.Mainpanel.Tag = f;
             f.Show();   
         }
-
         private void Homebtn_Click(object sender, EventArgs e)
         {
             fromload(new Home());
         }
-
         private void appbtn_Click(object sender, EventArgs e)
         {
             fromload(new Appoinment());
         }
-
         private void EAbtn_Click(object sender, EventArgs e)
         {
-
             fromload(new Expiry_Alert());
         }
-
         private void RPbtn_Click(object sender, EventArgs e)
         {
             fromload(new ReportsForm());
             hidesubmenu();
         }
-
-        // ── MenuStrip handlers ──────────────────────────────────────────────
         private void menuHome_Click(object sender, EventArgs e)
         {
             fromload(new Home());
             hidesubmenu();
         }
-
         private void menuExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void menuAbout_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
