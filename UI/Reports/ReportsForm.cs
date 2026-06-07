@@ -22,7 +22,6 @@ namespace visavault_g43
 
         private void ReportsForm_Load(object sender, EventArgs e)
         {
-            // Populate Report Types
             cmbReportType.Items.Clear();
             cmbReportType.Items.Add("1. Client Registry Report");
             cmbReportType.Items.Add("2. Active Visa Renewal Cases");
@@ -35,8 +34,6 @@ namespace visavault_g43
             cmbReportType.Items.Add("9. System Audit Log History");
             cmbReportType.Items.Add("10. Case Processing Timeline");
             cmbReportType.SelectedIndex = 0;
-
-            // Load countries
             cmbCountry.Items.Clear();
             cmbCountry.Items.Add("All Countries");
             foreach (var country in AuthService.CachedCountries)
@@ -44,8 +41,6 @@ namespace visavault_g43
                 cmbCountry.Items.Add(country.CountryName);
             }
             cmbCountry.SelectedIndex = 0;
-
-            // Load stages
             cmbStage.Items.Clear();
             cmbStage.Items.Add("All Stages");
             foreach (var stage in AuthService.CachedStages)
@@ -53,8 +48,6 @@ namespace visavault_g43
                 cmbStage.Items.Add(stage.StageName);
             }
             cmbStage.SelectedIndex = 0;
-
-            // Load default dates
             dtpStart.Value = DateTime.Today.AddMonths(-1);
             dtpEnd.Value = DateTime.Today;
             dtpSingleDate.Value = DateTime.Today;
@@ -154,7 +147,6 @@ namespace visavault_g43
                     break;
 
                 case 7: // Document dependencies
-                    // None needed
                     break;
 
                 case 8: // System Audit Log History

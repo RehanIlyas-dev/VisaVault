@@ -71,7 +71,7 @@ namespace visavault_g43
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,7 +94,7 @@ namespace visavault_g43
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label11.Location = new System.Drawing.Point(66, 12);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(263, 32);
@@ -103,7 +103,7 @@ namespace visavault_g43
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.btnSearch);
             this.panel6.Controls.Add(this.cmbStatusFilter);
             this.panel6.Controls.Add(this.dgvCases);
@@ -115,11 +115,11 @@ namespace visavault_g43
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(712, 39);
             this.btnSearch.Name = "btnSearch";
@@ -130,9 +130,9 @@ namespace visavault_g43
             // 
             // cmbStatusFilter
             // 
-            this.cmbStatusFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.cmbStatusFilter.BackColor = System.Drawing.Color.White;
             this.cmbStatusFilter.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.cmbStatusFilter.ForeColor = System.Drawing.Color.White;
+            this.cmbStatusFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.cmbStatusFilter.FormattingEnabled = true;
             this.cmbStatusFilter.Location = new System.Drawing.Point(396, 44);
             this.cmbStatusFilter.Name = "cmbStatusFilter";
@@ -159,6 +159,34 @@ namespace visavault_g43
             this.dgvCases.RowTemplate.Height = 24;
             this.dgvCases.Size = new System.Drawing.Size(1194, 168);
             this.dgvCases.TabIndex = 27;
+            System.Windows.Forms.DataGridViewCellStyle dgvCasesHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvCasesHeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
+            dgvCasesHeaderStyle.ForeColor = System.Drawing.Color.White;
+            dgvCasesHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            
+            System.Windows.Forms.DataGridViewCellStyle dgvCasesRowStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvCasesRowStyle.BackColor = System.Drawing.Color.White;
+            dgvCasesRowStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dgvCasesRowStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvCasesRowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(242)))));
+            dgvCasesRowStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvCases.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCases.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCases.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCases.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvCases.EnableHeadersVisualStyles = false;
+            this.dgvCases.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCases.ColumnHeadersDefaultCellStyle = dgvCasesHeaderStyle;
+            this.dgvCases.ColumnHeadersHeight = 40;
+            this.dgvCases.DefaultCellStyle = dgvCasesRowStyle;
+            this.dgvCases.RowHeadersVisible = false;
+            this.dgvCases.RowTemplate.Height = 35;
+            this.dgvCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCases.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCases.AllowUserToAddRows = false;
+            this.dgvCases.AllowUserToDeleteRows = false;
+            this.dgvCases.ReadOnly = true;
             // 
             // button2
             // 
@@ -171,7 +199,7 @@ namespace visavault_g43
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -222,7 +250,7 @@ namespace visavault_g43
             // 
             // panelApprovedRejected
             // 
-            this.panelApprovedRejected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelApprovedRejected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelApprovedRejected.Location = new System.Drawing.Point(911, 107);
             this.panelApprovedRejected.Name = "panelApprovedRejected";
             this.panelApprovedRejected.Size = new System.Drawing.Size(163, 107);
@@ -230,7 +258,7 @@ namespace visavault_g43
             // 
             // panelUnderReview
             // 
-            this.panelUnderReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelUnderReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelUnderReview.Location = new System.Drawing.Point(669, 107);
             this.panelUnderReview.Name = "panelUnderReview";
             this.panelUnderReview.Size = new System.Drawing.Size(163, 107);
@@ -238,7 +266,7 @@ namespace visavault_g43
             // 
             // panelSubmitted
             // 
-            this.panelSubmitted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelSubmitted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelSubmitted.Location = new System.Drawing.Point(426, 107);
             this.panelSubmitted.Name = "panelSubmitted";
             this.panelSubmitted.Size = new System.Drawing.Size(163, 107);
@@ -248,7 +276,7 @@ namespace visavault_g43
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label8.Location = new System.Drawing.Point(216, 240);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 26);
@@ -259,7 +287,7 @@ namespace visavault_g43
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label7.Location = new System.Drawing.Point(680, 240);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 26);
@@ -270,7 +298,7 @@ namespace visavault_g43
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label6.Location = new System.Drawing.Point(455, 240);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 26);
@@ -281,7 +309,7 @@ namespace visavault_g43
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Book Antiqua", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label5.Location = new System.Drawing.Point(898, 240);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(210, 26);
@@ -290,7 +318,7 @@ namespace visavault_g43
             // 
             // panelPending
             // 
-            this.panelPending.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(14)))), ((int)(((byte)(85)))));
+            this.panelPending.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(250)))));
             this.panelPending.Location = new System.Drawing.Point(183, 107);
             this.panelPending.Name = "panelPending";
             this.panelPending.Size = new System.Drawing.Size(163, 107);
@@ -300,7 +328,7 @@ namespace visavault_g43
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Book Antiqua", 16.2F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(68)))), ((int)(((byte)(115)))));
             this.label1.Location = new System.Drawing.Point(53, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 32);
@@ -373,7 +401,7 @@ namespace visavault_g43
             this.colViewDetails.Width = 110;
             this.colViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colViewDetails.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(40, 14, 85);
-            this.colViewDetails.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colViewDetails.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.colViewDetails.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.SteelBlue;
             // 
             // colAdvanceStage
@@ -386,14 +414,14 @@ namespace visavault_g43
             this.colAdvanceStage.Width = 120;
             this.colAdvanceStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colAdvanceStage.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(0, 120, 80);
-            this.colAdvanceStage.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colAdvanceStage.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.colAdvanceStage.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DarkGreen;
             // 
             // Renewal_WorkFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(75)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1396, 961);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel6);
