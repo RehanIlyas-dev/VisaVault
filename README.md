@@ -1,93 +1,281 @@
-# VisaVault-G43
+# VisaVault
 
+A desktop-based Visa Consultancy Management System developed as a second-semester Database Systems course project. VisaVault provides a structured platform for visa consultancy agencies to manage their clients, travel documents, renewal workflows, invoicing, and appointments through a centralized, database-driven application.
 
+---
 
-## Getting started
+## Table of Contents
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Architecture](#architecture)
+- [Database Design](#database-design)
+- [Prerequisites](#prerequisites)
+- [Setup and Installation](#setup-and-installation)
+- [Project Structure](#project-structure)
+- [Authors](#authors)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Project Overview
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Visa consultancy agencies deal with large volumes of client records, travel documents, and renewal processes on a daily basis. Managing these through paper-based systems or disconnected spreadsheets leads to missed deadlines, lost records, and billing errors.
+
+VisaVault addresses these problems by providing a single desktop application where all agency operations are handled in one place. The system tracks document expiry dates, alerts staff to upcoming renewals, manages the full workflow of each renewal case from opening to completion, generates invoices and records payments, and produces professional PDF reports on demand.
+
+The application was built with a strict three-tier architecture separating the user interface, business logic, and data access layers.
+
+---
+
+## Features
+
+**Client Management**
+
+- Register and manage client profiles with contact information, CNIC, and destination country
+- Search and filter clients by name, CNIC, or status
+- Soft activation and deactivation of client accounts
+
+**Document Management**
+
+- Record travel documents for each client with issue and expiry dates
+- Classify documents by type (visa, passport, Emirates ID, etc.)
+- Validate document dependency rules before registration
+
+**Expiry Alert System**
+
+- Automatic classification of documents into urgency levels: Critical, Warning, Safe, and Expired
+- Filtered views to prioritize the most time-sensitive documents
+- Deadline calculator showing the action date based on processing time requirements
+
+**Visa Renewal Workflow**
+
+- Open renewal cases linked to a client document
+- Move cases through configurable workflow stages (Document Collection, Under Review, Submitted, Approved, Completed)
+- Full audit trail of every stage transition with timestamps, responsible user, and remarks
+
+**Invoicing and Payments**
+
+- Generate invoices with line items based on fee rules per document type and country
+- Record partial and full payments against invoices
+- Automatic invoice status computation: Unpaid, Partially Paid, Paid, Overdue
+
+**Appointment Scheduling**
+
+- Schedule client consultations with assigned staff members
+- Track appointment statuses: Scheduled, Complete, Unattended, Cancelled
+- Validation prevents scheduling appointments in the past
+
+**Fee Calculator**
+
+- Calculate service fees by document type and destination country
+- View itemised breakdown of base fee, urgent fee, and processing fee
+
+**PDF Report Generation**
+
+- Ten professionally formatted business reports exportable as PDF files
+- Reports include Client Registry, Active Renewals, Expiring Documents, Accounts Receivable, Revenue Collection, Daily Appointments, Fee Rates, Dependencies Map, Audit Logs, and Case Timeline
+
+**System Audit Log**
+
+- Database-level audit trail maintained automatically by triggers
+- Every create, update, or status change on critical records is logged with old and new values
+
+---
+
+## Technology Stack
+
+| Component             | Technology                         |
+| --------------------- | ---------------------------------- |
+| Application Framework | .NET Framework, Windows Forms (C#) |
+| Database              | MySQL 8.0                          |
+| Data Access           | ADO.NET with MySql.Data connector  |
+| PDF Generation        | iTextSharp                         |
+| IDE                   | Visual Studio                      |
+| Version Control       | Git                                |
+
+---
+
+## Architecture
+
+The project follows a strict three-tier architecture:
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/RehanIlyas-dev/visavault-g43.git
-git branch -M main
-git push -uf origin main
+UI Layer (Windows Forms)
+    |
+    v
+Business Logic Layer (BLL — Service Classes)
+    |
+    v
+Data Access Layer (DAL — Repository Classes)
+    |
+    v
+MySQL 8.0 Database
 ```
 
-## Integrate with your tools
+**UI Layer** contains 14 Windows Forms modules. Each form is responsible for displaying data and capturing user input, with no business logic embedded in the form code.
 
-* [Set up project integrations](https://gitlab.com/RehanIlyas-dev/visavault-g43/-/settings/integrations)
+**Business Logic Layer** contains 11 service classes that validate inputs, enforce business rules, map database results to domain objects, and coordinate multi-step operations.
 
-## Collaborate with your team
+**Data Access Layer** contains 8 DAL classes that execute parameterized SQL queries and stored procedure calls against the database. A shared Database Helper class provides four core methods: ExecuteQuery, ExecuteNonQuery, ExecuteScalar, and ExecuteTransaction.
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+---
 
-## Test and Deploy
+## Database Design
 
-Use the built-in continuous integration in GitLab.
+The database contains 15 tables, designed to third normal form (3NF):
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+| Table              | Purpose                                                   |
+| ------------------ | --------------------------------------------------------- |
+| client             | Core client personal and contact information              |
+| country            | Reference table for destination countries                 |
+| document           | Client travel documents with issue and expiry dates       |
+| documenttype       | Categories of document types                              |
+| documentdependency | Rules specifying which document types require other types |
+| feerule            | Fee pricing rules by document type and country            |
+| renewalcase        | Visa renewal workflow cases                               |
+| renewalstage       | Configurable workflow stages                              |
+| renewalstagelog    | Historical log of all stage transitions                   |
+| invoice            | Billing invoices linked to renewal cases                  |
+| invoicelineitem    | Individual fee line items within an invoice               |
+| payment            | Payment transactions against invoices                     |
+| appointment        | Scheduled client-consultant meetings                      |
+| user               | System user accounts                                      |
+| audit_log          | System-wide change history populated by triggers          |
 
-***
+**Views (5)**
 
-# Editing this README
+- `vw_active_clients` — Active clients with their destination country
+- `vw_expiring_documents` — Documents expiring within 90 days with days remaining
+- `vw_invoice_summary` — Invoices with computed total paid and balance due
+- `vw_active_renewals` — Open renewal cases with stage, client, and document details
+- `vw_fee_rules_summary` — Fee rules joined with document types and countries
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+**Stored Procedures (3)**
 
-## Suggestions for a good README
+- `sp_GetClientInvoices` — Retrieves all invoices for a client with balance information
+- `sp_RecordPayment` — Transactional payment recording with automatic invoice status update
+- `sp_AdvanceRenewalStage` — Transactional stage advancement with automatic log entry
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+**Triggers (7)**
 
-## Name
-Choose a self-explaining name for your project.
+- `validate_appointment_date` — Prevents scheduling appointments in the past
+- `tg_appointment_audit_insert` — Logs new appointment creation to the audit log
+- `tg_appointment_audit_update` — Logs appointment changes to the audit log
+- `tg_user_after_insert` — Logs new user account creation
+- `tg_user_after_update` — Logs changes to user account fields
+- Two additional triggers on core entity tables for change tracking
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+---
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Prerequisites
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Before setting up the project, ensure the following software is installed on your machine:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+- Visual Studio 2022 (or later) with .NET Framework desktop workload
+- MySQL Server 8.0
+- MySQL Workbench (recommended, for running the schema script)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+---
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Setup and Installation
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+**Step 1 — Clone the repository**
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```
+git clone https://gitlab.com/RehanIlyas-dev/visavault-g43.git
+cd visavault-g43
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+**Step 2 — Set up the database**
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Open MySQL Workbench and connect to your local MySQL server. Open and execute the `visa_vault.sql` file located in the project root. This script will create the `visa_vault` database, all 15 tables, views, stored procedures, triggers, and insert sample data.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+**Step 3 — Configure the database connection**
 
-## License
-For open source projects, say how it is licensed.
+Open `DLL/Database/Database_Helper.cs` and update the connection string if your MySQL instance uses a different port, username, or password:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+```csharp
+private string connString = "Server=localhost;Port=3306;Database=visa_vault;Uid=root;Pwd=YourPassword";
+```
+
+**Step 4 — Restore NuGet packages**
+
+Open the solution file `visavault_g43.slnx` in Visual Studio. Right-click the solution in Solution Explorer and select Restore NuGet Packages. This will download the MySql.Data and iTextSharp dependencies.
+
+**Step 5 — Build and run**
+
+Build the solution using Ctrl+Shift+B or Build > Build Solution. Press F5 to run the application.
+
+---
+
+## Project Structure
+
+```
+visavault-g43/
+|
+|-- Models/                
+|   |-- Client.cs
+|   |-- Document.cs
+|   |-- Invoice.cs
+|   |-- RenewalCase.cs
+|   |-- ValidationResult.cs
+|   `-- (13 more models)
+|
+|-- BLL/                   
+|   |-- AuthService.cs       
+|   |-- ClientService.cs     
+|   |-- DocumentService.cs   
+|   |-- AlertService.cs      
+|   |-- RenewalService.cs   
+|   |-- InvoiceService.cs   
+|   |-- DeadlineService.cs   
+|   |-- FeeService.cs        
+|   |-- AppointmentService.cs 
+|   |-- DependencyService.cs 
+|   `-- ReportService.cs     
+|
+|-- DLL/                    
+|   |-- Database/
+|   |   `-- Database_Helper.cs
+|   |-- ClientDAL.cs
+|   |-- AuthDAL.cs
+|   |-- DocumentDAL.cs
+|   |-- InvoiceDAL.cs
+|   |-- RenewalDAL.cs
+|   |-- FeeDAL.cs
+|   |-- AppointmentDAL.cs
+|   `-- DependencyDAL.cs
+|
+|-- UI/                     
+|   |-- Form1/               
+|   |-- Home/                
+|   |-- Client_Registry/     
+|   |-- Client_Management/   
+|   |-- Document_Portfolio/  
+|   |-- Document_Manag/      
+|   |-- Expiry_Alert/        
+|   |-- Deadline_Calculator/ 
+|   |-- Dependency_Validator/ 
+|   |-- Renewal_WorkFlow/    
+|   |-- Invoice/             
+|   |-- Appoinment/          
+|   |-- Fee_Calculator/      
+|   `-- Reports/  
+|-- visavault_g43.slnx  
+```
+
+---
+
+
+## Authors
+
+Developed by Group 43 as part of the Database Systems course, second semester.
+
+### Group Members
+
+- Rehan Ilyas
+- Ali Fayyaz
+- Hassan Rauf
+
+
